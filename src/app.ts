@@ -11,6 +11,7 @@ async function run(): Promise<void> {
 
         core.debug(`DGB: Distributing ${beetsToDistribute} BEETS next epoch`);
         console.log(`LOG: Distributing ${beetsToDistribute} BEETS next epoch`);
+        console.log(`LOG-PROCESS: Distributing ${process.env.BEETS_TO_DISTRIBUTE} BEETS next epoch`);
     } catch (error) {
         // Fail the workflow run if an error occurs
         if (error instanceof Error) core.setFailed(error.message);
