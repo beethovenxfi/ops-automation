@@ -28,7 +28,7 @@ async function run(): Promise<void> {
             beetsToDistribute: process.env.BEETS_TO_DISTRIBUTE,
         };
 
-        fs.writeFile(`../gauge-data/${epochEndTimestamp.unix()}.json`, JSON.stringify(newRound), function (err) {
+        fs.writeFile(`gauge-data/${epochEndTimestamp.unix()}.json`, JSON.stringify(newRound), function (err) {
             if (err) {
                 throw err;
             }
