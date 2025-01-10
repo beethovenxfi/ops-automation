@@ -1,0 +1,14 @@
+{
+    "name": "gauge-automation",
+    "version": "1.0.0",
+    "main": "src/app.ts",
+    "license": "MIT",
+    "dependencies": {
+        "@actions/core": "^1.11.1",
+        "@types/node": "^22.10.5",
+        "typescript": "^5.7.3"
+    },
+    "devDependencies": {
+        "ts-node": "^10.9.2"
+    }
+}

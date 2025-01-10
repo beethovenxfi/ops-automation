@@ -1,0 +1,31 @@
+{
+    "beetsToDistribute": 150000,
+    "voteResults": [
+        {
+            "pool": "Pool name 1",
+            "voteCount": 2526.8500595689
+        },
+        {
+            "pool": "Pool name 2",
+            "voteCount": 10.23124
+        },
+        {
+            "pool": "Pool name 3",
+            "voteCount": 1223.348734
+        }
+    ],
+    "manualAllocation:": [
+        {
+            "pool": "Pool name 1",
+            "allocatedBeets": 12345
+        },
+        {
+            "pool": "Pool name 3",
+            "allocatedBeets": 92345
+        },
+        {
+            "pool": "Pool name 7",
+            "allocatedBeets": 122345
+        }
+    ]
+}
