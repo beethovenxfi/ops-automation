@@ -29,13 +29,12 @@ jobs:
                   BEETS_TO_DISTRIBUTE: ${{ github.event.inputs.beets_to_distribute }}
               run: bun ts-node ./src/app.ts
 
-        # - name: Create PR
-        #   uses: peter-evans/create-pull-request@v5
-        #   with:
-        #     commit-message: "Generate  incentives run for ${{ github.event.inputs.epoch_end_date }}"
-        #     title: "Generate  incentives run for ${{ github.event.inputs.epoch_end_date }}"
-        #     assignees: franzns
-        #     branch: gha-payment-round
-        #     delete-branch: true
-        #     labels: "Automated PR"
-        #     branch-suffix: timestamp
+        - name: Create PR
+          uses: peter-evans/create-pull-request@v5
+          with:
+            commit-message: "Inititalize new gauge epoch"
+            title: "Inititalize new gauge epoch with ${{ github.event.inputs.beets_to_distribute }} BEETS"
+            assignees: franzns
+            branch: init-gauge-round
+            delete-branch: true
+            labels: "Automated PR"

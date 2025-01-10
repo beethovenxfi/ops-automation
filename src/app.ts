@@ -1,4 +1,6 @@
 import * as core from '@actions/core';
+import moment from 'moment';
+import * as fs from 'fs';
 
 /**
  * The main function for the action.
@@ -7,13 +9,31 @@ import * as core from '@actions/core';
  */
 async function run(): Promise<void> {
     try {
-        const beetsToDistribute: string = core.getInput('beets_to_distribute');
+        console.log(`Distributing ${process.env.BEETS_TO_DISTRIBUTE} BEETS next epoch`);
 
-        core.debug(`DGB: Distributing ${beetsToDistribute} BEETS next epoch`);
-        console.log(`LOG: Distributing ${beetsToDistribute} BEETS next epoch`);
-        console.log(`LOG-PROCESS: Distributing ${process.env.BEETS_TO_DISTRIBUTE} BEETS next epoch`);
+        const isoMonday = 1;
+
+        let epochEndTimestamp = moment()
+            .isoWeekday(isoMonday)
+            .utc()
+            .set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
+
+        if (moment().isoWeekday() > isoMonday) {
+            epochEndTimestamp.add(2, 'week');
+        }
+
+        console.log(epochEndTimestamp.unix());
+
+        const newRound = {
+            beetsToDistribute: process.env.BEETS_TO_DISTRIBUTE,
+        };
+
+        fs.writeFile(`../gauge-data/${epochEndTimestamp.unix()}.json`, JSON.stringify(newRound), function (err) {
+            if (err) {
+                throw err;
+            }
+        });
     } catch (error) {
-        // Fail the workflow run if an error occurs
         if (error instanceof Error) core.setFailed(error.message);
     }
 }
