@@ -19,7 +19,7 @@ async function run(): Promise<void> {
             .set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
 
         if (moment().isoWeekday() > isoMonday) {
-            epochEndTimestamp.add(2, 'week');
+            epochEndTimestamp.add(1, 'week');
         }
 
         console.log(epochEndTimestamp.unix());
