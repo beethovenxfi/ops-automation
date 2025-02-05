@@ -2,11 +2,6 @@ import * as core from '@actions/core';
 import moment from 'moment';
 import * as fs from 'fs';
 
-/**
- * The main function for the action.
- *
- * @returns Resolves when the action is complete.
- */
 async function run(): Promise<void> {
     try {
         console.log(`Distributing ${process.env.BEETS_TO_DISTRIBUTE} BEETS next epoch`);

@@ -27,7 +27,7 @@ jobs:
             - name: Inititalize new epoch
               env:
                   BEETS_TO_DISTRIBUTE: ${{ github.event.inputs.beets_to_distribute }}
-              run: bun ts-node ./src/app.ts
+              run: bun ts-node ./src/inititalizeRound.ts
 
             - name: Create PR
               uses: peter-evans/create-pull-request@v5
