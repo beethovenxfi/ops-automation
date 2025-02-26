@@ -81,22 +81,16 @@ To vote, distribute your voting power among pools. You can vote for as many or a
 
 Pools may have voting incentives provided by Beets and/or other protocols, please check Beets discord for details.`;
 
-        const choices = choiceList.map((gauge: GaugeChoice) => gauge.poolName);
-
-        const start = startTimestamp;
-        const end = endTimestamp;
-        const snapshot = Number(snapshotBlock);
-
         const proposal = {
             space,
             type: 'weighted' as ProposalType,
             title,
             body,
             discussion: '',
-            choices,
-            start,
-            end,
-            snapshot,
+            choices: choiceList.map((gauge: GaugeChoice) => gauge.poolName);,
+            start: startTimestamp,
+            end: endTimestamp,
+            snapshot: Number(snapshotBlock),
             network: '146',
             strategies: JSON.stringify({}),
             plugins: JSON.stringify({}),
