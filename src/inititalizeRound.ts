@@ -87,7 +87,7 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
             title,
             body,
             discussion: '',
-            choices: choiceList.map((gauge: GaugeChoice) => gauge.poolName);,
+            choices: choiceList.map((gauge: GaugeChoice) => gauge.poolName),
             start: startTimestamp,
             end: endTimestamp,
             snapshot: Number(snapshotBlock),
