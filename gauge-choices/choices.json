@@ -1,0 +1,14 @@
+[
+    {
+        "poolName": "test pool1",
+        "poolAddress": "0x123",
+        "poolId": "0x123123",
+        "gaugeAdress": "0x321321"
+    },
+    {
+        "poolName": "test pool 2",
+        "poolAddress": "0x1234",
+        "poolId": "0x1231234",
+        "gaugeAdress": "0x32132144"
+    }
+]

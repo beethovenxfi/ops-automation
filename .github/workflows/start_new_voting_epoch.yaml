@@ -6,6 +6,15 @@ on:
             beets_to_distribute:
                 description: 'The amounts of BEETS to distribute'
                 require: true
+            vote_start_day:
+                description: 'Start day of the vote (YYYY-MM-DD)'
+                require: true
+            vote_end_day:
+                description: 'End day of the vote (YYYY-MM-DD)'
+                require: true
+            snapshot_block:
+                description: 'Number of the block to snapshot'
+                require: true
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,6 +36,9 @@ jobs:
             - name: Inititalize new epoch
               env:
                   BEETS_TO_DISTRIBUTE: ${{ github.event.inputs.beets_to_distribute }}
+                  VOTE_START_DAY: ${{ github.event.inputs.vote_start_day }}
+                  VOTE_END_DAY: ${{ github.event.inputs.vote_end_day }}
+                  SNAPSHOT_BLOCK: ${{ github.event.inputs.snapshot_block }}
               run: bun ts-node ./src/inititalizeRound.ts
 
             - name: Create PR
