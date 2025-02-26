@@ -83,36 +83,31 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
 
         const choices = choiceList.map((gauge: GaugeChoice) => gauge.poolName);
 
-        try {
-            const start = startTimestamp;
-            const end = endTimestamp;
-            const snapshot = Number(snapshotBlock);
+        const start = startTimestamp;
+        const end = endTimestamp;
+        const snapshot = Number(snapshotBlock);
 
-            const proposal = {
-                space,
-                type: 'weighted' as ProposalType,
-                title,
-                body,
-                discussion: '',
-                choices,
-                start,
-                end,
-                snapshot,
-                network: '146',
-                strategies: JSON.stringify({}),
-                plugins: JSON.stringify({}),
-                metadata: JSON.stringify({}),
-            };
-            console.log('Proposal:', JSON.stringify(proposal));
+        const proposal = {
+            space,
+            type: 'weighted' as ProposalType,
+            title,
+            body,
+            discussion: '',
+            choices,
+            start,
+            end,
+            snapshot,
+            network: '146',
+            strategies: JSON.stringify({}),
+            plugins: JSON.stringify({}),
+            metadata: JSON.stringify({}),
+        };
+        console.log('Proposal:', JSON.stringify(proposal));
 
-            let wallet = new Wallet(process.env.PROPOSER_WALLET!);
+        let wallet = new Wallet(process.env.PROPOSER_WALLET!);
 
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            await client.proposal(wallet, wallet.address, proposal);
-        } catch (error) {
-            console.log('Submitting failed');
-            console.log(error);
-        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await client.proposal(wallet, wallet.address, proposal);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }

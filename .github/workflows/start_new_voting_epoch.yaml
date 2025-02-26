@@ -1,4 +1,4 @@
-name: Start new voting epoch
+name: Start new voting epoch and create snapshot
 
 on:
     workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
             - name: Install deps
               run: bun install --frozen-lockfile
 
-            - name: Inititalize new epoch
+            - name: Inititalize new epoch and create snapshot
               env:
                   BEETS_TO_DISTRIBUTE: ${{ github.event.inputs.beets_to_distribute }}
                   VOTE_START_DAY: ${{ github.event.inputs.vote_start_day }}
