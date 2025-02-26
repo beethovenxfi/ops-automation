@@ -35,7 +35,7 @@ async function run(): Promise<void> {
 
         fs.writeFileSync(`gauge-data/${endTimestamp}.json`, JSON.stringify(newRound));
 
-        createSnapshot(startTimestamp, endTimestamp, snapshotBlock);
+        await createSnapshot(startTimestamp, endTimestamp, snapshotBlock);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }
@@ -105,7 +105,7 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
             };
             console.log('Proposal:', JSON.stringify(proposal));
 
-            let wallet = new Wallet(process.env.DEPLOYER_PRIVATE_KEY!);
+            let wallet = new Wallet(process.env.PROPOSER_WALLET!);
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             await client.proposal(wallet, wallet.address, proposal);
