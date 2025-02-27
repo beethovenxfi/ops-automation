@@ -52,8 +52,6 @@ async function createSnapshot(startTimestamp: number, endTimestamp: number, snap
     // create snapshot vote
     console.log('Creating proposal on snapshot');
 
-    // const client = new snapshot.Client712('https://hub.snapshot.org');
-    // const space = 'beets-gauges.eth';
     const client = new snapshot.Client712(SNAPSHOT_HUB_URL);
     const space = SNAPSHOT_SPACE;
 
