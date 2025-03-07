@@ -1,5 +1,8 @@
 name: Collect Fees from pools to controller
 
+on:
+    workflow_dispatch:
+
 env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
 
