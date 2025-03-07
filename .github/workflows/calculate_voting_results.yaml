@@ -1,0 +1,40 @@
+name: Calculate voting results
+
+on:
+    workflow_dispatch:
+        inputs:
+            vote_end_timestamp:
+                description: 'The timestamp of the end of the vote'
+                require: true
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+    initEpoch:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Calculate BEETS distribution
+              env:
+                  VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
+              run: bun ts-node ./src/calculateRound.ts
+
+            - name: Create PR
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  commit-message: 'Calculate distribution'
+                  title: 'BEETS distribution for round ${{ github.event.inputs.vote_end_timestamp }}'
+                  assignees: franzns
+                  branch: beets-distribution
+                  delete-branch: true
+                  labels: 'Automated PR'

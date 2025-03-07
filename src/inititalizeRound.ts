@@ -3,9 +3,8 @@ import moment from 'moment';
 import * as fs from 'fs';
 import { ProposalType } from '@snapshot-labs/snapshot.js/dist/src/sign/types';
 import { Wallet } from '@ethersproject/wallet';
-import path from 'path';
 import snapshot from '@snapshot-labs/snapshot.js';
-import { getVoteStartTimestamp, getVoteEndTimestamp, GaugeChoice } from './helpers/utils';
+import { getVoteStartTimestamp, getVoteEndTimestamp, GaugeChoice, GaugeData } from './helpers/utils';
 import {
     FIRST_GAUGE_VOTE_DAY,
     TWO_WEEKS_IN_SECONDS,
@@ -29,25 +28,43 @@ async function run(): Promise<void> {
         const endTimestamp = getVoteEndTimestamp(process.env.VOTE_END_DAY || '');
         const snapshotBlock = parseFloat(process.env.SNAPSHOT_BLOCK || '0');
 
-        const newRound = {
+        const choices: GaugeChoice = JSON.parse(
+            fs.readFileSync('./gauge-choices/choices-init.json', 'utf-8'),
+        ) as GaugeChoice;
+
+        const gaugeDataForRound: GaugeData = {
             beetsToDistribute: process.env.BEETS_TO_DISTRIBUTE,
+            startTimestamp,
+            endTimestamp,
+            snapshotBlock,
+            gauges: Object.keys(choices).map((poolName) => {
+                return {
+                    poolName: poolName,
+                    poolId: choices[poolName].toLowerCase(),
+                    weeklyBeetsAmountFromGauge: '0',
+                    weeklyBeetsAmountFromMD: '0',
+                };
+            }),
         };
 
-        fs.writeFileSync(`gauge-data/${endTimestamp}.json`, JSON.stringify(newRound));
+        fs.writeFileSync(`gauge-data/${endTimestamp}.json`, JSON.stringify(gaugeDataForRound));
 
-        await createSnapshot(startTimestamp, endTimestamp, snapshotBlock);
+        await createSnapshot(startTimestamp, endTimestamp, snapshotBlock, choices);
     } catch (error) {
         console.log(`erroring`);
         core.setFailed(error as Error);
     }
 }
 
-async function createSnapshot(startTimestamp: number, endTimestamp: number, snapshotBlock: number): Promise<void> {
-    // read the vote options from the file
-    const choiceList: GaugeChoice[] = JSON.parse(
-        fs.readFileSync('./gauge-choices/choices.json', 'utf-8'),
-    ) as GaugeChoice[];
-    choiceList.forEach((gauge: GaugeChoice, i: number) => console.log(`${i + 1}) ${gauge.poolName}`));
+async function createSnapshot(
+    startTimestamp: number,
+    endTimestamp: number,
+    snapshotBlock: number,
+    choices: GaugeChoice,
+): Promise<void> {
+    const poolNames = Object.keys(choices);
+    console.log('Choices:');
+    console.log(poolNames);
 
     // create snapshot vote
     console.log('Creating proposal on snapshot');
@@ -85,7 +102,7 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
         title,
         body,
         discussion: '',
-        choices: choiceList.map((gauge: GaugeChoice) => gauge.poolName),
+        choices: Object.keys(choices),
         start: startTimestamp,
         end: endTimestamp,
         snapshot: Number(snapshotBlock),

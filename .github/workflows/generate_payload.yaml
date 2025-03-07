@@ -1,0 +1,40 @@
+name: Generate payload for a week of rewards
+
+on:
+    workflow_dispatch:
+        inputs:
+            vote_end_timestamp:
+                description: 'The timestamp of the end of the vote'
+                require: true
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+    initEpoch:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Generate msig txns
+              env:
+                  VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
+              run: bun ts-node ./src/generatePayload.ts
+
+            - name: Create PR
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  commit-message: 'Generated payload for a week'
+                  title: 'Weekly payload for vote at ${{ github.event.inputs.vote_end_timestamp }}'
+                  assignees: franzns
+                  branch: generate-payload
+                  delete-branch: true
+                  labels: 'Automated PR'

@@ -7,7 +7,11 @@ export const DAYS_FOR_EMISSIONS = 13;
 export const VOTE_START_HOUR_UTC = 20;
 export const VOTE_END_HOUR_UTC = 8;
 
-export const SNAPSHOT_HUB_URL = 'https://testnet.hub.snapshot.org';
-export const SNAPSHOT_SPACE = 'beets-test.eth';
-// export const SNAPSHOT_HUB_URL = 'https://hub.snapshot.org';
-// export const SNAPSHOT_SPACE = 'beets-gauges.eth';
+// export const SNAPSHOT_HUB_URL = 'https://testnet.hub.snapshot.org';
+// export const SNAPSHOT_SPACE = 'beets-test.eth';
+export const SNAPSHOT_HUB_URL = 'https://hub.snapshot.org';
+export const SNAPSHOT_SPACE = 'beets-gauges.eth';
+
+export const GAUGE_FACTORY = '0xE6338D702941998102Fc4D7550A36EA9E833bd7C';
+
+export const BEETS_ADDRESS = '0x2d0e0814e62d80056181f5cd932274405966e4f0';
