@@ -16,7 +16,7 @@ async function run(): Promise<void> {
 
     try {
         const gaugeData: GaugeData = JSON.parse(
-            fs.readFileSync(`./gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
+            fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
         const poolData = await getGaugesForPools(gaugeData.gauges.map((gauge) => gauge.poolId.toLowerCase()));

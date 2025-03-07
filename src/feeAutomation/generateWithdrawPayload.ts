@@ -106,7 +106,7 @@ export function createTxnBatchForCollection(poolAddresses: string[]) {
         };
 
         fs.writeFile(
-            `./feeAutomation/txns/withdrawFees-${moment().unix()}.json`,
+            `./src/feeAutomation/txns/withdrawFees-${moment().unix()}.json`,
             JSON.stringify(transactionBatch),
             function (err) {
                 if (err) {

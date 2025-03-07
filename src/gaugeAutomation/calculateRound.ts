@@ -13,7 +13,7 @@ async function run(): Promise<void> {
         }
 
         const gaugeDataForEndTime: GaugeData = JSON.parse(
-            fs.readFileSync(`./gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
+            fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
         // Get result from snapshot
@@ -96,8 +96,8 @@ async function run(): Promise<void> {
         }
 
         fs.writeFileSync(
-            `./gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
-            JSON.stringify(gaugeDataForEndTime),
+            `./src/gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
+            JSON.stringify(gaugeDataForEndTime, null, 2),
         );
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);

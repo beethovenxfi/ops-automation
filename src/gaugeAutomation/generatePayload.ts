@@ -16,7 +16,7 @@ async function run(): Promise<void> {
 
     try {
         const gaugeDataForEndTime: GaugeData = JSON.parse(
-            fs.readFileSync(`./gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
+            fs.readFileSync(`./sc/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
         // get gauge addresses
@@ -66,8 +66,8 @@ async function run(): Promise<void> {
         // build list of txns
         createTxnBatchForBeetsRewards(gaugeDataForEndTime.endTimestamp, roundInputs);
         fs.writeFileSync(
-            `./gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
-            JSON.stringify(gaugeDataForEndTime),
+            `./src/gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
+            JSON.stringify(gaugeDataForEndTime, null, 2),
         );
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);

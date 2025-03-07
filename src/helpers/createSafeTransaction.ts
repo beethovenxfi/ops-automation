@@ -160,8 +160,8 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `gauge-transactions/deposit-beets-${voteId}.json`,
-            JSON.stringify(transactionBatch),
+            `./src/gaugeAutomation/gauge-transactions/deposit-beets-${voteId}.json`,
+            JSON.stringify(transactionBatch, null, 2),
             function (err) {
                 if (err) {
                     throw err;
@@ -189,8 +189,8 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `gauge-transactions/add-reward-token-${voteId}.json`,
-            JSON.stringify(transactionBatch),
+            `./src/gaugeAutomation/gauge-transactions/add-reward-token-${voteId}.json`,
+            JSON.stringify(transactionBatch, null, 2),
             function (err) {
                 if (err) {
                     throw err;

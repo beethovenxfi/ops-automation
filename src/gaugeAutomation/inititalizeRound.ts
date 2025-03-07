@@ -29,7 +29,7 @@ async function run(): Promise<void> {
         const snapshotBlock = parseFloat(process.env.SNAPSHOT_BLOCK || '0');
 
         const choices: GaugeChoice = JSON.parse(
-            fs.readFileSync('./gauge-choices/choices-init.json', 'utf-8'),
+            fs.readFileSync('./src/gaugeAutomation/gauge-choices/choices-init.json', 'utf-8'),
         ) as GaugeChoice;
 
         const gaugeDataForRound: GaugeData = {
@@ -47,7 +47,10 @@ async function run(): Promise<void> {
             }),
         };
 
-        fs.writeFileSync(`./gaugeAutomation/gauge-data/${endTimestamp}.json`, JSON.stringify(gaugeDataForRound));
+        fs.writeFileSync(
+            `./src/gaugeAutomation/gauge-data/${endTimestamp}.json`,
+            JSON.stringify(gaugeDataForRound, null, 2),
+        );
 
         await createSnapshot(startTimestamp, endTimestamp, snapshotBlock, choices);
     } catch (error) {
@@ -111,7 +114,7 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
         plugins: JSON.stringify({}),
         metadata: JSON.stringify({}),
     };
-    console.log('Proposal:', JSON.stringify(proposal));
+    console.log('Proposal:', JSON.stringify(proposal, null, 2));
 
     let wallet = new Wallet(process.env.PROPOSER_WALLET!);
     try {

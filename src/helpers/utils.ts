@@ -43,7 +43,9 @@ export function getVoteEndTimestamp(day: string): number {
 
 export function getVoteStartTimestamp(day: string): number {
     const date = moment(day, 'YYYY-MM-DD');
+    console.log(date);
     const startTime = date.utc().set({ hour: VOTE_END_HOUR_UTC, minute: 0, second: 0, millisecond: 0 });
+    console.log(startTime);
     return startTime.unix();
 }
 
