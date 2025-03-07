@@ -29,6 +29,6 @@ jobs:
                   commit-message: 'Calculate distribution'
                   title: 'New fee withdraw payload'
                   assignees: franzns
-                  branch: withdraw payload
+                  branch: withdraw-payload
                   delete-branch: true
                   labels: 'Automated PR'
