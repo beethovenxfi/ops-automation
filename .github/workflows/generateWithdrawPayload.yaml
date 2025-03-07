@@ -1,4 +1,4 @@
-name: Generate Withdraw Payload
+name: Fee - Generate Withdraw Payload
 
 on:
     workflow_dispatch:

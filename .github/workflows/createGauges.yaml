@@ -1,4 +1,4 @@
-name: Create missing gauges for pools
+name: Voting - Create missing gauges for pools
 
 on:
     workflow_dispatch:
@@ -10,7 +10,7 @@ env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
 
 jobs:
-    initEpoch:
+    createGauges:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout

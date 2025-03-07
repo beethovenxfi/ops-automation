@@ -1,4 +1,4 @@
-name: Generate payload for a week of rewards
+name: Voting - Generate payload for a week of rewards
 
 on:
     workflow_dispatch:
@@ -11,7 +11,7 @@ env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-    initEpoch:
+    generatePayload:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout

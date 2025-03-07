@@ -1,4 +1,4 @@
-name: Start new voting epoch and create snapshot
+name: Voting - Start new voting epoch and create snapshot
 
 on:
     workflow_dispatch:
