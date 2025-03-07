@@ -1,0 +1,21 @@
+name: Collect Fees from pools to controller
+
+env:
+    UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
+
+jobs:
+    initEpoch:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Collect fees from v3 pools
+              run: bun ts-node ./src/feeAutomation/collectFees.ts

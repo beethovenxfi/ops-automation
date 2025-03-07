@@ -40,7 +40,7 @@ jobs:
                   VOTE_START_DAY: ${{ github.event.inputs.vote_start_day }}
                   VOTE_END_DAY: ${{ github.event.inputs.vote_end_day }}
                   SNAPSHOT_BLOCK: ${{ github.event.inputs.snapshot_block }}
-              run: bun ts-node ./src/inititalizeRound.ts
+              run: bun ts-node ./src/gaugeAutomation/inititalizeRound.ts
 
             - name: Create PR
               uses: peter-evans/create-pull-request@v5

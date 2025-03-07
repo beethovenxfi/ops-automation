@@ -1,11 +1,4 @@
-name: Calculate voting results
-
-on:
-    workflow_dispatch:
-        inputs:
-            vote_end_timestamp:
-                description: 'The timestamp of the end of the vote'
-                require: true
+name: Generate Withdraw Payload
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -24,17 +17,15 @@ jobs:
             - name: Install deps
               run: bun install --frozen-lockfile
 
-            - name: Calculate BEETS distribution
-              env:
-                  VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
-              run: bun ts-node ./src/calculateRound.ts
+            - name: Generate Withdraw Payload
+              run: bun ts-node ./src/feeAutomation/generateWithdrawPayload.ts
 
             - name: Create PR
               uses: peter-evans/create-pull-request@v5
               with:
                   commit-message: 'Calculate distribution'
-                  title: 'BEETS distribution for round ${{ github.event.inputs.vote_end_timestamp }}'
+                  title: 'New fee withdraw payload'
                   assignees: franzns
-                  branch: beets-distribution
+                  branch: withdraw payload
                   delete-branch: true
                   labels: 'Automated PR'

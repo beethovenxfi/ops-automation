@@ -3,9 +3,9 @@ import * as fs from 'fs';
 import { privateKeyToAccount } from 'viem/accounts';
 import { createWalletClient, http, publicActions } from 'viem';
 import { sonic } from 'viem/chains';
-import gaugeFactoryAbi from './abi/GaugeFactoryAbi';
-import { GaugeChoice, GaugeData, getGaugesForPools } from './helpers/utils';
-import { GAUGE_FACTORY } from './helpers/constants';
+import gaugeFactoryAbi from '../abi/GaugeFactoryAbi';
+import { GaugeChoice, GaugeData, getGaugesForPools } from '../helpers/utils';
+import { GAUGE_FACTORY } from '../helpers/constants';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
@@ -15,7 +15,9 @@ async function run(): Promise<void> {
     }
 
     try {
-        const gaugeData: GaugeData = JSON.parse(fs.readFileSync(`./gauge-data/${endTime}.json`, 'utf-8')) as GaugeData;
+        const gaugeData: GaugeData = JSON.parse(
+            fs.readFileSync(`./gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
+        ) as GaugeData;
 
         const poolData = await getGaugesForPools(gaugeData.gauges.map((gauge) => gauge.poolId.toLowerCase()));
 

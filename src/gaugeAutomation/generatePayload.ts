@@ -2,10 +2,10 @@ import * as core from '@actions/core';
 import * as fs from 'fs';
 import { createPublicClient, http, parseEther } from 'viem';
 import { sonic } from 'viem/chains';
-import GaugeAbi from './abi/GaugeAbi';
-import { AddBeetsRewardTxnInput, createTxnBatchForBeetsRewards } from './helpers/createSafeTransaction';
-import { GaugeData, getGaugesForPools } from './helpers/utils';
-import { BEETS_ADDRESS } from './helpers/constants';
+import GaugeAbi from '../abi/GaugeAbi';
+import { AddBeetsRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
+import { GaugeData, getGaugesForPools } from '../helpers/utils';
+import { BEETS_ADDRESS } from '../helpers/constants';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
@@ -16,7 +16,7 @@ async function run(): Promise<void> {
 
     try {
         const gaugeDataForEndTime: GaugeData = JSON.parse(
-            fs.readFileSync(`./gauge-data/${endTime}.json`, 'utf-8'),
+            fs.readFileSync(`./gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
         // get gauge addresses
@@ -65,7 +65,10 @@ async function run(): Promise<void> {
 
         // build list of txns
         createTxnBatchForBeetsRewards(gaugeDataForEndTime.endTimestamp, roundInputs);
-        fs.writeFileSync(`gauge-data/${gaugeDataForEndTime.endTimestamp}.json`, JSON.stringify(gaugeDataForEndTime));
+        fs.writeFileSync(
+            `./gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
+            JSON.stringify(gaugeDataForEndTime),
+        );
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }

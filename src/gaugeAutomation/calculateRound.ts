@@ -1,8 +1,8 @@
 import * as core from '@actions/core';
 import * as fs from 'fs';
 import { formatEther, parseEther, parseUnits } from 'viem';
-import { GaugeData, SnapshotProposal } from './helpers/utils';
-import { SNAPSHOT_HUB_URL } from './helpers/constants';
+import { GaugeData, SnapshotProposal } from '../helpers/utils';
+import { SNAPSHOT_HUB_URL } from '../helpers/constants';
 
 async function run(): Promise<void> {
     try {
@@ -13,7 +13,7 @@ async function run(): Promise<void> {
         }
 
         const gaugeDataForEndTime: GaugeData = JSON.parse(
-            fs.readFileSync(`./gauge-data/${endTime}.json`, 'utf-8'),
+            fs.readFileSync(`./gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
         // Get result from snapshot
@@ -95,7 +95,10 @@ async function run(): Promise<void> {
             gauge.weeklyBeetsAmountFromGauge = formatEther(pool.beetsAmountWei / 2n);
         }
 
-        fs.writeFileSync(`gauge-data/${gaugeDataForEndTime.endTimestamp}.json`, JSON.stringify(gaugeDataForEndTime));
+        fs.writeFileSync(
+            `./gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
+            JSON.stringify(gaugeDataForEndTime),
+        );
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }

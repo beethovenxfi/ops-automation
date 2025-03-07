@@ -27,7 +27,7 @@ jobs:
             - name: Generate msig txns
               env:
                   VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
-              run: bun ts-node ./src/generatePayload.ts
+              run: bun ts-node ./src/gaugeAutomation/generatePayload.ts
 
             - name: Create PR
               uses: peter-evans/create-pull-request@v5

@@ -26,4 +26,4 @@ jobs:
             - name: Create missing gauges
               env:
                   VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
-              run: bun ts-node ./src/createGauges.ts
+              run: bun ts-node ./src/gaugeAutomation/createGauges.ts

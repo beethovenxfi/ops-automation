@@ -83,3 +83,30 @@ export async function getGaugesForPools(poolIds: string[]) {
 
     return gaugesData.data.poolGetPools;
 }
+
+export async function getV3PoolIds() {
+    const backendUrl = 'https://backend-v3.beets-ftm-node.com/';
+    const backendQuery = `{
+            poolGetPools(where:{ chainIn:[SONIC], protocolVersionIn:[3] }){
+            id
+            }}
+        `;
+
+    const backendResponse = await fetch(backendUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: backendQuery }),
+    });
+
+    const gaugesData = (await backendResponse.json()) as {
+        data: {
+            poolGetPools: {
+                id: string;
+            }[];
+        };
+    };
+
+    return gaugesData.data.poolGetPools.map((pool) => pool.id);
+}
