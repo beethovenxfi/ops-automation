@@ -6,12 +6,6 @@ import { getV3PoolIds } from '../helpers/utils';
 import * as core from '@actions/core';
 
 async function run(): Promise<void> {
-    const endTime = process.env.VOTE_END_TIMESTAMP;
-    if (!endTime) {
-        core.setFailed('Missing required environment variable VOTE_END_TIMESTAMP');
-        return;
-    }
-
     try {
         const poolIds = await getV3PoolIds();
 

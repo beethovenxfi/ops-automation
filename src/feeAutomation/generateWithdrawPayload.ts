@@ -53,7 +53,6 @@ export interface AddBeetsRewardTxnInput {
 }
 
 async function run(): Promise<void> {
-    // get gauge addresses
     const poolIds = await getV3PoolIds();
 
     try {

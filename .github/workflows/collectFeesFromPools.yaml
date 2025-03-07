@@ -7,7 +7,7 @@ env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
 
 jobs:
-    initEpoch:
+    collectFees:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
