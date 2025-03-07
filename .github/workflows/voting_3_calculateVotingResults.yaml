@@ -1,4 +1,4 @@
-name: Voting - Calculate voting results
+name: Voting - 3 - Calculate voting results
 
 on:
     workflow_dispatch:

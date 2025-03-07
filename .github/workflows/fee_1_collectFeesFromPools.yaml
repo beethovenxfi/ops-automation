@@ -1,4 +1,4 @@
-name: Fee - Collect Fees from pools to controller
+name: Fee - 1 - Collect Fees from pools to controller
 
 on:
     workflow_dispatch:

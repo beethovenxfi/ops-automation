@@ -1,4 +1,4 @@
-name: Voting - Generate payload for a week of rewards
+name: Voting - 4 - Generate payload for a week of rewards
 
 on:
     workflow_dispatch:

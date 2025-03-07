@@ -1,4 +1,4 @@
-name: Voting - Create missing gauges for pools
+name: Voting - 2 - Create missing gauges for pools
 
 on:
     workflow_dispatch:
