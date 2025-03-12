@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import { getV3PoolIds } from '../helpers/utils';
 
 import moment from 'moment';
+import { REVENUE_MSIG } from '../helpers/constants';
 
 interface SafeTransactionBatch {
     version: string;
@@ -54,22 +55,23 @@ export interface AddBeetsRewardTxnInput {
 
 async function run(): Promise<void> {
     const poolIds = await getV3PoolIds();
+    const recipient = process.env.RECIPIENT || REVENUE_MSIG;
 
     try {
         // build list of txns
-        createTxnBatchForCollection(poolIds);
+        createTxnBatchForCollection(poolIds, recipient);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }
 }
 
-export function createTxnBatchForCollection(poolAddresses: string[]) {
+export function createTxnBatchForCollection(poolAddresses: string[], recipient: string) {
     let withdrawTxns: Transaction[] = [];
 
     for (const address of poolAddresses) {
         // add the approve transcation
         withdrawTxns.push({
-            to: '0xa731C23D7c95436Baaae9D52782f966E1ed07cc8',
+            to: recipient,
             value: '0',
             data: null,
 
@@ -95,7 +97,7 @@ export function createTxnBatchForCollection(poolAddresses: string[]) {
             createdAt: moment().unix(),
             meta: {
                 name: 'Transactions Batch',
-                description: 'Withdrawing fees from the fee controller to the revenue msig',
+                description: `Withdrawing fees from the fee controller to ${recipient}`,
                 txBuilderVersion: '1.18.0',
                 createdFromSafeAddress: '0x26377CAB961c84F2d7b9d9e36D296a1C1c77C995',
                 createdFromOwnerAddress: '',

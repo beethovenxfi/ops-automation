@@ -2,6 +2,10 @@ name: Fee - 2 - Generate Withdraw Payload
 
 on:
     workflow_dispatch:
+        inputs:
+            recipient:
+                description: 'The wallet the fees should be sent to, defaults to the revenue multisig'
+                require: false
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -21,6 +25,8 @@ jobs:
               run: bun install --frozen-lockfile
 
             - name: Generate Withdraw Payload
+              env:
+                  RECIPIENT: ${{ github.event.inputs.recipient }}
               run: bun ts-node ./src/feeAutomation/generateWithdrawPayload.ts
 
             - name: Create PR
