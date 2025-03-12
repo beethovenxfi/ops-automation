@@ -12,13 +12,11 @@ on:
             vote_end_day:
                 description: 'End day of the vote (YYYY-MM-DD)'
                 require: true
-            snapshot_block:
-                description: 'Number of the block to snapshot'
-                require: true
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
+    SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
 
 jobs:
     initEpoch:

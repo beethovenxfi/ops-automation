@@ -41,6 +41,18 @@ export function getVoteEndTimestamp(day: string): number {
     return endTime.unix();
 }
 
+export async function getSnapshotBlockFromStartTimestamp(timestamp: number): Promise<number> {
+    const snapshotTimestamp = moment.unix(timestamp).startOf('day').subtract(1, 'day').unix();
+
+    const response = await fetch(
+        `https://api.sonicscan.org/api?module=block&action=getblocknobytime&timestamp=${snapshotTimestamp}&closest=before&apikey=${process.env.SONICSCAN_APIKEY}`,
+    );
+
+    const data = (await response.json()) as { status: string; message: string; result: string };
+
+    return parseFloat(data.result);
+}
+
 export function getVoteStartTimestamp(day: string): number {
     const date = moment(day, 'YYYY-MM-DD');
     console.log(date);

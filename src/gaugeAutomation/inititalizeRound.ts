@@ -4,7 +4,13 @@ import * as fs from 'fs';
 import { ProposalType } from '@snapshot-labs/snapshot.js/dist/src/sign/types';
 import { Wallet } from '@ethersproject/wallet';
 import snapshot from '@snapshot-labs/snapshot.js';
-import { getVoteStartTimestamp, getVoteEndTimestamp, GaugeChoice, GaugeData } from '../helpers/utils';
+import {
+    getVoteStartTimestamp,
+    getVoteEndTimestamp,
+    GaugeChoice,
+    GaugeData,
+    getSnapshotBlockFromStartTimestamp,
+} from '../helpers/utils';
 import {
     FIRST_GAUGE_VOTE_DAY,
     TWO_WEEKS_IN_SECONDS,
@@ -26,7 +32,7 @@ async function run(): Promise<void> {
 
         const startTimestamp = getVoteStartTimestamp(process.env.VOTE_START_DAY || '');
         const endTimestamp = getVoteEndTimestamp(process.env.VOTE_END_DAY || '');
-        const snapshotBlock = parseFloat(process.env.SNAPSHOT_BLOCK || '0');
+        const snapshotBlock = await getSnapshotBlockFromStartTimestamp(startTimestamp);
 
         const choices: GaugeChoice = JSON.parse(
             fs.readFileSync('./src/gaugeAutomation/gauge-choices/choices-init.json', 'utf-8'),
