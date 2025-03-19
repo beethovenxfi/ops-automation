@@ -8,13 +8,13 @@
       "poolName": "Staked Sonic Symphony",
       "poolId": "0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006",
       "weeklyBeetsAmountFromGauge": "57456",
-      "weeklyBeetsAmountFromMD": "0"
+      "weeklyBeetsAmountFromMD": "58000"
     },
     {
       "poolName": "Ringing Stable Beets",
       "poolId": "0xcd4d2b142235d5650ffa6a38787ed0b7d7a51c0c000000000000000000000037",
       "weeklyBeetsAmountFromGauge": "4053",
-      "weeklyBeetsAmountFromMD": "58000"
+      "weeklyBeetsAmountFromMD": "0"
     },
     {
       "poolName": "Put A Ring On It",
