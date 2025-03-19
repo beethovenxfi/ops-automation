@@ -14,7 +14,7 @@
       "poolName": "Ringing Stable Beets",
       "poolId": "0xcd4d2b142235d5650ffa6a38787ed0b7d7a51c0c000000000000000000000037",
       "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0"
+      "weeklyBeetsAmountFromMD": "58000"
     },
     {
       "poolName": "Put A Ring On It",
@@ -176,13 +176,13 @@
       "poolName": "Sonic Fugue: Staked & Staked",
       "poolId": "0xd2efc016650695c56b514d6a2133ad85afb86d8a00000000000000000000009e",
       "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0"
+      "weeklyBeetsAmountFromMD": "2000"
     },
     {
       "poolName": "Volatile Sonic Melodies (MD)",
       "poolId": "0xfc127dfc32b7739a7cfff7ed19e4c4ab3221953a0002000000000000000000a4",
       "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0"
+      "weeklyBeetsAmountFromMD": "10000"
     },
     {
       "poolName": "Concentrated Ringing Notes (MD)",
@@ -194,7 +194,7 @@
       "poolName": "Smooth Eth Sailing (MD)",
       "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7",
       "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0"
+      "weeklyBeetsAmountFromMD": "20000"
     },
     {
       "poolName": "The Moistest Surveyor Alive",
@@ -218,7 +218,7 @@
       "poolName": "Sonic Quartet Audition - Act II",
       "poolId": "0xbd4a2ecdcd7acb0d2b20744ac4cc1368dd8fdc410001000000000000000000a8",
       "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0"
+      "weeklyBeetsAmountFromMD": "10000"
     },
     {
       "poolName": "Staked and Volatile Ringing Melodies (MD)",
