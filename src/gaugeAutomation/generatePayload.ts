@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import * as fs from 'fs';
-import { createPublicClient, http, parseEther } from 'viem';
+import { createPublicClient, formatEther, http, parseEther } from 'viem';
 import { sonic } from 'viem/chains';
 import GaugeAbi from '../abi/GaugeAbi';
 import { AddBeetsRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
@@ -24,12 +24,18 @@ async function run(): Promise<void> {
 
         const roundInputs: AddBeetsRewardTxnInput[] = [];
 
+        let totalGaugeBeetsAmount = 0n;
+        let totalMDBeetsAmount = 0n;
+
         for (const gauge of gaugeDataForEndTime.gauges) {
             const pool = poolData.find((pool) => pool.id === gauge.poolId);
             if (!pool?.staking) {
                 core.setFailed(`Pool ${gauge.poolId} has no gauge`);
                 return;
             }
+
+            totalGaugeBeetsAmount += parseEther(gauge.weeklyBeetsAmountFromGauge);
+            totalMDBeetsAmount += parseEther(gauge.weeklyBeetsAmountFromMD);
 
             roundInputs.push({
                 gaugeAddress: pool.staking.gauge.gaugeAddress,
@@ -62,6 +68,11 @@ async function run(): Promise<void> {
                 }
             }
         }
+
+        console.log(`Creating payload for ${endTime}`);
+        console.log(`Total Beets from gauges: ${formatEther(totalGaugeBeetsAmount)}`);
+        console.log(`Total Beets from MD: ${formatEther(totalMDBeetsAmount)}`);
+        console.log(`Total Beets: ${formatEther(totalGaugeBeetsAmount + totalMDBeetsAmount)}`);
 
         // build list of txns
         createTxnBatchForBeetsRewards(gaugeDataForEndTime.endTimestamp, roundInputs);
