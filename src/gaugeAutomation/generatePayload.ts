@@ -16,7 +16,7 @@ async function run(): Promise<void> {
 
     try {
         const gaugeDataForEndTime: GaugeData = JSON.parse(
-            fs.readFileSync(`./sc/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
+            fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
         // get gauge addresses
