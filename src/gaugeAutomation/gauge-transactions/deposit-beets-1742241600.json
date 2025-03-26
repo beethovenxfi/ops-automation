@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1742376045,
+  "createdAt": 1742989880,
   "meta": {
     "name": "Transactions Batch",
     "description": "Adding BEETS rewards from gauge results",
@@ -33,7 +33,7 @@
       },
       "contractInputsValues": {
         "spender": "0x8476f3a8da52092e7835167afe27835dc171c133",
-        "amount": "115456000000000000000000"
+        "amount": "148456000000000000000000"
       }
     },
     {
@@ -56,7 +56,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "115456000000000000000000"
+        "_amount": "148456000000000000000000"
       }
     },
     {
@@ -1377,7 +1377,7 @@
       },
       "contractInputsValues": {
         "spender": "0xeff625e5a6619900931f6246e849a03b5b62be75",
-        "amount": "5780000000000000000000"
+        "amount": "3780000000000000000000"
       }
     },
     {
@@ -1400,7 +1400,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "5780000000000000000000"
+        "_amount": "3780000000000000000000"
       }
     },
     {
