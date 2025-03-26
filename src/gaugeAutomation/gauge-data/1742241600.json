@@ -8,7 +8,7 @@
       "poolName": "Staked Sonic Symphony",
       "poolId": "0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006",
       "weeklyBeetsAmountFromGauge": "57456",
-      "weeklyBeetsAmountFromMD": "58000"
+      "weeklyBeetsAmountFromMD": "91000"
     },
     {
       "poolName": "Ringing Stable Beets",
@@ -176,7 +176,7 @@
       "poolName": "Sonic Fugue: Staked & Staked",
       "poolId": "0xd2efc016650695c56b514d6a2133ad85afb86d8a00000000000000000000009e",
       "weeklyBeetsAmountFromGauge": "3780",
-      "weeklyBeetsAmountFromMD": "2000"
+      "weeklyBeetsAmountFromMD": "0"
     },
     {
       "poolName": "Volatile Sonic Melodies (MD)",
