@@ -1,0 +1,272 @@
+{
+  "beetsToDistribute": "420000",
+  "startTimestamp": 1743062400,
+  "endTimestamp": 1743451200,
+  "snapshotBlock": 15977362,
+  "gauges": [
+    {
+      "poolName": "8",
+      "poolId": "0x596a84bc009298240cfe08c52ec3df85ec5e974e0002000000000000000000d8",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Staked Sonic Symphony",
+      "poolId": "0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Ringing Stable Beets",
+      "poolId": "0xcd4d2b142235d5650ffa6a38787ed0b7d7a51c0c000000000000000000000037",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Put A Ring On It",
+      "poolId": "0x25ca5451cd5a50ab1d324b5e64f32c0799661891000200000000000000000018",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Staked Sonic & Circle Concerto",
+      "poolId": "0x713fb5036dc70012588d77a5b066f1dd05c712d7000200000000000000000041",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Echoes of Ether",
+      "poolId": "0xe54dd58a6d4e04687f2034dd4ddab49da55f8aff00000000000000000000007c",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Deus crescendo No.2",
+      "poolId": "0x322dc65f89569ac510fa3949651790da5871195c000200000000000000000075",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "50fSONIC-50stS",
+      "poolId": "0xb26ca1112424828f454b942638e2ba84774897e3000200000000000000000043",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Ruggie’s Pizzeria",
+      "poolId": "0x0054b73c676222ff5285a2ef92e3aa2b846f143800020000000000000000006e",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Fly me to the MOON",
+      "poolId": "0x6d2bb32a231c2cb5ccb4f59b8e9957a794086aa8000100000000000000000074",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Sonic Pub - Beer Lounge with lazy Bear Pooh",
+      "poolId": "0x9a76795584d6ab6b7444df4fc3bf69355f541d9800010000000000000000006b",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "fMoney on Sonic",
+      "poolId": "0x3ec8254006658e11f9ab5eaf92d64f8528d09057000200000000000000000056",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Blaze Dimension",
+      "poolId": "0xf9539b51160d0153a7419cad1b08138b53681cff000200000000000000000051",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "The RELIC-quiem",
+      "poolId": "0xdf49944d79b4032e244063ebfe413a3179d6b2e7000100000000000000000084",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "The Cautious Crescendo by Ludwig",
+      "poolId": "0xce2f25747f06a9673128bb8a84da3b6e45347d61000100000000000000000080",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "ECO-System 01: Liquid Life",
+      "poolId": "0x7121d4ce0825c1a5c530641d122fe560f3efb2f700020000000000000000005d",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Familio's Still Ringing",
+      "poolId": "0x32bac522c4f97f4913d18d81cf3be119c8cce26a000100000000000000000050",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Conkphony No. 9",
+      "poolId": "0x9d63f74df451bd64bb5a757c9fe52128448fcab2000200000000000000000053",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "High Speed Perfect Beets",
+      "poolId": "0x21fed4063bf8ebf4f51f4adf4ecfc9717aa4ca9d000100000000000000000044",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Ringing of Painted Melodies",
+      "poolId": "0xc5ab8d98f959453e416b2f15848a02cc99bc695e000200000000000000000022",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Call 1-800-420-69 for a Sensual Experience and a Free Quote!",
+      "poolId": "0x61047ca44865982bac5dc9b7f100247376d74b67000100000000000000000086",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "THEY STAKED ON",
+      "poolId": "0x2fc17bdea0a3d2164a7ff63cbc32de2dbba88756000100000000000000000087",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Atoll's Ether",
+      "poolId": "0xe14a059bfe38000183b5033716a18bbf7125a621000000000000000000000097",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Silo Super Sonic",
+      "poolId": "0xc5954b1b9df8a0c0b7788d2cc2bc18d4bae9b0c2000200000000000000000099",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Boosted Stable Rings",
+      "poolId": "0x43026d483f42fb35efe03c20b251142d022783f2",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Bitcoin Treble",
+      "poolId": "0xd5ab187442998f1a62ea58133a03050691a0c280",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Solv Sonata in USDC-Stable",
+      "poolId": "0xf48c8841d697587570b6b1f872ea82fceb1e6e66",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "fMULTI comeback",
+      "poolId": "0x15761307e86baf700f29052e357a88f49b33b1b400010000000000000000009a",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Cosmic Expansion",
+      "poolId": "0xb246d02278834c4c67b5b4db17288d9469e3c34700010000000000000000009b",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Sonic Fugue: Staked & Staked",
+      "poolId": "0xd2efc016650695c56b514d6a2133ad85afb86d8a00000000000000000000009e",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Volatile Sonic Melodies (MD)",
+      "poolId": "0xfc127dfc32b7739a7cfff7ed19e4c4ab3221953a0002000000000000000000a4",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Concentrated Ringing Notes (MD)",
+      "poolId": "0xe7734b495a552ab6f4c78406e672cca7175181e10002000000000000000000c5",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Smooth Eth Sailing (MD)",
+      "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "The Moistest Surveyor Alive",
+      "poolId": "0xd0490815a1715e0bb2a1d673bcda8ca567579dd7000100000000000000000066",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Sonic Shilly Blend",
+      "poolId": "0xe835ad9c248539a69d5160b9b66a10d2edab05fd000200000000000000000046",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Boosted Angular Symphony",
+      "poolId": "0x944d4ae892de4bfd38742cc8295d6d5164c5593c",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Sonic Quartet Audition - Act II",
+      "poolId": "0xbd4a2ecdcd7acb0d2b20744ac4cc1368dd8fdc410001000000000000000000a8",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Staked and Volatile Ringing Melodies (MD)",
+      "poolId": "0xcf5d1864ab01b50c6e94adde80d5ec264c93f4910002000000000000000000bb",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Beets Airdrop Farm",
+      "poolId": "0xf115635b3322fb07d28941530d013992b3911d9b0002000000000000000000ce",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Lombard's Orbit: The Elliptic Dance",
+      "poolId": "0x83952912178aa33c3853ee5d942c96254b235dcc0002000000000000000000ab",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Airdrop Aria",
+      "poolId": "0xf633a43e5ccf858a27dd1d74a23be15ea5aa28f30002000000000000000000c2",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Frax Interlude, Silo Opus No. 2",
+      "poolId": "0x3b57c58440ebb220d4d11db087d884a387259cf0",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "Ludwig's Opus 75 No. 3",
+      "poolId": "0xd2879b07eca1ccb84040c83ba2d31496642d566b",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    },
+    {
+      "poolName": "RELIC Arena",
+      "poolId": "0xdc7042df405e6fe00635eb0a5eac55a468b4fbd20001000000000000000000da",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0"
+    }
+  ]
+}
