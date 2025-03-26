@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { getV3PoolIds } from '../helpers/utils';
 
 import moment from 'moment';
-import { REVENUE_MSIG } from '../helpers/constants';
+import { PROTOCOL_FEE_CONTROLLER, REVENUE_MSIG } from '../helpers/constants';
 
 interface SafeTransactionBatch {
     version: string;
@@ -59,19 +59,19 @@ async function run(): Promise<void> {
 
     try {
         // build list of txns
-        createTxnBatchForCollection(poolIds, recipient);
+        createTxnBatchForWithdrawal(poolIds, recipient);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }
 }
 
-export function createTxnBatchForCollection(poolAddresses: string[], recipient: string) {
+export function createTxnBatchForWithdrawal(poolAddresses: string[], recipient: string) {
     let withdrawTxns: Transaction[] = [];
 
     for (const address of poolAddresses) {
         // add the approve transcation
         withdrawTxns.push({
-            to: recipient,
+            to: PROTOCOL_FEE_CONTROLLER,
             value: '0',
             data: null,
 
@@ -85,7 +85,7 @@ export function createTxnBatchForCollection(poolAddresses: string[], recipient: 
             },
             contractInputsValues: {
                 pool: address,
-                recipient: '0x26377CAB961c84F2d7b9d9e36D296a1C1c77C995',
+                recipient: recipient,
             },
         });
     }
