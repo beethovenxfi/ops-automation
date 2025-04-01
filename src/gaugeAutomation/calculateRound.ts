@@ -63,7 +63,7 @@ async function run(): Promise<void> {
         console.log('Total Beets:', beetsAmountWei);
         if (beetsAmountWei > parseEther(gaugeDataForEndTime.beetsToDistribute)) {
             // remove difference from an option
-            const diff = parseEther(gaugeDataForEndTime.beetsToDistribute) - beetsAmountWei;
+            const diff = beetsAmountWei - parseEther(gaugeDataForEndTime.beetsToDistribute);
             const maxBeetsAmountWei = Math.max(...result.map((pool) => Number(pool.beetsAmountWei)));
             const maxBeetsAmountWeiIndex = result.findIndex(
                 (pool) => Number(pool.beetsAmountWei) === maxBeetsAmountWei,
