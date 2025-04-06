@@ -18,13 +18,17 @@ async function run(): Promise<void> {
         }).extend(publicActions);
 
         for (const id of poolIds) {
-            const hash = await walletClient.writeContract({
-                address: '0xa731C23D7c95436Baaae9D52782f966E1ed07cc8',
-                abi: ProtocolFeeController,
-                functionName: 'collectAggregateFees',
-                args: [id as `0x${string}`],
-            });
-            console.log(`Done, hash: ${hash}`);
+            try {
+                const hash = await walletClient.writeContract({
+                    address: '0xa731C23D7c95436Baaae9D52782f966E1ed07cc8',
+                    abi: ProtocolFeeController,
+                    functionName: 'collectAggregateFees',
+                    args: [id as `0x${string}`],
+                });
+                console.log(`Done, hash: ${hash}`);
+            } catch (error) {
+                console.log(`Error collecting fees for pool ${id}: `, error);
+            }
         }
     } catch (error) {
         console.log(`error creating gauges: `, error);
