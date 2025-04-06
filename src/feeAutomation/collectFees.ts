@@ -27,7 +27,7 @@ async function run(): Promise<void> {
                 });
                 console.log(`Done, hash: ${hash}`);
             } catch (error) {
-                console.log(`Error collecting fees for pool ${id}: `, error);
+                console.log(`Error collecting fees for pool ${id}`);
             }
         }
     } catch (error) {
