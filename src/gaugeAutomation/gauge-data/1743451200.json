@@ -188,7 +188,7 @@
       "poolName": "Volatile Sonic Melodies (MD)",
       "poolId": "0xfc127dfc32b7739a7cfff7ed19e4c4ab3221953a0002000000000000000000a4",
       "weeklyBeetsAmountFromGauge": "7287",
-      "weeklyBeetsAmountFromMD": "20000"
+      "weeklyBeetsAmountFromMD": "13500"
     },
     {
       "poolName": "Concentrated Ringing Notes (MD)",
@@ -200,7 +200,7 @@
       "poolName": "Smooth Eth Sailing (MD)",
       "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7",
       "weeklyBeetsAmountFromGauge": "2058",
-      "weeklyBeetsAmountFromMD": "30000"
+      "weeklyBeetsAmountFromMD": "20000"
     },
     {
       "poolName": "The Moistest Surveyor Alive",
