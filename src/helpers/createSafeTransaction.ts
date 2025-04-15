@@ -1,7 +1,7 @@
 import fs from 'fs';
 import moment from 'moment';
 import { parseEther } from 'viem';
-import { BEETS_ADDRESS } from './constants';
+import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, STS_ADDRESS } from './constants';
 
 const LM_GAUGE_MSIG = '0x97079F7E04B535FE7cD3f972Ce558412dFb33946';
 
@@ -53,7 +53,9 @@ export interface ContractInputsValues {
 export interface AddBeetsRewardTxnInput {
     gaugeAddress: string;
     beetsAmountInWei: bigint;
-    addRewardToken: boolean;
+    addBeetsRewardToken: boolean;
+    addStSRewardToken: boolean;
+    addFragmentsRewardToken: boolean;
 }
 
 export async function createTxnBatchForBeetsRewards(
@@ -64,7 +66,7 @@ export async function createTxnBatchForBeetsRewards(
     let gaugeAddRewardTxns: Transaction[] = [];
 
     for (const gaugeInput of addRewardInput) {
-        if (gaugeInput.addRewardToken) {
+        if (gaugeInput.addBeetsRewardToken) {
             gaugeAddRewardTxns.push({
                 to: gaugeInput.gaugeAddress,
                 value: '0',
@@ -85,6 +87,58 @@ export async function createTxnBatchForBeetsRewards(
                 },
                 contractInputsValues: {
                     _reward_token: BEETS_ADDRESS,
+                    _distributor: LM_GAUGE_MSIG,
+                },
+            });
+        }
+
+        if (gaugeInput.addStSRewardToken) {
+            gaugeAddRewardTxns.push({
+                to: gaugeInput.gaugeAddress,
+                value: '0',
+                data: null,
+                contractMethod: {
+                    inputs: [
+                        {
+                            name: '_reward_token',
+                            type: 'address',
+                        },
+                        {
+                            name: '_distributor',
+                            type: 'address',
+                        },
+                    ],
+                    name: 'add_reward',
+                    payable: false,
+                },
+                contractInputsValues: {
+                    _reward_token: STS_ADDRESS,
+                    _distributor: LM_GAUGE_MSIG,
+                },
+            });
+        }
+
+        if (gaugeInput.addFragmentsRewardToken) {
+            gaugeAddRewardTxns.push({
+                to: gaugeInput.gaugeAddress,
+                value: '0',
+                data: null,
+                contractMethod: {
+                    inputs: [
+                        {
+                            name: '_reward_token',
+                            type: 'address',
+                        },
+                        {
+                            name: '_distributor',
+                            type: 'address',
+                        },
+                    ],
+                    name: 'add_reward',
+                    payable: false,
+                },
+                contractInputsValues: {
+                    _reward_token: FRAGMENTS_ADDRESS,
                     _distributor: LM_GAUGE_MSIG,
                 },
             });
@@ -179,7 +233,7 @@ export async function createTxnBatchForBeetsRewards(
             createdAt: moment().unix(),
             meta: {
                 name: 'Transactions Batch',
-                description: 'Add BEETS as reward token to gauges',
+                description: 'Add reward token to gauges',
                 txBuilderVersion: '1.18.0',
                 createdFromSafeAddress: LM_GAUGE_MSIG,
                 createdFromOwnerAddress: '',

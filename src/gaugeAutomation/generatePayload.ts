@@ -5,7 +5,7 @@ import { sonic } from 'viem/chains';
 import GaugeAbi from '../abi/GaugeAbi';
 import { AddBeetsRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
 import { GaugeData, getGaugesForPools } from '../helpers/utils';
-import { BEETS_ADDRESS } from '../helpers/constants';
+import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, STS_ADDRESS } from '../helpers/constants';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
@@ -26,6 +26,9 @@ async function run(): Promise<void> {
 
         let totalGaugeBeetsAmount = 0n;
         let totalMDBeetsAmount = 0n;
+        let totalStSRewardsAmount = 0n;
+        let totalStSRewardsFromSeasonsAmount = 0n;
+        let totalFragmentsRewardsAmount = 0n;
 
         for (const gauge of gaugeDataForEndTime.gauges) {
             const pool = poolData.find((pool) => pool.id === gauge.poolId);
@@ -36,12 +39,17 @@ async function run(): Promise<void> {
 
             totalGaugeBeetsAmount += parseEther(gauge.weeklyBeetsAmountFromGauge);
             totalMDBeetsAmount += parseEther(gauge.weeklyBeetsAmountFromMD);
+            totalStSRewardsAmount += parseEther(gauge.weeklyStSRewards);
+            totalStSRewardsFromSeasonsAmount += parseEther(gauge.weeklyStSRewardsFromSeasons);
+            totalFragmentsRewardsAmount += parseEther(gauge.weeklyFragmentsRewards);
 
             roundInputs.push({
                 gaugeAddress: pool.staking.gauge.gaugeAddress,
                 beetsAmountInWei:
                     parseEther(gauge.weeklyBeetsAmountFromGauge) + parseEther(gauge.weeklyBeetsAmountFromMD),
-                addRewardToken: true, // default to true for now
+                addBeetsRewardToken: true, // default to true, will override after checking if gauge has beets as reward token
+                addStSRewardToken: true, // default to true, will override after checking if gauge has beets as reward token
+                addFragmentsRewardToken: true, // default to true, will override after checking if gauge has beets as reward token
             });
         }
         const viemClient = createPublicClient({ chain: sonic, transport: http() });
@@ -63,8 +71,13 @@ async function run(): Promise<void> {
                 });
 
                 if (rewardToken.toLowerCase() === BEETS_ADDRESS.toLowerCase()) {
-                    input.addRewardToken = false;
-                    break;
+                    input.addBeetsRewardToken = false;
+                }
+                if (rewardToken.toLowerCase() === STS_ADDRESS.toLowerCase()) {
+                    input.addStSRewardToken = false;
+                }
+                if (rewardToken.toLowerCase() === FRAGMENTS_ADDRESS.toLowerCase()) {
+                    input.addFragmentsRewardToken = false;
                 }
             }
         }
@@ -73,6 +86,9 @@ async function run(): Promise<void> {
         console.log(`Total Beets from gauges: ${formatEther(totalGaugeBeetsAmount)}`);
         console.log(`Total Beets from MD: ${formatEther(totalMDBeetsAmount)}`);
         console.log(`Total Beets: ${formatEther(totalGaugeBeetsAmount + totalMDBeetsAmount)}`);
+        console.log(`Total StS rewards: ${formatEther(totalStSRewardsAmount)}`);
+        console.log(`Total StS rewards from seasons: ${formatEther(totalStSRewardsFromSeasonsAmount)}`);
+        console.log(`Total Fragments rewards: ${formatEther(totalFragmentsRewardsAmount)}`);
 
         // build list of txns
         createTxnBatchForBeetsRewards(gaugeDataForEndTime.endTimestamp, roundInputs);

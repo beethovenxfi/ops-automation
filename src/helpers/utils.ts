@@ -31,6 +31,9 @@ export type GaugeData = {
         poolId: string;
         weeklyBeetsAmountFromGauge: string;
         weeklyBeetsAmountFromMD: string;
+        weeklyStSRewards: string;
+        weeklyStSRewardsFromSeasons: string;
+        weeklyFragmentsRewards: string;
     }[];
 };
 

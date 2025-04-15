@@ -49,6 +49,9 @@ async function run(): Promise<void> {
                     poolId: choices[poolName].toLowerCase(),
                     weeklyBeetsAmountFromGauge: '0',
                     weeklyBeetsAmountFromMD: '0',
+                    weeklyStSRewards: '0',
+                    weeklyStSRewardsFromSeasons: '0',
+                    weeklyFragmentsRewards: '0',
                 };
             }),
         };
