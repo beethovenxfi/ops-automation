@@ -47,9 +47,12 @@ async function run(): Promise<void> {
                 gaugeAddress: pool.staking.gauge.gaugeAddress,
                 beetsAmountInWei:
                     parseEther(gauge.weeklyBeetsAmountFromGauge) + parseEther(gauge.weeklyBeetsAmountFromMD),
-                addBeetsRewardToken: true, // default to true, will override after checking if gauge has beets as reward token
-                addStSRewardToken: true, // default to true, will override after checking if gauge has beets as reward token
-                addFragmentsRewardToken: true, // default to true, will override after checking if gauge has beets as reward token
+                addBeetsRewardToken: true, // always add if not already added
+                stSAmountInWei: parseEther(gauge.weeklyStSRewards) + parseEther(gauge.weeklyStSRewardsFromSeasons),
+                addStSRewardToken:
+                    parseEther(gauge.weeklyStSRewards) + parseEther(gauge.weeklyStSRewardsFromSeasons) > 0n, // only add if there are sts rewards
+                fragmentsAmountInWei: parseEther(gauge.weeklyFragmentsRewards),
+                addFragmentsRewardToken: parseEther(gauge.weeklyFragmentsRewards) > 0n, // only add if there are fragments rewards
             });
         }
         const viemClient = createPublicClient({ chain: sonic, transport: http() });
