@@ -356,7 +356,7 @@
             "weeklyFragmentsRewards": "0"
         },
         {
-            "poolName": "USDC.e/WETH-ECLP-0x9647,
+            "poolName": "USDC.e/WETH-ECLP-0x9647",
             "poolId": "0x96471ade87a33a0cf5c16192acb1d069339637210002000000000000000000ec",
             "weeklyBeetsAmountFromGauge": "0",
             "weeklyBeetsAmountFromMD": "0",
