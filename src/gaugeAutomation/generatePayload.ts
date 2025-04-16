@@ -19,8 +19,13 @@ async function run(): Promise<void> {
             fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
+        console.log(`Gauge data for end time ${endTime}:`);
+
         // get gauge addresses
         const poolData = await getGaugesForPools(gaugeDataForEndTime.gauges.map((gauge) => gauge.poolId));
+
+        console.log(`Pool data:`);
+        console.log(poolData);
 
         const roundInputs: AddRewardTxnInput[] = [];
 
@@ -55,6 +60,9 @@ async function run(): Promise<void> {
                 addFragmentsRewardToken: parseEther(gauge.weeklyFragmentsRewards) > 0n, // only add if there are fragments rewards
             });
         }
+        console.log(`Total gauge beets amount: ${totalGaugeBeetsAmount}`);
+        console.log(`Total MD beets amount: ${totalMDBeetsAmount}`);
+
         const viemClient = createPublicClient({ chain: sonic, transport: http() });
 
         let hasWrongDistributor = false;
