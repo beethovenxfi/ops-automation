@@ -19,13 +19,8 @@ async function run(): Promise<void> {
             fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
         ) as GaugeData;
 
-        console.log(`Gauge data for end time ${endTime}:`);
-
         // get gauge addresses
         const poolData = await getGaugesForPools(gaugeDataForEndTime.gauges.map((gauge) => gauge.poolId));
-
-        console.log(`Pool data:`);
-        console.log(poolData);
 
         const roundInputs: AddRewardTxnInput[] = [];
 
@@ -60,8 +55,6 @@ async function run(): Promise<void> {
                 addFragmentsRewardToken: parseEther(gauge.weeklyFragmentsRewards) > 0n, // only add if there are fragments rewards
             });
         }
-        console.log(`Total gauge beets amount: ${totalGaugeBeetsAmount}`);
-        console.log(`Total MD beets amount: ${totalMDBeetsAmount}`);
 
         const viemClient = createPublicClient({ chain: sonic, transport: http() });
 
@@ -69,23 +62,20 @@ async function run(): Promise<void> {
 
         // checking if all gauges have beets as reward token
         for (const input of roundInputs) {
-            console.log(`Checking gauge ${input.gaugeAddress}`);
             const rewardsTokenCount = await viemClient.readContract({
                 address: input.gaugeAddress as `0x${string}`,
                 abi: GaugeAbi,
                 functionName: 'reward_count',
             });
-            console.log(`Reward token count: ${rewardsTokenCount}`);
 
             for (let i = 0; i < Number(rewardsTokenCount); i++) {
-                console.log(`Checking reward token ${i}`);
                 const rewardToken = await viemClient.readContract({
                     address: input.gaugeAddress as `0x${string}`,
                     abi: GaugeAbi,
                     functionName: 'reward_tokens',
                     args: [BigInt(i)],
                 });
-                console.log(`Reward token: ${rewardToken}`);
+
                 if (rewardToken.toLowerCase() === BEETS_ADDRESS.toLowerCase()) {
                     input.addBeetsRewardToken = false;
 
@@ -95,6 +85,7 @@ async function run(): Promise<void> {
                         functionName: 'reward_data',
                         args: [rewardToken],
                     });
+
                     if (rewardData.distributor.toLowerCase() !== LM_GAUGE_MSIG.toLowerCase()) {
                         hasWrongDistributor = true;
                         console.log(
@@ -102,6 +93,7 @@ async function run(): Promise<void> {
                         );
                     }
                 }
+
                 if (rewardToken.toLowerCase() === STS_ADDRESS.toLowerCase()) {
                     input.addStSRewardToken = false;
                     const rewardData = await viemClient.readContract({
@@ -110,6 +102,7 @@ async function run(): Promise<void> {
                         functionName: 'reward_data',
                         args: [rewardToken],
                     });
+
                     if (rewardData.distributor.toLowerCase() !== LM_GAUGE_MSIG.toLowerCase()) {
                         hasWrongDistributor = true;
                         console.log(
