@@ -31,7 +31,7 @@ async function run(): Promise<void> {
         let totalFragmentsRewardsAmount = 0n;
 
         for (const gauge of gaugeDataForEndTime.gauges) {
-            const pool = poolData.find((pool) => pool.id === gauge.poolId);
+            const pool = poolData.find((pool) => pool.id === gauge.poolId.toLowerCase());
             if (!pool?.staking) {
                 core.setFailed(`Pool ${gauge.poolId} has no gauge`);
                 return;
