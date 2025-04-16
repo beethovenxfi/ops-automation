@@ -348,7 +348,7 @@
     },
     {
       "poolName": "scETH/scUSD-ECLP-0xde3c",
-      "poolId": "0xde3ce359bd99ddffd2b16d2ce56593f84f4fd2c80002000000000000000000eb,
+      "poolId": "0xde3ce359bd99ddffd2b16d2ce56593f84f4fd2c80002000000000000000000eb",
       "weeklyBeetsAmountFromGauge": "0",
       "weeklyBeetsAmountFromMD": "0",
       "weeklyStSRewards": "0",
