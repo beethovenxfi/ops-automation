@@ -61,20 +61,23 @@ async function run(): Promise<void> {
 
         // checking if all gauges have beets as reward token
         for (const input of roundInputs) {
+            console.log(`Checking gauge ${input.gaugeAddress}`);
             const rewardsTokenCount = await viemClient.readContract({
                 address: input.gaugeAddress as `0x${string}`,
                 abi: GaugeAbi,
                 functionName: 'reward_count',
             });
+            console.log(`Reward token count: ${rewardsTokenCount}`);
 
             for (let i = 0; i < Number(rewardsTokenCount); i++) {
+                console.log(`Checking reward token ${i}`);
                 const rewardToken = await viemClient.readContract({
                     address: input.gaugeAddress as `0x${string}`,
                     abi: GaugeAbi,
                     functionName: 'reward_tokens',
                     args: [BigInt(i)],
                 });
-
+                console.log(`Reward token: ${rewardToken}`);
                 if (rewardToken.toLowerCase() === BEETS_ADDRESS.toLowerCase()) {
                     input.addBeetsRewardToken = false;
 
