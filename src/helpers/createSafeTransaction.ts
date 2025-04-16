@@ -1,9 +1,7 @@
 import fs from 'fs';
 import moment from 'moment';
 import { parseEther } from 'viem';
-import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, STS_ADDRESS } from './constants';
-
-const LM_GAUGE_MSIG = '0x97079F7E04B535FE7cD3f972Ce558412dFb33946';
+import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, LM_GAUGE_MSIG, STS_ADDRESS } from './constants';
 
 interface SafeTransactionBatch {
     version: string;

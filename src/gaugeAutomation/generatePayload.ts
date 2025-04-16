@@ -5,7 +5,7 @@ import { sonic } from 'viem/chains';
 import GaugeAbi from '../abi/GaugeAbi';
 import { AddRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
 import { GaugeData, getGaugesForPools } from '../helpers/utils';
-import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, STS_ADDRESS } from '../helpers/constants';
+import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, LM_GAUGE_MSIG, STS_ADDRESS } from '../helpers/constants';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
@@ -57,6 +57,8 @@ async function run(): Promise<void> {
         }
         const viemClient = createPublicClient({ chain: sonic, transport: http() });
 
+        let hasWrongDistributor = false;
+
         // checking if all gauges have beets as reward token
         for (const input of roundInputs) {
             const rewardsTokenCount = await viemClient.readContract({
@@ -75,14 +77,57 @@ async function run(): Promise<void> {
 
                 if (rewardToken.toLowerCase() === BEETS_ADDRESS.toLowerCase()) {
                     input.addBeetsRewardToken = false;
+
+                    const rewardData = await viemClient.readContract({
+                        address: input.gaugeAddress as `0x${string}`,
+                        abi: GaugeAbi,
+                        functionName: 'reward_data',
+                        args: [rewardToken],
+                    });
+                    if (rewardData.distributor.toLowerCase() !== LM_GAUGE_MSIG.toLowerCase()) {
+                        hasWrongDistributor = true;
+                        console.log(
+                            `Gauge ${input.gaugeAddress} has wrong distributor for beets rewards: ${rewardData.distributor}`,
+                        );
+                    }
                 }
                 if (rewardToken.toLowerCase() === STS_ADDRESS.toLowerCase()) {
                     input.addStSRewardToken = false;
+                    const rewardData = await viemClient.readContract({
+                        address: input.gaugeAddress as `0x${string}`,
+                        abi: GaugeAbi,
+                        functionName: 'reward_data',
+                        args: [rewardToken],
+                    });
+                    if (rewardData.distributor.toLowerCase() !== LM_GAUGE_MSIG.toLowerCase()) {
+                        hasWrongDistributor = true;
+                        console.log(
+                            `Gauge ${input.gaugeAddress} has wrong distributor for stS rewards: ${rewardData.distributor}`,
+                        );
+                    }
                 }
                 if (rewardToken.toLowerCase() === FRAGMENTS_ADDRESS.toLowerCase()) {
                     input.addFragmentsRewardToken = false;
+
+                    const rewardData = await viemClient.readContract({
+                        address: input.gaugeAddress as `0x${string}`,
+                        abi: GaugeAbi,
+                        functionName: 'reward_data',
+                        args: [rewardToken],
+                    });
+                    if (rewardData.distributor.toLowerCase() !== LM_GAUGE_MSIG.toLowerCase()) {
+                        hasWrongDistributor = true;
+                        console.log(
+                            `Gauge ${input.gaugeAddress} has wrong distributor for fragments rewards: ${rewardData.distributor}`,
+                        );
+                    }
                 }
             }
+        }
+
+        if (hasWrongDistributor) {
+            core.setFailed('Some gauges have wrong distributor for beets rewards, failing. Please check logs.');
+            return;
         }
 
         console.log(`Creating payload for ${endTime}`);
