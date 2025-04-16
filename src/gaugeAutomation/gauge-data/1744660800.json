@@ -390,6 +390,51 @@
       "weeklyStSRewards": "0",
       "weeklyStSRewardsFromSeasons": "0",
       "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "GOGLZ/BRUSH/stS-Weighted-0x5f41",
+      "poolId": "0x5f41a9647c898f325a85b8007a71c109e5cfe07800010000000000000000008d",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "wS/USDC.e/BEETS/stS/RELIC-Weighted-0xdf49",
+      "poolId": "0xdf49944d79b4032e244063ebfe413a3179d6b2e7000100000000000000000084",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "Shilly/stS-Weighted-0xe835",
+      "poolId": "0xe835ad9c248539a69d5160b9b66a10d2edab05fd000200000000000000000046",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "ws/stS-Weighted-0x0a94",
+      "poolId": "0x0a94f879b8187264059b47992db64fcf341925d6000200000000000000000083",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "stS/fBOMB-Weighted-0x70c2",
+      "poolId": "0x70c27b84b54727af2a794e90a30acf682527a3b00002000000000000000000cc",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
     }
   ]
 }
