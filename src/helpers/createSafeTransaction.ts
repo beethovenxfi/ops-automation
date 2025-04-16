@@ -50,7 +50,7 @@ export interface ContractInputsValues {
     _amount?: string;
 }
 
-export interface AddBeetsRewardTxnInput {
+export interface AddRewardTxnInput {
     gaugeAddress: string;
     beetsAmountInWei: bigint;
     addBeetsRewardToken: boolean;
@@ -62,272 +62,165 @@ export interface AddBeetsRewardTxnInput {
 
 export async function createTxnBatchForBeetsRewards(
     voteId: number,
-    addRewardInput: AddBeetsRewardTxnInput[],
+    addRewardInput: AddRewardTxnInput[],
 ): Promise<void> {
-    let gaugeDepositTxns: Transaction[] = [];
-    let gaugeAddRewardTxns: Transaction[] = [];
+    let gaugeAddMissingRewardTokensTxns: Transaction[] = [];
+    let gaugeBeetsApprovalTxns: Transaction[] = [];
+    let gaugeBeetsDepositTxns: Transaction[] = [];
+    let gaugeStSApprovalTxns: Transaction[] = [];
+    let gaugeStSDepositTxns: Transaction[] = [];
+    let gaugeFragmentsApprovalTxns: Transaction[] = [];
+    let gaugeFragmentsDepositTxns: Transaction[] = [];
 
     for (const gaugeInput of addRewardInput) {
         if (gaugeInput.addBeetsRewardToken) {
-            gaugeAddRewardTxns.push({
-                to: gaugeInput.gaugeAddress,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            name: '_reward_token',
-                            type: 'address',
-                        },
-                        {
-                            name: '_distributor',
-                            type: 'address',
-                        },
-                    ],
-                    name: 'add_reward',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    _reward_token: BEETS_ADDRESS,
-                    _distributor: LM_GAUGE_MSIG,
-                },
-            });
+            gaugeAddMissingRewardTokensTxns.push(generateAddRewardTokenInput(gaugeInput.gaugeAddress, BEETS_ADDRESS));
         }
 
         if (gaugeInput.addStSRewardToken) {
-            gaugeAddRewardTxns.push({
-                to: gaugeInput.gaugeAddress,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            name: '_reward_token',
-                            type: 'address',
-                        },
-                        {
-                            name: '_distributor',
-                            type: 'address',
-                        },
-                    ],
-                    name: 'add_reward',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    _reward_token: STS_ADDRESS,
-                    _distributor: LM_GAUGE_MSIG,
-                },
-            });
+            gaugeAddMissingRewardTokensTxns.push(generateAddRewardTokenInput(gaugeInput.gaugeAddress, STS_ADDRESS));
         }
 
         if (gaugeInput.addFragmentsRewardToken) {
-            gaugeAddRewardTxns.push({
-                to: gaugeInput.gaugeAddress,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            name: '_reward_token',
-                            type: 'address',
-                        },
-                        {
-                            name: '_distributor',
-                            type: 'address',
-                        },
-                    ],
-                    name: 'add_reward',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    _reward_token: FRAGMENTS_ADDRESS,
-                    _distributor: LM_GAUGE_MSIG,
-                },
-            });
+            gaugeAddMissingRewardTokensTxns.push(
+                generateAddRewardTokenInput(gaugeInput.gaugeAddress, FRAGMENTS_ADDRESS),
+            );
         }
 
         if (gaugeInput.beetsAmountInWei > 0n) {
             // add the approve transcation
-            gaugeDepositTxns.push({
-                to: BEETS_ADDRESS,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            internalType: 'address',
-                            name: 'spender',
-                            type: 'address',
-                        },
-                        {
-                            internalType: 'uint256',
-                            name: 'amount',
-                            type: 'uint256',
-                        },
-                    ],
-                    name: 'approve',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    spender: gaugeInput.gaugeAddress,
-                    amount: gaugeInput.beetsAmountInWei.toString(),
-                },
-            });
+            gaugeBeetsApprovalTxns.push(
+                generateRewardTokenApprovalInput(
+                    gaugeInput.gaugeAddress,
+                    BEETS_ADDRESS,
+                    gaugeInput.beetsAmountInWei.toString(),
+                ),
+            );
 
             // add deposit_reward_token transaction
-            gaugeDepositTxns.push({
-                to: gaugeInput.gaugeAddress,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            name: '_reward_token',
-                            type: 'address',
-                        },
-                        {
-                            name: '_amount',
-                            type: 'uint256',
-                        },
-                    ],
-                    name: 'deposit_reward_token',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    _reward_token: BEETS_ADDRESS,
-                    _amount: gaugeInput.beetsAmountInWei.toString(),
-                },
-            });
+            gaugeBeetsDepositTxns.push(
+                generateRewardTokenDepositInput(
+                    gaugeInput.gaugeAddress,
+                    BEETS_ADDRESS,
+                    gaugeInput.beetsAmountInWei.toString(),
+                ),
+            );
         }
 
         if (gaugeInput.stSAmountInWei > 0n) {
             // add the approve transcation
-            gaugeDepositTxns.push({
-                to: STS_ADDRESS,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            internalType: 'address',
-                            name: 'spender',
-                            type: 'address',
-                        },
-                        {
-                            internalType: 'uint256',
-                            name: 'amount',
-                            type: 'uint256',
-                        },
-                    ],
-                    name: 'approve',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    spender: gaugeInput.gaugeAddress,
-                    amount: gaugeInput.stSAmountInWei.toString(),
-                },
-            });
+            gaugeStSApprovalTxns.push(
+                generateRewardTokenApprovalInput(
+                    gaugeInput.gaugeAddress,
+                    STS_ADDRESS,
+                    gaugeInput.stSAmountInWei.toString(),
+                ),
+            );
 
             // add deposit_reward_token transaction
-            gaugeDepositTxns.push({
-                to: gaugeInput.gaugeAddress,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            name: '_reward_token',
-                            type: 'address',
-                        },
-                        {
-                            name: '_amount',
-                            type: 'uint256',
-                        },
-                    ],
-                    name: 'deposit_reward_token',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    _reward_token: STS_ADDRESS,
-                    _amount: gaugeInput.stSAmountInWei.toString(),
-                },
-            });
+            gaugeStSDepositTxns.push(
+                generateRewardTokenDepositInput(
+                    gaugeInput.gaugeAddress,
+                    STS_ADDRESS,
+                    gaugeInput.stSAmountInWei.toString(),
+                ),
+            );
         }
 
         if (gaugeInput.fragmentsAmountInWei > 0n) {
             // add the approve transcation
-            gaugeDepositTxns.push({
-                to: FRAGMENTS_ADDRESS,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            internalType: 'address',
-                            name: 'spender',
-                            type: 'address',
-                        },
-                        {
-                            internalType: 'uint256',
-                            name: 'amount',
-                            type: 'uint256',
-                        },
-                    ],
-                    name: 'approve',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    spender: gaugeInput.gaugeAddress,
-                    amount: gaugeInput.fragmentsAmountInWei.toString(),
-                },
-            });
+            gaugeFragmentsApprovalTxns.push(
+                generateRewardTokenApprovalInput(
+                    gaugeInput.gaugeAddress,
+                    FRAGMENTS_ADDRESS,
+                    gaugeInput.fragmentsAmountInWei.toString(),
+                ),
+            );
 
             // add deposit_reward_token transaction
-            gaugeDepositTxns.push({
-                to: gaugeInput.gaugeAddress,
-                value: '0',
-                data: null,
-                contractMethod: {
-                    inputs: [
-                        {
-                            name: '_reward_token',
-                            type: 'address',
-                        },
-                        {
-                            name: '_amount',
-                            type: 'uint256',
-                        },
-                    ],
-                    name: 'deposit_reward_token',
-                    payable: false,
-                },
-                contractInputsValues: {
-                    _reward_token: FRAGMENTS_ADDRESS,
-                    _amount: gaugeInput.fragmentsAmountInWei.toString(),
-                },
-            });
+            gaugeFragmentsDepositTxns.push(
+                generateRewardTokenDepositInput(
+                    gaugeInput.gaugeAddress,
+                    FRAGMENTS_ADDRESS,
+                    gaugeInput.fragmentsAmountInWei.toString(),
+                ),
+            );
         }
     }
 
-    if (gaugeDepositTxns.length > 0) {
+    if (gaugeAddMissingRewardTokensTxns.length > 0) {
         const transactionBatch: SafeTransactionBatch = {
             version: '1.0',
             chainId: '146',
             createdAt: moment().unix(),
             meta: {
                 name: 'Transactions Batch',
-                description: 'Adding BEETS rewards from gauge results',
+                description: 'Add reward tokens to gauges',
                 txBuilderVersion: '1.18.0',
                 createdFromSafeAddress: LM_GAUGE_MSIG,
                 createdFromOwnerAddress: '',
                 checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
             },
-            transactions: gaugeDepositTxns,
+            transactions: gaugeAddMissingRewardTokensTxns,
+        };
+
+        fs.writeFile(
+            `./src/gaugeAutomation/gauge-transactions/add-reward-tokens-${voteId}.json`,
+            JSON.stringify(transactionBatch, null, 2),
+            function (err) {
+                if (err) {
+                    throw err;
+                }
+            },
+        );
+    } else {
+        console.log(`No add rewards token transactions found`);
+    }
+
+    if (gaugeBeetsApprovalTxns.length > 0) {
+        const approvalTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Approving BEETS for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeBeetsApprovalTxns,
+        };
+
+        fs.writeFile(
+            `./src/gaugeAutomation/gauge-transactions/approve-beets-${voteId}.json`,
+            JSON.stringify(approvalTransactionBatch, null, 2),
+            function (err) {
+                if (err) {
+                    throw err;
+                }
+            },
+        );
+
+        const depositTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Deposit BEETS for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeBeetsDepositTxns,
         };
 
         fs.writeFile(
             `./src/gaugeAutomation/gauge-transactions/deposit-beets-${voteId}.json`,
-            JSON.stringify(transactionBatch, null, 2),
+            JSON.stringify(depositTransactionBatch, null, 2),
             function (err) {
                 if (err) {
                     throw err;
@@ -335,28 +228,53 @@ export async function createTxnBatchForBeetsRewards(
             },
         );
     } else {
-        console.log(`No gauge deposit reward transactions found`);
+        console.log(`No gauge deposit beets transactions found`);
     }
 
-    if (gaugeAddRewardTxns.length > 0) {
-        const transactionBatch: SafeTransactionBatch = {
+    if (gaugeStSApprovalTxns.length > 0) {
+        const approvalTransactionBatch: SafeTransactionBatch = {
             version: '1.0',
             chainId: '146',
             createdAt: moment().unix(),
             meta: {
                 name: 'Transactions Batch',
-                description: 'Add reward token to gauges',
+                description: 'Approving stS for gauges',
                 txBuilderVersion: '1.18.0',
                 createdFromSafeAddress: LM_GAUGE_MSIG,
                 createdFromOwnerAddress: '',
                 checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
             },
-            transactions: gaugeAddRewardTxns,
+            transactions: gaugeStSApprovalTxns,
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/add-reward-token-${voteId}.json`,
-            JSON.stringify(transactionBatch, null, 2),
+            `./src/gaugeAutomation/gauge-transactions/approve-sts-${voteId}.json`,
+            JSON.stringify(approvalTransactionBatch, null, 2),
+            function (err) {
+                if (err) {
+                    throw err;
+                }
+            },
+        );
+
+        const depositTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Deposit stS for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeStSDepositTxns,
+        };
+
+        fs.writeFile(
+            `./src/gaugeAutomation/gauge-transactions/deposit-sts-${voteId}.json`,
+            JSON.stringify(depositTransactionBatch, null, 2),
             function (err) {
                 if (err) {
                     throw err;
@@ -364,6 +282,147 @@ export async function createTxnBatchForBeetsRewards(
             },
         );
     } else {
-        console.log(`No add reward token transactions found`);
+        console.log(`No gauge deposit beets transactions found`);
     }
+
+    if (gaugeFragmentsApprovalTxns.length > 0) {
+        const approvalTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Approving fragments for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeFragmentsApprovalTxns,
+        };
+
+        fs.writeFile(
+            `./src/gaugeAutomation/gauge-transactions/approve-fragments-${voteId}.json`,
+            JSON.stringify(approvalTransactionBatch, null, 2),
+            function (err) {
+                if (err) {
+                    throw err;
+                }
+            },
+        );
+
+        const depositTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Deposit fragments for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeFragmentsDepositTxns,
+        };
+
+        fs.writeFile(
+            `./src/gaugeAutomation/gauge-transactions/deposit-fragments-${voteId}.json`,
+            JSON.stringify(depositTransactionBatch, null, 2),
+            function (err) {
+                if (err) {
+                    throw err;
+                }
+            },
+        );
+    } else {
+        console.log(`No gauge deposit beets transactions found`);
+    }
+}
+function generateRewardTokenDepositInput(
+    gaugeAddress: string,
+    rewardTokenAddress: string,
+    rewardTokenAmountInWei: string,
+): Transaction {
+    return {
+        to: gaugeAddress,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                {
+                    name: '_reward_token',
+                    type: 'address',
+                },
+                {
+                    name: '_amount',
+                    type: 'uint256',
+                },
+            ],
+            name: 'deposit_reward_token',
+            payable: false,
+        },
+        contractInputsValues: {
+            _reward_token: rewardTokenAddress,
+            _amount: rewardTokenAmountInWei,
+        },
+    };
+}
+
+function generateRewardTokenApprovalInput(
+    gaugeAddress: string,
+    rewardTokenAddress: string,
+    rewardTokenAmountInWei: string,
+): Transaction {
+    return {
+        to: rewardTokenAddress,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                {
+                    internalType: 'address',
+                    name: 'spender',
+                    type: 'address',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'amount',
+                    type: 'uint256',
+                },
+            ],
+            name: 'approve',
+            payable: false,
+        },
+        contractInputsValues: {
+            spender: gaugeAddress,
+            amount: rewardTokenAmountInWei,
+        },
+    };
+}
+
+function generateAddRewardTokenInput(gaugeAddress: string, rewardTokenAddress: string): Transaction {
+    return {
+        to: gaugeAddress,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                {
+                    name: '_reward_token',
+                    type: 'address',
+                },
+                {
+                    name: '_distributor',
+                    type: 'address',
+                },
+            ],
+            name: 'add_reward',
+            payable: false,
+        },
+        contractInputsValues: {
+            _reward_token: rewardTokenAddress,
+            _distributor: LM_GAUGE_MSIG,
+        },
+    };
 }

@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { createPublicClient, formatEther, http, parseEther } from 'viem';
 import { sonic } from 'viem/chains';
 import GaugeAbi from '../abi/GaugeAbi';
-import { AddBeetsRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
+import { AddRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
 import { GaugeData, getGaugesForPools } from '../helpers/utils';
 import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, STS_ADDRESS } from '../helpers/constants';
 
@@ -22,7 +22,7 @@ async function run(): Promise<void> {
         // get gauge addresses
         const poolData = await getGaugesForPools(gaugeDataForEndTime.gauges.map((gauge) => gauge.poolId));
 
-        const roundInputs: AddBeetsRewardTxnInput[] = [];
+        const roundInputs: AddRewardTxnInput[] = [];
 
         let totalGaugeBeetsAmount = 0n;
         let totalMDBeetsAmount = 0n;
