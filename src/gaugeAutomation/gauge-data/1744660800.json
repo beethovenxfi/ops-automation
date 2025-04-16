@@ -336,6 +336,60 @@
       "weeklyStSRewards": "0",
       "weeklyStSRewardsFromSeasons": "0",
       "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "wS/USDC.e-ECLP-0x1dcc",
+      "poolId": "0x1dcc33704eb019ba2ace6705210195babf138a0e0002000000000000000000ef",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "scETH/scUSD-ECLP-0xde3c",
+      "poolId": "0xde3ce359bd99ddffd2b16d2ce56593f84f4fd2c80002000000000000000000eb,
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "USDC.e/WETH-ECLP-0x9647",
+      "poolId": "0x96471ade87a33a0cf5c16192acb1d069339637210002000000000000000000ec",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "scUSD/stS-ECLP-0xcca2",
+      "poolId": "0xcca2a4d06dd8c9954478f1258981632094337f440002000000000000000000ed",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "USDC.e/wstkscUSD/scUSD-Boosted-0x54Ca",
+      "poolId": "0x54Ca9aad90324C022bBeD0A94b7380c03aA5884A",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
+    },
+    {
+      "poolName": "WETH/scETH/wstkscETH-Boosted-0x8620",
+      "poolId": "0x8620Fcf1aBDF72d35A0577e0Bc9653E1F088Fc34",
+      "weeklyBeetsAmountFromGauge": "0",
+      "weeklyBeetsAmountFromMD": "0",
+      "weeklyStSRewards": "0",
+      "weeklyStSRewardsFromSeasons": "0",
+      "weeklyFragmentsRewards": "0"
     }
   ]
 }
