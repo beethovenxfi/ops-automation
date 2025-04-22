@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1744801435,
+  "createdAt": 1745330753,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving fragments for gauges",
@@ -58,7 +58,7 @@
       },
       "contractInputsValues": {
         "spender": "0xa472438718fe7785107fcbe584d39183a6420d36",
-        "amount": "60000000000000000000000"
+        "amount": "30000000000000000000000"
       }
     },
     {
@@ -83,7 +83,7 @@
       },
       "contractInputsValues": {
         "spender": "0x8828a6e3166cac78f3c90a5b5bf17618bdaf1deb",
-        "amount": "6000000000000000000000"
+        "amount": "3000000000000000000000"
       }
     },
     {
@@ -258,7 +258,7 @@
       },
       "contractInputsValues": {
         "spender": "0x724a6716bf9ca384584beb51a2ea07564c7fdd69",
-        "amount": "60000000000000000000000"
+        "amount": "90000000000000000000000"
       }
     },
     {
@@ -283,7 +283,7 @@
       },
       "contractInputsValues": {
         "spender": "0xc813b2d0eea15ee2725404ebd82596742b76fdd8",
-        "amount": "6000000000000000000000"
+        "amount": "9000000000000000000000"
       }
     }
   ]
