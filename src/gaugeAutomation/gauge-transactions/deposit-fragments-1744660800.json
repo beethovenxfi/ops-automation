@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1744801435,
+  "createdAt": 1745330753,
   "meta": {
     "name": "Transactions Batch",
     "description": "Deposit fragments for gauges",
@@ -54,7 +54,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x3419966bc74fa8f951108d15b053bed233974d3d",
-        "_amount": "60000000000000000000000"
+        "_amount": "30000000000000000000000"
       }
     },
     {
@@ -77,7 +77,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x3419966bc74fa8f951108d15b053bed233974d3d",
-        "_amount": "6000000000000000000000"
+        "_amount": "3000000000000000000000"
       }
     },
     {
@@ -238,7 +238,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x3419966bc74fa8f951108d15b053bed233974d3d",
-        "_amount": "60000000000000000000000"
+        "_amount": "90000000000000000000000"
       }
     },
     {
@@ -261,7 +261,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x3419966bc74fa8f951108d15b053bed233974d3d",
-        "_amount": "6000000000000000000000"
+        "_amount": "9000000000000000000000"
       }
     }
   ]
