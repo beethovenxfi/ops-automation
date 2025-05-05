@@ -524,7 +524,7 @@
       "weeklyBeetsAmountFromMD": "0",
       "weeklyStSRewards": "0",
       "weeklyStSRewardsFromSeasons": "23",
-      "weeklyFragmentsRewards": "11000"
+      "weeklyFragmentsRewards": "0"
     },
     {
       "poolName": "USDC.e/scETH/Blaze/scBTC/stS-Weighted-0x03fa",
@@ -533,7 +533,7 @@
       "weeklyBeetsAmountFromMD": "0",
       "weeklyStSRewards": "0",
       "weeklyStSRewardsFromSeasons": "18",
-      "weeklyFragmentsRewards": "11000"
+      "weeklyFragmentsRewards": "0"
     },
     {
       "poolName": "BRUSH/stS-Weighted-0x0569",
@@ -542,7 +542,7 @@
       "weeklyBeetsAmountFromMD": "0",
       "weeklyStSRewards": "0",
       "weeklyStSRewardsFromSeasons": "16",
-      "weeklyFragmentsRewards": "11000"
+      "weeklyFragmentsRewards": "0"
     }
   ]
 }
