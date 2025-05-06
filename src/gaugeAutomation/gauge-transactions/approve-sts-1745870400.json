@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1746474251,
+  "createdAt": 1746535699,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving stS for gauges",
@@ -458,7 +458,7 @@
       },
       "contractInputsValues": {
         "spender": "0x724a6716bf9ca384584beb51a2ea07564c7fdd69",
-        "amount": "11904000000000000000000"
+        "amount": "16319170000000000000000"
       }
     },
     {
