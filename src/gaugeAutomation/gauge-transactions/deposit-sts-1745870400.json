@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1746474251,
+  "createdAt": 1746535699,
   "meta": {
     "name": "Transactions Batch",
     "description": "Deposit stS for gauges",
@@ -422,7 +422,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "11904000000000000000000"
+        "_amount": "16319170000000000000000"
       }
     },
     {
