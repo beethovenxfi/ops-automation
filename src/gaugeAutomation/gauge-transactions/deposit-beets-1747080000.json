@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1747218342,
+  "createdAt": 1747221778,
   "meta": {
     "name": "Transactions Batch",
     "description": "Deposit BEETS for gauges",
@@ -790,7 +790,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "3339000000000000000000"
+        "_amount": "7339000000000000000000"
       }
     },
     {
