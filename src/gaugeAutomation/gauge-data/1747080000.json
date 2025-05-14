@@ -359,8 +359,8 @@
       "poolName": "USDC.e/WETH-ECLP-MD",
       "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7",
       "weeklyBeetsAmountFromGauge": "3339",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "4000",
+      "weeklyBeetsAmountFromMD": "4000",
+      "weeklyStSRewards": "0",
       "weeklyStSRewardsFromSeasons": "0",
       "weeklyFragmentsRewards": "6000"
     },
