@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1747218342,
+  "createdAt": 1747221778,
   "meta": {
     "name": "Transactions Batch",
     "description": "Deposit stS for gauges",
@@ -377,29 +377,6 @@
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
         "_amount": "8390070000000000000000"
-      }
-    },
-    {
-      "to": "0x6b913c7915479ab4f409f209f73ce44e467366ac",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "name": "_reward_token",
-            "type": "address"
-          },
-          {
-            "name": "_amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "deposit_reward_token",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "4000000000000000000000"
       }
     },
     {

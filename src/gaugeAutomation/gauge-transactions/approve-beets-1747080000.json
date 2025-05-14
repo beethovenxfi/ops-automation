@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1747218342,
+  "createdAt": 1747221778,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving BEETS for gauges",
@@ -858,7 +858,7 @@
       },
       "contractInputsValues": {
         "spender": "0x6b913c7915479ab4f409f209f73ce44e467366ac",
-        "amount": "3339000000000000000000"
+        "amount": "7339000000000000000000"
       }
     },
     {

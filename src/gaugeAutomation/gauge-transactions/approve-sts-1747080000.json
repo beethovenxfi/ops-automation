@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1747218342,
+  "createdAt": 1747221778,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving stS for gauges",
@@ -409,31 +409,6 @@
       "contractInputsValues": {
         "spender": "0x724a6716bf9ca384584beb51a2ea07564c7fdd69",
         "amount": "8390070000000000000000"
-      }
-    },
-    {
-      "to": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "spender": "0x6b913c7915479ab4f409f209f73ce44e467366ac",
-        "amount": "4000000000000000000000"
       }
     },
     {
