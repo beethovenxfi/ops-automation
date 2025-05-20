@@ -95,7 +95,7 @@ export function createTxnBatchForWithdrawal(poolAddresses: string[], recipient: 
         });
     }
 
-    const batches = _.chunk(withdrawTxns, 10);
+    const batches = _.chunk(withdrawTxns, 20);
 
     let i = 0;
     for (const batch of batches) {
@@ -127,6 +127,7 @@ export function createTxnBatchForWithdrawal(poolAddresses: string[], recipient: 
         } else {
             console.log(`No withdraw txns found`);
         }
+        i++;
     }
 }
 
