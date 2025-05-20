@@ -4,6 +4,7 @@ import { getV3PoolIds } from '../helpers/utils';
 
 import moment from 'moment';
 import { PROTOCOL_FEE_CONTROLLER, REVENUE_MSIG } from '../helpers/constants';
+import _ from 'lodash';
 
 interface SafeTransactionBatch {
     version: string;
@@ -53,6 +54,8 @@ export interface AddBeetsRewardTxnInput {
     addRewardToken: boolean;
 }
 
+const excludedPools = ['0x3bf110657118b51a1f2c1f1d7d593577b6033fa9'];
+
 async function run(): Promise<void> {
     const poolIds = await getV3PoolIds();
     const recipient = process.env.RECIPIENT || REVENUE_MSIG;
@@ -69,7 +72,9 @@ export function createTxnBatchForWithdrawal(poolAddresses: string[], recipient: 
     let withdrawTxns: Transaction[] = [];
 
     for (const address of poolAddresses) {
-        // add the approve transcation
+        if (excludedPools.includes(address.toLowerCase())) {
+            continue;
+        }
         withdrawTxns.push({
             to: PROTOCOL_FEE_CONTROLLER,
             value: '0',
@@ -90,33 +95,38 @@ export function createTxnBatchForWithdrawal(poolAddresses: string[], recipient: 
         });
     }
 
-    if (withdrawTxns.length > 0) {
-        const transactionBatch: SafeTransactionBatch = {
-            version: '1.0',
-            chainId: '146',
-            createdAt: moment().unix(),
-            meta: {
-                name: 'Transactions Batch',
-                description: `Withdrawing fees from the fee controller to ${recipient}`,
-                txBuilderVersion: '1.18.0',
-                createdFromSafeAddress: '0x26377CAB961c84F2d7b9d9e36D296a1C1c77C995',
-                createdFromOwnerAddress: '',
-                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-            },
-            transactions: withdrawTxns,
-        };
+    const batches = _.chunk(withdrawTxns, 20);
 
-        fs.writeFile(
-            `./src/feeAutomation/txns/withdrawFees-${moment().unix()}.json`,
-            JSON.stringify(transactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
-    } else {
-        console.log(`No withdraw txns found`);
+    let i = 0;
+    for (const batch of batches) {
+        if (batch.length > 0) {
+            const transactionBatch: SafeTransactionBatch = {
+                version: '1.0',
+                chainId: '146',
+                createdAt: moment().unix(),
+                meta: {
+                    name: 'Transactions Batch',
+                    description: `Withdrawing fees from the fee controller to ${recipient}`,
+                    txBuilderVersion: '1.18.0',
+                    createdFromSafeAddress: '0x26377CAB961c84F2d7b9d9e36D296a1C1c77C995',
+                    createdFromOwnerAddress: '',
+                    checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+                },
+                transactions: batch,
+            };
+
+            fs.writeFile(
+                `./src/feeAutomation/txns/withdrawFees-${moment().unix()}-${i}.json`,
+                JSON.stringify(transactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
+        } else {
+            console.log(`No withdraw txns found`);
+        }
     }
 }
 
