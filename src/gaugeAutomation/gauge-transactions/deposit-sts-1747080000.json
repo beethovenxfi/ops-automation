@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1747221778,
+  "createdAt": 1747828706,
   "meta": {
     "name": "Transactions Batch",
     "description": "Deposit stS for gauges",
@@ -31,7 +31,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "288000000000000000000"
+        "_amount": "276000000000000000000"
       }
     },
     {
@@ -54,7 +54,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "380000000000000000000"
+        "_amount": "361000000000000000000"
       }
     },
     {
@@ -77,53 +77,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "67000000000000000000"
-      }
-    },
-    {
-      "to": "0xd522748ae4e9ac5892ba2439d2dfe4ed4749fce9",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "name": "_reward_token",
-            "type": "address"
-          },
-          {
-            "name": "_amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "deposit_reward_token",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "132000000000000000000"
-      }
-    },
-    {
-      "to": "0x919a67110d2e3b506209888bedf4b16387107fbe",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "name": "_reward_token",
-            "type": "address"
-          },
-          {
-            "name": "_amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "deposit_reward_token",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "164000000000000000000"
+        "_amount": "54000000000000000000"
       }
     },
     {
@@ -146,7 +100,53 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "42000000000000000000"
+        "_amount": "148000000000000000000"
+      }
+    },
+    {
+      "to": "0x748e5c88b586172692500f3415678c87842f8d3f",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
+        "_amount": "54000000000000000000"
+      }
+    },
+    {
+      "to": "0xcfef8fa4a81a1649bcc91bb0c180af30eb4fd042",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
+        "_amount": "126000000000000000000"
       }
     },
     {
@@ -169,7 +169,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "298000000000000000000"
+        "_amount": "169000000000000000000"
       }
     },
     {
@@ -192,7 +192,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "392000000000000000000"
+        "_amount": "507000000000000000000"
       }
     },
     {
@@ -215,7 +215,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "63000000000000000000"
+        "_amount": "74000000000000000000"
       }
     },
     {
@@ -238,7 +238,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "275000000000000000000"
+        "_amount": "153000000000000000000"
       }
     },
     {
@@ -261,7 +261,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "315000000000000000000"
+        "_amount": "279000000000000000000"
       }
     },
     {
@@ -284,7 +284,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "414000000000000000000"
+        "_amount": "515000000000000000000"
       }
     },
     {
@@ -307,7 +307,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "890590000000000000000"
+        "_amount": "674060000000000000000"
       }
     },
     {
@@ -330,11 +330,11 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "48000000000000000000"
+        "_amount": "52000000000000000000"
       }
     },
     {
-      "to": "0x3361e3c1e87a51ec1ce9c117fd72c93c50abf1c9",
+      "to": "0x162dd78fea9700e4d15c11dfa91a62a1f3b014c1",
       "value": "0",
       "data": null,
       "contractMethod": {
@@ -353,7 +353,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "184000000000000000000"
+        "_amount": "57000000000000000000"
       }
     },
     {
@@ -376,7 +376,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "8390070000000000000000"
+        "_amount": "9411020000000000000000"
       }
     },
     {
@@ -399,7 +399,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "325000000000000000000"
+        "_amount": "562000000000000000000"
       }
     },
     {
@@ -422,7 +422,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "24000000000000000000"
+        "_amount": "80000000000000000000"
       }
     },
     {
@@ -445,7 +445,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "842000000000000000000"
+        "_amount": "634000000000000000000"
       }
     },
     {
@@ -468,7 +468,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "16000000000000000000"
+        "_amount": "127000000000000000000"
       }
     },
     {
@@ -491,30 +491,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "272000000000000000000"
-      }
-    },
-    {
-      "to": "0x6576c2dbc3288c2a165e2795b80227910f2e332d",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "name": "_reward_token",
-            "type": "address"
-          },
-          {
-            "name": "_amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "deposit_reward_token",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "17000000000000000000"
+        "_amount": "337000000000000000000"
       }
     },
     {
@@ -537,7 +514,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "86000000000000000000"
+        "_amount": "41000000000000000000"
       }
     },
     {
@@ -560,7 +537,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "241000000000000000000"
+        "_amount": "305000000000000000000"
       }
     },
     {
@@ -583,7 +560,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "165000000000000000000"
+        "_amount": "67000000000000000000"
       }
     },
     {
@@ -606,7 +583,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "141000000000000000000"
+        "_amount": "146000000000000000000"
       }
     },
     {
@@ -629,7 +606,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "58000000000000000000"
+        "_amount": "218000000000000000000"
       }
     },
     {
@@ -652,7 +629,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "87000000000000000000"
+        "_amount": "58000000000000000000"
       }
     },
     {
@@ -675,7 +652,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "33000000000000000000"
+        "_amount": "40000000000000000000"
       }
     },
     {
@@ -698,7 +675,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "79000000000000000000"
+        "_amount": "46000000000000000000"
       }
     },
     {
@@ -721,7 +698,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "52000000000000000000"
+        "_amount": "179000000000000000000"
       }
     },
     {
@@ -744,7 +721,53 @@
       },
       "contractInputsValues": {
         "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
-        "_amount": "41000000000000000000"
+        "_amount": "72000000000000000000"
+      }
+    },
+    {
+      "to": "0xbbced0679ae638e8c8a681ef421f45420c4d9372",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
+        "_amount": "218000000000000000000"
+      }
+    },
+    {
+      "to": "0xfcb9a5bef5a642e1ad076a4988fc963e0118b512",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0xe5da20f15420ad15de0fa650600afc998bbe3955",
+        "_amount": "14000000000000000000"
       }
     }
   ]
