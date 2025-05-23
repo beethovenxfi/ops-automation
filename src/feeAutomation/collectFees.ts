@@ -25,13 +25,12 @@ async function run(): Promise<void> {
                     functionName: 'collectAggregateFees',
                     args: [id as `0x${string}`],
                 });
-                console.log(`Done, hash: ${hash}`);
             } catch (error) {
                 console.log(`Error collecting fees for pool ${id}`);
             }
         }
     } catch (error) {
-        console.log(`error creating gauges: `, error);
+        console.log(`error collecting fees: `, error);
         core.setFailed(error as Error);
     }
 }
