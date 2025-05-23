@@ -102,28 +102,40 @@ export async function getGaugesForPools(poolIds: string[]) {
 }
 
 export async function getV3PoolIds() {
-    const backendUrl = 'https://backend-v3.beets-ftm-node.com/';
-    const backendQuery = `{
-            poolGetPools(where:{ chainIn:[SONIC], protocolVersionIn:[3] }){
-            id
-            }}
-        `;
+    if (!process.env.GRAPH_KEY) {
+        throw new Error('Missing required environment variables GRAPH_KEY');
+    }
+    const graphURL = `https://gateway-arbitrum.network.thegraph.com/api/${process.env.GRAPH_KEY}/deployments/id/QmUgRWkb5JUocGkVidpKtZFMHjexJzkBiSbjufURsXwn9X`;
 
-    const backendResponse = await fetch(backendUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query: backendQuery }),
-    });
+    const limit = 1000;
+    let hasMore = true;
+    let id = `0x`;
+    let poolIds: string[] = [];
 
-    const gaugesData = (await backendResponse.json()) as {
-        data: {
-            poolGetPools: {
-                id: string;
-            }[];
-        };
-    };
+    while (hasMore) {
+        const query = `{
+        pools(where: { isInitialized: true }, orderBy: id, orderDirection: asc) {
+            ${id}
+        }
+        }`;
+        const response = await fetch(graphURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ query: query }),
+        });
 
-    return gaugesData.data.poolGetPools.map((pool) => pool.id);
+        const jsonResponse = (await response.json()) as { data: { pools: { id: string }[] } };
+
+        poolIds = [...poolIds, ...jsonResponse.data.pools.map((p) => p.id)];
+
+        if (jsonResponse.data.pools.length < limit) {
+            hasMore = false;
+        } else {
+            id = jsonResponse.data.pools[jsonResponse.data.pools.length - 1].id;
+        }
+    }
+
+    return poolIds.map((pool) => pool.toLowerCase());
 }
