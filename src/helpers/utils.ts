@@ -114,8 +114,8 @@ export async function getV3PoolIds() {
 
     while (hasMore) {
         const query = `{
-        pools(where: { isInitialized: true }, orderBy: id, orderDirection: asc) {
-            ${id}
+        pools(where: { isInitialized: true, id_gt: ${id} }, orderBy: id, orderDirection: asc) {
+           id
         }
         }`;
         const response = await fetch(graphURL, {
