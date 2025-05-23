@@ -114,7 +114,7 @@ export async function getV3PoolIds() {
 
     while (hasMore) {
         const query = `{
-        pools(where: { isInitialized: true, id_gt: ${id} }, orderBy: id, orderDirection: asc) {
+        pools(where: { isInitialized: true, id_gt: "${id}" }, orderBy: id, orderDirection: asc) {
            id
         }
         }`;
