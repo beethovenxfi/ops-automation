@@ -1,0 +1,27 @@
+name: Voting - 3 - Generate payload for Hiddenhand Beets bribes
+
+on:
+    workflow_dispatch:
+        inputs:
+            vote_end_timestamp:
+                description: 'The timestamp of the end of the vote'
+                require: true
+
+jobs:
+    createGauges:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Generate HH payload
+              env:
+                  VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
+              run: bun ts-node ./src/gaugeAutomation/generateBribePayload.ts

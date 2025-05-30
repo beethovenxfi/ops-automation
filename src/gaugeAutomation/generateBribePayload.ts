@@ -20,13 +20,14 @@ async function run(): Promise<void> {
         let totalBeetsBribeAmount = 0n;
 
         for (const gauge of gaugeData) {
+            if (!gauge.protocolBounties || gauge.protocolBounties === '0') {
+                continue; // Skip gauges with no protocol bounties
+            }
             const hiddenHandProposal = proposalHashes.find((proposal) => proposal.title === gauge.poolTokenName);
-            console.log(`Hiddenhand proposal for ${gauge.poolTokenName}:`, hiddenHandProposal);
             if (!hiddenHandProposal) {
                 core.setFailed(`No Hiddenhand proposal found for ${gauge.poolTokenName}`);
                 return;
             }
-            console.log(`Gauge: ${gauge.poolTokenName}, Beets for bribe: ${gauge.protocolBounties}`);
 
             totalBeetsBribeAmount += parseEther(gauge.protocolBounties);
 
@@ -42,6 +43,7 @@ async function run(): Promise<void> {
         // build list of txns
         createTxnBatchForHiddenHandBribes(parseFloat(endTime), bribeInputs);
     } catch (error) {
+        console.log(`Error generating bribe payload: `, error);
         if (error instanceof Error) core.setFailed(error.message);
     }
 }

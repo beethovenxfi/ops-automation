@@ -21,12 +21,12 @@ function mapGoogleSheetRowToGaugeData(row: string[]): GaugeData {
         poolName: row[1],
         poolTokenName: row[2],
         snapshot: row[3] === 'x',
-        protocolBounties: row[4],
-        gaugeBeets: row[5],
-        extraBeets: row[6],
-        sitmiRewards: row[7],
-        extraStSRewards: row[8],
-        fragmentsRewards: row[9],
+        protocolBounties: row[4]?.toString() || '0',
+        gaugeBeets: row[5]?.toString() || '0',
+        extraBeets: row[6]?.toString() || '0',
+        sitmiRewards: row[7]?.toString() || '0',
+        extraStSRewards: row[8]?.toString() || '0',
+        fragmentsRewards: row[9]?.toString() || '0',
     };
 }
 
@@ -64,6 +64,7 @@ export async function readGaugeDataFromGoogleSheet(): Promise<GaugeData[]> {
         result = await sheets.spreadsheets.values.get({
             spreadsheetId: SHEET_ID,
             range: `${SHEET_TAB_NAME}${SHEET_RANGE}`,
+            valueRenderOption: 'UNFORMATTED_VALUE',
         });
     } catch (e) {
         throw Error('Could not read sheet.');
