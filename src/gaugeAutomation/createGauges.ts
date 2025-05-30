@@ -4,7 +4,7 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { createWalletClient, http, publicActions } from 'viem';
 import { sonic } from 'viem/chains';
 import gaugeFactoryAbi from '../abi/GaugeFactoryAbi';
-import { GaugeChoice, GaugeData, getGaugesForPools } from '../helpers/utils';
+import { GaugeData, getGaugesForPools } from '../helpers/utils';
 import { GAUGE_FACTORY } from '../helpers/constants';
 
 async function run(): Promise<void> {

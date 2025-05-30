@@ -7,7 +7,6 @@ import snapshot from '@snapshot-labs/snapshot.js';
 import {
     getVoteStartTimestamp,
     getVoteEndTimestamp,
-    GaugeChoice,
     GaugeData,
     getSnapshotBlockFromStartTimestamp,
 } from '../helpers/utils';
@@ -19,6 +18,7 @@ import {
     SNAPSHOT_SPACE,
     DAYS_FOR_EMISSIONS,
 } from '../helpers/constants';
+import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 
 async function run(): Promise<void> {
     try {
@@ -34,24 +34,18 @@ async function run(): Promise<void> {
         const endTimestamp = getVoteEndTimestamp(process.env.VOTE_END_DAY || '');
         const snapshotBlock = await getSnapshotBlockFromStartTimestamp(startTimestamp);
 
-        const choices: GaugeChoice = JSON.parse(
-            fs.readFileSync('./src/gaugeAutomation/gauge-choices/choices-init.json', 'utf-8'),
-        ) as GaugeChoice;
+        const rows = await readGaugeDataFromGoogleSheet();
 
         const gaugeDataForRound: GaugeData = {
             beetsToDistribute: process.env.BEETS_TO_DISTRIBUTE,
             startTimestamp,
             endTimestamp,
             snapshotBlock,
-            gauges: Object.keys(choices).map((poolName) => {
+            gauges: rows.map((row) => {
                 return {
-                    poolName: poolName,
-                    poolId: choices[poolName].toLowerCase(),
-                    weeklyBeetsAmountFromGauge: '0',
-                    weeklyBeetsAmountFromMD: '0',
-                    weeklyStSRewards: '0',
-                    weeklyStSRewardsFromSeasons: '0',
-                    weeklyFragmentsRewards: '0',
+                    poolName: row.poolTokenName,
+                    poolId: row.poolId.toLowerCase(),
+                    onSnapshot: row.snapshot,
                 };
             }),
         };
@@ -61,7 +55,11 @@ async function run(): Promise<void> {
             JSON.stringify(gaugeDataForRound, null, 2),
         );
 
-        await createSnapshot(startTimestamp, endTimestamp, snapshotBlock, choices);
+        const snapshotChoices = gaugeDataForRound.gauges
+            .filter((gauge) => gauge.onSnapshot)
+            .map((gauge) => gauge.poolName);
+
+        await createSnapshot(startTimestamp, endTimestamp, snapshotBlock, snapshotChoices);
     } catch (error) {
         console.log(`erroring`);
         core.setFailed(error as Error);
@@ -72,7 +70,7 @@ async function createSnapshot(
     startTimestamp: number,
     endTimestamp: number,
     snapshotBlock: number,
-    choices: GaugeChoice,
+    choices: string[],
 ): Promise<void> {
     const poolNames = Object.keys(choices);
     console.log('Choices:');
