@@ -8,7 +8,7 @@ import * as core from '@actions/core';
 async function run(): Promise<void> {
     try {
         const poolIds = await getV3PoolIds();
-
+        console.log(`Found ${poolIds.length} pools to collect fees from`);
         const key = process.env.UPDATER_WALLET! as `0x${string}`;
         const account = privateKeyToAccount(key);
         const walletClient = createWalletClient({
