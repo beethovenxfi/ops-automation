@@ -53,6 +53,22 @@ export function getVoteStartTimestamp(day: string): number {
     return startTime.unix();
 }
 
+export async function getHiddenHandProposalHashes(voteEndTimestamp: string) {
+    const hiddenHandApiUrl = 'https://api.hiddenhand.finance/proposal/beets/' + voteEndTimestamp;
+
+    const response = await fetch(hiddenHandApiUrl, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const proposalData = (await response.json()) as { data: { proposalHash: string; title: string }[] };
+    return proposalData.data.map((proposal) => ({
+        proposalHash: proposal.proposalHash,
+        title: proposal.title,
+    }));
+}
+
 export async function getGaugesForPools(poolIds: string[]) {
     const backendUrl = 'https://backend-v3.beets-ftm-node.com/';
     const backendQuery = `{

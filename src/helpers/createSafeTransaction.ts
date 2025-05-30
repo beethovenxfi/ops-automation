@@ -1,7 +1,15 @@
 import fs from 'fs';
 import moment from 'moment';
 import { parseEther } from 'viem';
-import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, LM_GAUGE_MSIG, STS_ADDRESS } from './constants';
+import {
+    BEETS_ADDRESS,
+    FRAGMENTS_ADDRESS,
+    HIDDEN_HAND_MARKET,
+    HIDDEN_HAND_VAULT,
+    LM_GAUGE_MSIG,
+    REVENUE_MSIG,
+    STS_ADDRESS,
+} from './constants';
 
 interface SafeTransactionBatch {
     version: string;
@@ -46,6 +54,10 @@ export interface ContractInputsValues {
     _reward_token?: string;
     _distributor?: string;
     _amount?: string;
+    _proposal?: string;
+    _token?: string;
+    _maxTokensPerVote?: string;
+    _periods?: string;
 }
 
 export interface AddRewardTxnInput {
@@ -56,6 +68,78 @@ export interface AddRewardTxnInput {
     addStSRewardToken: boolean;
     fragmentsAmountInWei: bigint;
     addFragmentsRewardToken: boolean;
+}
+
+export interface DepositBribeTxnInput {
+    proposalHash: string;
+    bribeAmountInWei: bigint;
+}
+
+export async function createTxnBatchForHiddenHandBribes(voteId: number, depositBribeInput: DepositBribeTxnInput[]) {
+    const gaugeBribeDepositTxns: Transaction[] = [];
+    let totalAmountOfBeetsBribes = 0n;
+
+    for (const bribeInput of depositBribeInput) {
+        totalAmountOfBeetsBribes += bribeInput.bribeAmountInWei;
+        gaugeBribeDepositTxns.push({
+            to: HIDDEN_HAND_MARKET,
+            value: '0',
+            data: null,
+            contractMethod: {
+                inputs: [
+                    { name: '_proposal', type: 'bytes32' },
+                    { name: '_token', type: 'address' },
+                    { name: '_amount', type: 'uint256' },
+                    { name: '_maxTokensPerVote', type: 'uint256' },
+                    { name: '_periods', type: 'uint256' },
+                ],
+                name: 'depositBribe',
+                payable: false,
+            },
+            contractInputsValues: {
+                _proposal: bribeInput.proposalHash,
+                _token: BEETS_ADDRESS, // Assuming BEETS is the token used for bribes
+                _amount: bribeInput.bribeAmountInWei.toString(),
+                _maxTokensPerVote: '0',
+                _periods: '1',
+            },
+        });
+    }
+
+    const approveTxn = generateTokenApprovalInput(
+        HIDDEN_HAND_VAULT,
+        BEETS_ADDRESS,
+        totalAmountOfBeetsBribes.toString(),
+    );
+
+    if (gaugeBribeDepositTxns.length > 0) {
+        const transactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Deposit bribes for gauges on Hidden Hand',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: REVENUE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: [approveTxn, ...gaugeBribeDepositTxns],
+        };
+
+        fs.writeFile(
+            `./src/gaugeAutomation/gauge-transactions/deposit-bribes-${voteId}.json`,
+            JSON.stringify(transactionBatch, null, 2),
+            function (err) {
+                if (err) {
+                    throw err;
+                }
+            },
+        );
+    } else {
+        console.log(`No gauge deposit bribes transactions found`);
+    }
 }
 
 export async function createTxnBatchForBeetsRewards(
@@ -88,7 +172,7 @@ export async function createTxnBatchForBeetsRewards(
         if (gaugeInput.beetsAmountInWei > 0n) {
             // add the approve transcation
             gaugeBeetsApprovalTxns.push(
-                generateRewardTokenApprovalInput(
+                generateTokenApprovalInput(
                     gaugeInput.gaugeAddress,
                     BEETS_ADDRESS,
                     gaugeInput.beetsAmountInWei.toString(),
@@ -108,11 +192,7 @@ export async function createTxnBatchForBeetsRewards(
         if (gaugeInput.stSAmountInWei > 0n) {
             // add the approve transcation
             gaugeStSApprovalTxns.push(
-                generateRewardTokenApprovalInput(
-                    gaugeInput.gaugeAddress,
-                    STS_ADDRESS,
-                    gaugeInput.stSAmountInWei.toString(),
-                ),
+                generateTokenApprovalInput(gaugeInput.gaugeAddress, STS_ADDRESS, gaugeInput.stSAmountInWei.toString()),
             );
 
             // add deposit_reward_token transaction
@@ -128,7 +208,7 @@ export async function createTxnBatchForBeetsRewards(
         if (gaugeInput.fragmentsAmountInWei > 0n) {
             // add the approve transcation
             gaugeFragmentsApprovalTxns.push(
-                generateRewardTokenApprovalInput(
+                generateTokenApprovalInput(
                     gaugeInput.gaugeAddress,
                     FRAGMENTS_ADDRESS,
                     gaugeInput.fragmentsAmountInWei.toString(),
@@ -367,13 +447,9 @@ function generateRewardTokenDepositInput(
     };
 }
 
-function generateRewardTokenApprovalInput(
-    gaugeAddress: string,
-    rewardTokenAddress: string,
-    rewardTokenAmountInWei: string,
-): Transaction {
+function generateTokenApprovalInput(spender: string, tokenAddress: string, tokenAmountInWei: string): Transaction {
     return {
-        to: rewardTokenAddress,
+        to: tokenAddress,
         value: '0',
         data: null,
         contractMethod: {
@@ -393,8 +469,8 @@ function generateRewardTokenApprovalInput(
             payable: false,
         },
         contractInputsValues: {
-            spender: gaugeAddress,
-            amount: rewardTokenAmountInWei,
+            spender: spender,
+            amount: tokenAmountInWei,
         },
     };
 }
