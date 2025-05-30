@@ -99,7 +99,6 @@ export async function writeGaugeDataToGoogleSheet(data: GaugeData[]): Promise<vo
             },
         });
     } catch (e) {
-        console.error('Error writing to Google Sheet:', e);
         throw Error('Could not write sheet.');
     }
 }
