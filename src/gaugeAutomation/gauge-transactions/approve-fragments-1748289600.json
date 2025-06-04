@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1748426573,
+  "createdAt": 1749029421,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving fragments for gauges",
@@ -33,7 +33,7 @@
       },
       "contractInputsValues": {
         "spender": "0x8476f3a8da52092e7835167afe27835dc171c133",
-        "amount": "120000000000000000000000"
+        "amount": "116000000000000000000000"
       }
     },
     {
@@ -58,7 +58,7 @@
       },
       "contractInputsValues": {
         "spender": "0xa472438718fe7785107fcbe584d39183a6420d36",
-        "amount": "26000000000000000000000"
+        "amount": "24000000000000000000000"
       }
     },
     {
@@ -83,7 +83,7 @@
       },
       "contractInputsValues": {
         "spender": "0xdbc37b018d4d0536e624ffd3f338f218223a9b61",
-        "amount": "19000000000000000000000"
+        "amount": "16600000000000000000000"
       }
     },
     {
@@ -108,7 +108,7 @@
       },
       "contractInputsValues": {
         "spender": "0x724a6716bf9ca384584beb51a2ea07564c7fdd69",
-        "amount": "120000000000000000000000"
+        "amount": "116000000000000000000000"
       }
     },
     {
@@ -133,7 +133,7 @@
       },
       "contractInputsValues": {
         "spender": "0xc813b2d0eea15ee2725404ebd82596742b76fdd8",
-        "amount": "12000000000000000000000"
+        "amount": "10000000000000000000000"
       }
     },
     {
@@ -158,7 +158,7 @@
       },
       "contractInputsValues": {
         "spender": "0x0c7f2b3503ff6703beaccbfa028c52ccdc10f61e",
-        "amount": "2000000000000000000000"
+        "amount": "4653000000000000000000"
       }
     },
     {
@@ -183,7 +183,7 @@
       },
       "contractInputsValues": {
         "spender": "0xb0406a4e9ba2a7932ec537ae44128230be305768",
-        "amount": "22000000000000000000000"
+        "amount": "1955000000000000000000"
       }
     },
     {
@@ -208,7 +208,7 @@
       },
       "contractInputsValues": {
         "spender": "0x6b913c7915479ab4f409f209f73ce44e467366ac",
-        "amount": "5000000000000000000000"
+        "amount": "3137000000000000000000"
       }
     },
     {
@@ -233,7 +233,7 @@
       },
       "contractInputsValues": {
         "spender": "0x5b815f2a03bb579858aacbe2325c25b2c1aac9bc",
-        "amount": "1500000000000000000000"
+        "amount": "2722000000000000000000"
       }
     },
     {
@@ -258,7 +258,7 @@
       },
       "contractInputsValues": {
         "spender": "0xefaaa08d0b925258667d193bd87b2a092df74f38",
-        "amount": "1500000000000000000000"
+        "amount": "9307000000000000000000"
       }
     },
     {
@@ -283,7 +283,7 @@
       },
       "contractInputsValues": {
         "spender": "0xd9958fb67ec37fe8cb8141632b367d87da2c92e8",
-        "amount": "1000000000000000000000"
+        "amount": "5443000000000000000000"
       }
     },
     {
@@ -308,7 +308,7 @@
       },
       "contractInputsValues": {
         "spender": "0xe515c5415755c7a1d58680eef23203b708863a44",
-        "amount": "8000000000000000000000"
+        "amount": "3909000000000000000000"
       }
     },
     {
@@ -333,7 +333,7 @@
       },
       "contractInputsValues": {
         "spender": "0x012f384caba4e0ec5c88093e4325bf7108d219fa",
-        "amount": "2000000000000000000000"
+        "amount": "6274000000000000000000"
       }
     }
   ]

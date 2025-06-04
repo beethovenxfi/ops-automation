@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1748426573,
+  "createdAt": 1749029421,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving BEETS for gauges",
@@ -858,7 +858,7 @@
       },
       "contractInputsValues": {
         "spender": "0x0c7f2b3503ff6703beaccbfa028c52ccdc10f61e",
-        "amount": "15482000000000000000000"
+        "amount": "12259000000000000000000"
       }
     },
     {
@@ -883,7 +883,7 @@
       },
       "contractInputsValues": {
         "spender": "0xb0406a4e9ba2a7932ec537ae44128230be305768",
-        "amount": "49618000000000000000000"
+        "amount": "5149000000000000000000"
       }
     },
     {
@@ -908,7 +908,7 @@
       },
       "contractInputsValues": {
         "spender": "0x6b913c7915479ab4f409f209f73ce44e467366ac",
-        "amount": "10027000000000000000000"
+        "amount": "8265000000000000000000"
       }
     },
     {
@@ -933,7 +933,7 @@
       },
       "contractInputsValues": {
         "spender": "0x5b815f2a03bb579858aacbe2325c25b2c1aac9bc",
-        "amount": "14201000000000000000000"
+        "amount": "7170000000000000000000"
       }
     },
     {
@@ -958,7 +958,7 @@
       },
       "contractInputsValues": {
         "spender": "0xefaaa08d0b925258667d193bd87b2a092df74f38",
-        "amount": "1000000000000000000000"
+        "amount": "24517000000000000000000"
       }
     },
     {
@@ -983,7 +983,7 @@
       },
       "contractInputsValues": {
         "spender": "0xd9958fb67ec37fe8cb8141632b367d87da2c92e8",
-        "amount": "700000000000000000000"
+        "amount": "14340000000000000000000"
       }
     },
     {
@@ -1008,7 +1008,7 @@
       },
       "contractInputsValues": {
         "spender": "0xe515c5415755c7a1d58680eef23203b708863a44",
-        "amount": "6000000000000000000000"
+        "amount": "10299000000000000000000"
       }
     },
     {
@@ -1033,7 +1033,7 @@
       },
       "contractInputsValues": {
         "spender": "0x012f384caba4e0ec5c88093e4325bf7108d219fa",
-        "amount": "1500000000000000000000"
+        "amount": "16529000000000000000000"
       }
     }
   ]
