@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1748426573,
+  "createdAt": 1749029421,
   "meta": {
     "name": "Transactions Batch",
     "description": "Deposit BEETS for gauges",
@@ -790,7 +790,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "15482000000000000000000"
+        "_amount": "12259000000000000000000"
       }
     },
     {
@@ -813,7 +813,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "49618000000000000000000"
+        "_amount": "5149000000000000000000"
       }
     },
     {
@@ -836,7 +836,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "10027000000000000000000"
+        "_amount": "8265000000000000000000"
       }
     },
     {
@@ -859,7 +859,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "14201000000000000000000"
+        "_amount": "7170000000000000000000"
       }
     },
     {
@@ -882,7 +882,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "1000000000000000000000"
+        "_amount": "24517000000000000000000"
       }
     },
     {
@@ -905,7 +905,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "700000000000000000000"
+        "_amount": "14340000000000000000000"
       }
     },
     {
@@ -928,7 +928,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "6000000000000000000000"
+        "_amount": "10299000000000000000000"
       }
     },
     {
@@ -951,7 +951,7 @@
       },
       "contractInputsValues": {
         "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-        "_amount": "1500000000000000000000"
+        "_amount": "16529000000000000000000"
       }
     }
   ]
