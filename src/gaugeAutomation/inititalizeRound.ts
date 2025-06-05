@@ -70,9 +70,8 @@ async function createSnapshot(
     startTimestamp: number,
     endTimestamp: number,
     snapshotBlock: number,
-    choices: string[],
+    poolNames: string[],
 ): Promise<void> {
-    const poolNames = Object.keys(choices);
     console.log('Choices:');
     console.log(poolNames);
 
@@ -112,7 +111,7 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
         title,
         body,
         discussion: '',
-        choices: Object.keys(choices),
+        choices: Object.keys(poolNames),
         start: startTimestamp,
         end: endTimestamp,
         snapshot: Number(snapshotBlock),
