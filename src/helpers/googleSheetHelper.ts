@@ -75,7 +75,7 @@ export async function readGaugeDataFromGoogleSheet(): Promise<GaugeData[]> {
 
 export async function writeGaugeDataToGoogleSheet(data: GaugeData[]): Promise<void> {
     if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY) {
-        throw new Error('Missing required environment variables to read sheets');
+        throw new Error('Missing required environment variables to write sheets');
     }
 
     const googleJwtClient = new GoogleJwtClient();

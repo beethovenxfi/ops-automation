@@ -33,11 +33,6 @@ jobs:
               run: bun install --frozen-lockfile
 
             - name: Inititalize new epoch and create snapshot
-              env:
-                  BEETS_TO_DISTRIBUTE: ${{ github.event.inputs.beets_to_distribute }}
-                  VOTE_START_DAY: ${{ github.event.inputs.vote_start_day }}
-                  VOTE_END_DAY: ${{ github.event.inputs.vote_end_day }}
-                  SNAPSHOT_BLOCK: ${{ github.event.inputs.snapshot_block }}
               run: bun ts-node ./src/gaugeAutomation/inititalizeRound.ts
 
             - name: Create PR
