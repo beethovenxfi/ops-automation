@@ -62,6 +62,7 @@ async function run(): Promise<void> {
         await createSnapshot(startTimestamp, endTimestamp, snapshotBlock, snapshotChoices);
     } catch (error) {
         console.log(`erroring`);
+        console.log(error);
         core.setFailed(error as Error);
     }
 }
