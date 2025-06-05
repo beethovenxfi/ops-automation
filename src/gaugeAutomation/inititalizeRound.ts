@@ -112,7 +112,7 @@ Pools may have voting incentives provided by Beets and/or other protocols, pleas
         title,
         body,
         discussion: '',
-        choices: Object.keys(poolNames),
+        choices: poolNames,
         start: startTimestamp,
         end: endTimestamp,
         snapshot: Number(snapshotBlock),
