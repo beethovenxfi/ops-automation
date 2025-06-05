@@ -17,6 +17,7 @@ env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
     GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+    SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
 
 jobs:
     initEpoch:
@@ -40,6 +41,7 @@ jobs:
                   SNAPSHOT_BLOCK: ${{ github.event.inputs.snapshot_block }}
                   GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
                   GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+                  SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
               run: bun ts-node ./src/gaugeAutomation/inititalizeRound.ts
 
             - name: Create PR
