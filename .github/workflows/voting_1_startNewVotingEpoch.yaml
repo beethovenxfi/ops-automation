@@ -15,8 +15,8 @@ on:
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
-    SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
+    GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
 jobs:
     initEpoch:
