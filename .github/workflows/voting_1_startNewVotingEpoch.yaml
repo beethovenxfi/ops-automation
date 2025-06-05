@@ -18,6 +18,7 @@ env:
     GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
     GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
     SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
+    PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
 
 jobs:
     initEpoch:
@@ -42,6 +43,7 @@ jobs:
                   GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
                   GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
                   SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
+                  PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
               run: bun ts-node ./src/gaugeAutomation/inititalizeRound.ts
 
             - name: Create PR
