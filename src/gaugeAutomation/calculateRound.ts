@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import { formatEther, parseEther, parseUnits } from 'viem';
 import { GaugeData, SnapshotProposal } from '../helpers/utils';
 import { SNAPSHOT_HUB_URL } from '../helpers/constants';
+import { readGaugeDataFromGoogleSheet, writeGaugeDataToGoogleSheet } from '../helpers/googleSheetHelper';
 
 async function run(): Promise<void> {
     try {
@@ -86,19 +87,18 @@ async function run(): Promise<void> {
             return;
         }
 
-        for (const gauge of gaugeDataForEndTime.gauges) {
-            const pool = result.find((pool) => pool.poolId === gauge.poolId);
+        const googleSheetData = await readGaugeDataFromGoogleSheet();
+
+        for (const gaugeData of googleSheetData) {
+            const pool = result.find((pool) => pool.poolId?.toLowerCase() === gaugeData.poolId.toLowerCase());
             if (!pool) {
-                core.setFailed(`Pool ${gauge.poolId} not present in result for gaugeData`);
-                return;
+                gaugeData.gaugeBeets = '0';
+            } else {
+                gaugeData.gaugeBeets = formatEther(pool.beetsAmountWei / 2n);
             }
-            gauge.weeklyBeetsAmountFromGauge = formatEther(pool.beetsAmountWei / 2n);
         }
 
-        fs.writeFileSync(
-            `./src/gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
-            JSON.stringify(gaugeDataForEndTime, null, 2),
-        );
+        await writeGaugeDataToGoogleSheet(googleSheetData);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }

@@ -15,8 +15,10 @@ on:
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
+    GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
     SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
+    PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
 
 jobs:
     initEpoch:
@@ -38,6 +40,10 @@ jobs:
                   VOTE_START_DAY: ${{ github.event.inputs.vote_start_day }}
                   VOTE_END_DAY: ${{ github.event.inputs.vote_end_day }}
                   SNAPSHOT_BLOCK: ${{ github.event.inputs.snapshot_block }}
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+                  SONICSCAN_APIKEY: ${{ secrets.SONICSCAN_APIKEY }}
+                  PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
               run: bun ts-node ./src/gaugeAutomation/inititalizeRound.ts
 
             - name: Create PR

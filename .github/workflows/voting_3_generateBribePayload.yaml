@@ -1,4 +1,4 @@
-name: Voting - 3 - Calculate voting results
+name: Voting - 3 - Generate payload for Hiddenhand Beets bribes
 
 on:
     workflow_dispatch:
@@ -8,12 +8,11 @@ on:
                 require: true
 
 env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
     GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
 jobs:
-    calculateResults:
+    createGauges:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -26,17 +25,9 @@ jobs:
             - name: Install deps
               run: bun install --frozen-lockfile
 
-            - name: Calculate BEETS distribution
+            - name: Generate HH payload
               env:
                   VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
-              run: bun ts-node ./src/gaugeAutomation/calculateRound.ts
-
-            - name: Create PR
-              uses: peter-evans/create-pull-request@v5
-              with:
-                  commit-message: 'Calculate distribution'
-                  title: 'BEETS distribution for round ${{ github.event.inputs.vote_end_timestamp }}'
-                  assignees: franzns
-                  branch: beets-distribution
-                  delete-branch: true
-                  labels: 'Automated PR'
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+              run: bun ts-node ./src/gaugeAutomation/generateBribePayload.ts

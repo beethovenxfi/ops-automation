@@ -6,6 +6,7 @@ import GaugeAbi from '../abi/GaugeAbi';
 import { AddRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
 import { GaugeData, getGaugesForPools } from '../helpers/utils';
 import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, LM_GAUGE_MSIG, STS_ADDRESS } from '../helpers/constants';
+import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
@@ -15,12 +16,10 @@ async function run(): Promise<void> {
     }
 
     try {
-        const gaugeDataForEndTime: GaugeData = JSON.parse(
-            fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
-        ) as GaugeData;
+        const gaugeData = await readGaugeDataFromGoogleSheet();
 
         // get gauge addresses
-        const poolData = await getGaugesForPools(gaugeDataForEndTime.gauges.map((gauge) => gauge.poolId));
+        const poolData = await getGaugesForPools(gaugeData.map((gauge) => gauge.poolId));
 
         const roundInputs: AddRewardTxnInput[] = [];
 
@@ -30,29 +29,27 @@ async function run(): Promise<void> {
         let totalStSRewardsFromSeasonsAmount = 0n;
         let totalFragmentsRewardsAmount = 0n;
 
-        for (const gauge of gaugeDataForEndTime.gauges) {
+        for (const gauge of gaugeData) {
             const pool = poolData.find((pool) => pool.id === gauge.poolId.toLowerCase());
             if (!pool?.staking) {
                 core.setFailed(`Pool ${gauge.poolId} has no gauge`);
                 return;
             }
 
-            totalGaugeBeetsAmount += parseEther(gauge.weeklyBeetsAmountFromGauge);
-            totalMDBeetsAmount += parseEther(gauge.weeklyBeetsAmountFromMD);
-            totalStSRewardsAmount += parseEther(gauge.weeklyStSRewards);
-            totalStSRewardsFromSeasonsAmount += parseEther(gauge.weeklyStSRewardsFromSeasons);
-            totalFragmentsRewardsAmount += parseEther(gauge.weeklyFragmentsRewards);
+            totalGaugeBeetsAmount += parseEther(gauge.gaugeBeets);
+            totalMDBeetsAmount += parseEther(gauge.extraBeets);
+            totalStSRewardsAmount += parseEther(gauge.extraStSRewards);
+            totalStSRewardsFromSeasonsAmount += parseEther(gauge.sitmiRewards);
+            totalFragmentsRewardsAmount += parseEther(gauge.fragmentsRewards);
 
             roundInputs.push({
                 gaugeAddress: pool.staking.gauge.gaugeAddress,
-                beetsAmountInWei:
-                    parseEther(gauge.weeklyBeetsAmountFromGauge) + parseEther(gauge.weeklyBeetsAmountFromMD),
+                beetsAmountInWei: parseEther(gauge.gaugeBeets) + parseEther(gauge.extraBeets),
                 addBeetsRewardToken: true, // always add if not already added
-                stSAmountInWei: parseEther(gauge.weeklyStSRewards) + parseEther(gauge.weeklyStSRewardsFromSeasons),
-                addStSRewardToken:
-                    parseEther(gauge.weeklyStSRewards) + parseEther(gauge.weeklyStSRewardsFromSeasons) > 0n, // only add if there are sts rewards
-                fragmentsAmountInWei: parseEther(gauge.weeklyFragmentsRewards),
-                addFragmentsRewardToken: parseEther(gauge.weeklyFragmentsRewards) > 0n, // only add if there are fragments rewards
+                stSAmountInWei: parseEther(gauge.extraStSRewards) + parseEther(gauge.sitmiRewards),
+                addStSRewardToken: parseEther(gauge.extraStSRewards) + parseEther(gauge.sitmiRewards) > 0n, // only add if there are sts rewards
+                fragmentsAmountInWei: parseEther(gauge.fragmentsRewards),
+                addFragmentsRewardToken: parseEther(gauge.fragmentsRewards) > 0n, // only add if there are fragments rewards
             });
         }
 
@@ -143,11 +140,7 @@ async function run(): Promise<void> {
         console.log(`Total Fragments rewards: ${formatEther(totalFragmentsRewardsAmount)}`);
 
         // build list of txns
-        createTxnBatchForBeetsRewards(gaugeDataForEndTime.endTimestamp, roundInputs);
-        fs.writeFileSync(
-            `./src/gaugeAutomation/gauge-data/${gaugeDataForEndTime.endTimestamp}.json`,
-            JSON.stringify(gaugeDataForEndTime, null, 2),
-        );
+        createTxnBatchForBeetsRewards(parseFloat(endTime), roundInputs);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }

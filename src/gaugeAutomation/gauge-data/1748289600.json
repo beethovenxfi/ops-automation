@@ -1,692 +1,363 @@
 {
-  "beetsToDistribute": "420000",
-  "startTimestamp": 1747900800,
-  "endTimestamp": 1748289600,
-  "snapshotBlock": 28358024,
-  "gauges": [
-    {
-      "poolName": "wS/stS-Stable-0x3746",
-      "poolId": "0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006",
-      "weeklyBeetsAmountFromGauge": "42294",
-      "weeklyBeetsAmountFromMD": "88800",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "116000"
-    },
-    {
-      "poolName": "USDC/scUSD-Stable-0xcd4d",
-      "poolId": "0xcd4d2b142235d5650ffa6a38787ed0b7d7a51c0c000000000000000000000037",
-      "weeklyBeetsAmountFromGauge": "63",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scUSD/stS-Weighted-0x25ca",
-      "poolId": "0x25ca5451cd5a50ab1d324b5e64f32c0799661891000200000000000000000018",
-      "weeklyBeetsAmountFromGauge": "26859",
-      "weeklyBeetsAmountFromMD": "20000",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "146",
-      "weeklyFragmentsRewards": "24000"
-    },
-    {
-      "poolName": "USDC/stS-Weighted-0x713f",
-      "poolId": "0x713fb5036dc70012588d77a5b066f1dd05c712d7000200000000000000000041",
-      "weeklyBeetsAmountFromGauge": "1323",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "187",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scETH/wETH-Stable-0xe54d",
-      "poolId": "0xe54dd58a6d4e04687f2034dd4ddab49da55f8aff00000000000000000000007c",
-      "weeklyBeetsAmountFromGauge": "168",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "DEUS/stS-Weighted-0x322d",
-      "poolId": "0x322dc65f89569ac510fa3949651790da5871195c000200000000000000000075",
-      "weeklyBeetsAmountFromGauge": "1932",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "44",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "fSONIC/stS-Weighted-0xb26c",
-      "poolId": "0xb26ca1112424828f454b942638e2ba84774897e3000200000000000000000043",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "MOON/WETH/stS-Weighted-0x6d2b",
-      "poolId": "0x6d2bb32a231c2cb5ccb4f59b8e9957a794086aa8000100000000000000000074",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "48",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "SPOOH/SBEER/SPUB/SCARTEL/stS-Weighted-0x9a76",
-      "poolId": "0x9a76795584d6ab6b7444df4fc3bf69355f541d9800010000000000000000006b",
-      "weeklyBeetsAmountFromGauge": "63",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "124",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "fBUX/stS-Weighted-0x3ec8",
-      "poolId": "0x3ec8254006658e11f9ab5eaf92d64f8528d09057000200000000000000000056",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "43",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/scETH/LUDWIG-Weighted-0xce2f",
-      "poolId": "0xce2f25747f06a9673128bb8a84da3b6e45347d61000100000000000000000080",
-      "weeklyBeetsAmountFromGauge": "63",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "ECO/stS-Weighted-0x7121",
-      "poolId": "0x7121d4ce0825c1a5c530641d122fe560f3efb2f700020000000000000000005d",
-      "weeklyBeetsAmountFromGauge": "1680",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "60",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scETH/F/scUSD/stS-Weighted-0x32ba",
-      "poolId": "0x32bac522c4f97f4913d18d81cf3be119c8cce26a000100000000000000000050",
-      "weeklyBeetsAmountFromGauge": "21",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "CONK/stS-Weighted-0x9d63",
-      "poolId": "0x9d63f74df451bd64bb5a757c9fe52128448fcab2000200000000000000000053",
-      "weeklyBeetsAmountFromGauge": "42",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "BEETS/stS/LUDWIG-Weighted-0x21fe",
-      "poolId": "0x21fed4063bf8ebf4f51f4adf4ecfc9717aa4ca9d000100000000000000000044",
-      "weeklyBeetsAmountFromGauge": "2373",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "73",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scUSD/BRUSH-Weighted-0xc5ab",
-      "poolId": "0xc5ab8d98f959453e416b2f15848a02cc99bc695e000200000000000000000022",
-      "weeklyBeetsAmountFromGauge": "756",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scETH/GOGLZ/scUSD/stS-Weighted-0x2fc1",
-      "poolId": "0x2fc17bdea0a3d2164a7ff63cbc32de2dbba88756000100000000000000000087",
-      "weeklyBeetsAmountFromGauge": "42",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "660",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/SILO-Weighted-0xc595",
-      "poolId": "0xc5954b1b9df8a0c0b7788d2cc2bc18d4bae9b0c2000200000000000000000099",
-      "weeklyBeetsAmountFromGauge": "546",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/scUSD-Boosted-0x4302",
-      "poolId": "0x43026d483f42fb35efe03c20b251142d022783f2",
-      "weeklyBeetsAmountFromGauge": "1092",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "solvBTC.BBN/solvBTC-Boosted-0xd5ab",
-      "poolId": "0xd5ab187442998f1a62ea58133a03050691a0c280",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/SolvBTC-Weighted-0xf48c",
-      "poolId": "0xf48c8841d697587570b6b1f872ea82fceb1e6e66",
-      "weeklyBeetsAmountFromGauge": "21",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "fMULTI/MCLB/stS-Weighted-0x1576",
-      "poolId": "0x15761307e86baf700f29052e357a88f49b33b1b400010000000000000000009a",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "12",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wOS/stS-Stable-0xd2ef",
-      "poolId": "0xd2efc016650695c56b514d6a2133ad85afb86d8a00000000000000000000009e",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "Moist/SURV/stS-Weighted-0xd049",
-      "poolId": "0xd0490815a1715e0bb2a1d673bcda8ca567579dd7000100000000000000000066",
-      "weeklyBeetsAmountFromGauge": "21",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "66",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/anS-Boosted-0x944d",
-      "poolId": "0x944d4ae892de4bfd38742cc8295d6d5164c5593c",
-      "weeklyBeetsAmountFromGauge": "8463",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scETH/scBTC/scUSD/stS-Weighted-0xbd4a",
-      "poolId": "0xbd4a2ecdcd7acb0d2b20744ac4cc1368dd8fdc410001000000000000000000a8",
-      "weeklyBeetsAmountFromGauge": "8820",
-      "weeklyBeetsAmountFromMD": "15000",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "107",
-      "weeklyFragmentsRewards": "16600"
-    },
-    {
-      "poolName": "BeetsFragmentsS1/stS-Weighted-0xf115",
-      "poolId": "0xf115635b3322fb07d28941530d013992b3911d9b0002000000000000000000ce",
-      "weeklyBeetsAmountFromGauge": "1134",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "294",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scBTC/LBTC-ECLP-0x8395",
-      "poolId": "0x83952912178aa33c3853ee5d942c96254b235dcc0002000000000000000000ab",
-      "weeklyBeetsAmountFromGauge": "1407",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "BeetsFragmentsS1/stS-Weighted-0xf633",
-      "poolId": "0xf633a43e5ccf858a27dd1d74a23be15ea5aa28f30002000000000000000000c2",
-      "weeklyBeetsAmountFromGauge": "7350",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "526",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/frxUSD-Boosted-0x3b57",
-      "poolId": "0x3b57c58440ebb220d4d11db087d884a387259cf0",
-      "weeklyBeetsAmountFromGauge": "1218",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "stS/LUDWIG-Weighted-0xd287",
-      "poolId": "0xd2879b07eca1ccb84040c83ba2d31496642d566b",
-      "weeklyBeetsAmountFromGauge": "3675",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "42",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/stS/RELIC-Weighted-0xdc70",
-      "poolId": "0xdc7042df405e6fe00635eb0a5eac55a468b4fbd20001000000000000000000da",
-      "weeklyBeetsAmountFromGauge": "147",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "stS/fBOMB-Weighted-0x70c2",
-      "poolId": "0x70c27b84b54727af2a794e90a30acf682527a3b00002000000000000000000cc",
-      "weeklyBeetsAmountFromGauge": "525",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/wstkscUSD/scUSD-Boosted-0x54Ca",
-      "poolId": "0x54ca9aad90324c022bbed0a94b7380c03aa5884a",
-      "weeklyBeetsAmountFromGauge": "29673",
-      "weeklyBeetsAmountFromMD": "100000",
-      "weeklyStSRewards": "9727.1",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "116000"
-    },
-    {
-      "poolName": "WETH/scETH/wstkscETH-Boosted-0x8620",
-      "poolId": "0x8620fcf1abdf72d35a0577e0bc9653e1f088fc34",
-      "weeklyBeetsAmountFromGauge": "693",
-      "weeklyBeetsAmountFromMD": "10000",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "10000"
-    },
-    {
-      "poolName": "USDC/wS-Boosted-0x7d83",
-      "poolId": "0x7d836813d1d0b710979f2747c071eac8e8693198",
-      "weeklyBeetsAmountFromGauge": "1239",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "stS/wS-Boosted-0xf686",
-      "poolId": "0xf6862d5a5521c1ca2f41b8ce94f124b2df7090e2",
-      "weeklyBeetsAmountFromGauge": "1113",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "SHADOW/stS-Weighted-0xeb8e",
-      "poolId": "0xeb8e5df1bf89572ec110ab1aa2f3e99a15842e4c",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "307",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scBTC/scETH/USDC/LUDWIG-Boosted-0xf76d",
-      "poolId": "0xf76d92673ddef0d7da60b14a317b7d25aabfa1b3",
-      "weeklyBeetsAmountFromGauge": "2751",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "BEETS/BeetsFragmentsS1-Weighted-0x39cd",
-      "poolId": "0x39cd1c424feac34081a4dbb9749c5954429540b8",
-      "weeklyBeetsAmountFromGauge": "105",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/USDC-ECLP-MD",
-      "poolId": "0xfc127dfc32b7739a7cfff7ed19e4c4ab3221953a0002000000000000000000a4",
-      "weeklyBeetsAmountFromGauge": "7755",
-      "weeklyBeetsAmountFromMD": "4504",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "4653"
-    },
-    {
-      "poolName": "scETH/scUSD-ECLP-MD",
-      "poolId": "0xe7734b495a552ab6f4c78406e672cca7175181e10002000000000000000000c5",
-      "weeklyBeetsAmountFromGauge": "3257",
-      "weeklyBeetsAmountFromMD": "1892",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "1955"
-    },
-    {
-      "poolName": "USDC/WETH-ECLP-MD",
-      "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7",
-      "weeklyBeetsAmountFromGauge": "5228",
-      "weeklyBeetsAmountFromMD": "3037",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "3137"
-    },
-    {
-      "poolName": "scUSD/stS-ECLP-MD",
-      "poolId": "0xcf5d1864ab01b50c6e94adde80d5ec264c93f4910002000000000000000000bb",
-      "weeklyBeetsAmountFromGauge": "4536",
-      "weeklyBeetsAmountFromMD": "2634",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "2722"
-    },
-    {
-      "poolName": "wS/USDC-ECLP-MD2",
-      "poolId": "0x1dcc33704eb019ba2ace6705210195babf138a0e0002000000000000000000ef",
-      "weeklyBeetsAmountFromGauge": "15510",
-      "weeklyBeetsAmountFromMD": "9007",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "9307"
-    },
-    {
-      "poolName": "scETH/scUSD-ECLP-MD2",
-      "poolId": "0xde3ce359bd99ddffd2b16d2ce56593f84f4fd2c80002000000000000000000eb",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/WETH-ECLP-MD2",
-      "poolId": "0x96471ade87a33a0cf5c16192acb1d069339637210002000000000000000000ec",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scUSD/stS-ECLP-MD2",
-      "poolId": "0xcca2a4d06dd8c9954478f1258981632094337f440002000000000000000000ed",
-      "weeklyBeetsAmountFromGauge": "9071",
-      "weeklyBeetsAmountFromMD": "5269",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "5443"
-    },
-    {
-      "poolName": "scETH/scUSD-ECLP-MD3",
-      "poolId": "0xbcda4860646e315d48625446efae96cd00d569230002000000000000000000b8",
-      "weeklyBeetsAmountFromGauge": "6515",
-      "weeklyBeetsAmountFromMD": "3784",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "3909"
-    },
-    {
-      "poolName": "USDC/WETH-ECLP-MD3",
-      "poolId": "0xeceabd67b0f236fe57f61e619d91e4b223eb75d20002000000000000000000bc",
-      "weeklyBeetsAmountFromGauge": "10456",
-      "weeklyBeetsAmountFromMD": "6073",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "6274"
-    },
-    {
-      "poolName": "sGEM1/stS-Weighted-0x0f14",
-      "poolId": "0x0f1406e982470be0e44726c72577556591aff0af",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "424",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "sTequila/SHOB/Smoke/SGirls/SPUB/SCARTEL/stS-Weighted-0x9d4b",
-      "poolId": "0x9d4bbf5363c722c0c083da1d1cdd6b64f17bd236000100000000000000000068",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "BOL/MCLB/stS-Weighted-0xb246",
-      "poolId": "0xb246d02278834c4c67b5b4db17288d9469e3c34700010000000000000000009b",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "59",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/WBTC/USDC/wOS/wstkscUSD/stS-Weighted-0xc9fc",
-      "poolId": "0xc9fc8ec06bdbf7d5430f4f7e7ab82c4cc91f1f22",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "819",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "SMILK/SPUB/SCARTEL/stS-Weighted-0x1114",
-      "poolId": "0x11149341f7e7fbc19cfdd08efadacd01375d85cd00010000000000000000006a",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "Blaze/stS-Weighted-0xf953",
-      "poolId": "0xf9539b51160d0153a7419cad1b08138b53681cff000200000000000000000051",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "GOGLZ/BRUSH/stS-Weighted-0x5f41",
-      "poolId": "0x5f41a9647c898f325a85b8007a71c109e5cfe07800010000000000000000008d",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "118",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "GOGLZ/stS-Weighted-0xd9af",
-      "poolId": "0xd9af65f7e05d26a50c2ccdd5d800309fd84b980e",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "220",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "Shilly/stS-Weighted-0xe835",
-      "poolId": "0xe835ad9c248539a69d5160b9b66a10d2edab05fd000200000000000000000046",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "815",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/USDC/BEETS/stS/RELIC-Weighted-0xdf49",
-      "poolId": "0xdf49944d79b4032e244063ebfe413a3179d6b2e7000100000000000000000084",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "ws/stS-Weighted-0x0a94",
-      "poolId": "0x0a94f879b8187264059b47992db64fcf341925d6000200000000000000000083",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "26",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "stS/fBOMB/RELIC-Weighted-0x11a9",
-      "poolId": "0x11a94af5ffefa1ff1b338cc6da9f03238e8989040001000000000000000000e1",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "0",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/scETH/Blaze/scBTC/stS-Weighted-0x03fa",
-      "poolId": "0x03fa5d39901be372628dceb8d97bf7713a32f1f3",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "16",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "BRUSH/stS-Weighted-0x0569",
-      "poolId": "0x05692c8e1cca82ed91346f9e499bbb9e7a62b542",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "20",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/USDC/BRUSH/stS-Weighted-0x18e7",
-      "poolId": "0x18e744f95f1f39ca4e47414423f24611e13173be",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "48",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "BRUSH/stS-Weighted-0x264d",
-      "poolId": "0x264dd74acb854a4215963862c2ceb5379d37c56b",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "36",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "wS/WAGMI/USDC/Anon/stS-Weighted-0xa824",
-      "poolId": "0xa824d44f4cab40bcbe7d39f899b510cde58d69a9",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "180",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "scETH/WETH/stS-Weighted-0x642f",
-      "poolId": "0x642fa7f9c3479d85c9cc3516e564fa62739eae96",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "73",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "RUGGIE/stS-Weighted-0x0054",
-      "poolId": "0x0054b73c676222ff5285a2ef92e3aa2b846f143800020000000000000000006e",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "35",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "x33/stS-Weighted-0x0e91",
-      "poolId": "0x0e91b60c04a2313dad1a097c13c43088fc8ddf24",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "521",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "Anon/stS-Weighted-0x992e",
-      "poolId": "0x992e0dbec5cf64c20b544f9a59f4af721ef78c28",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "100",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "USDC/BEETS/Anon/BRUSH/stS-Weighted-0xe4ea",
-      "poolId": "0xe4ead0fc94175912e782ff5f25b66ea1f8f05cf1",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "242",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "WBTC/WETH/USDC/stS-Boosted-0x6dad",
-      "poolId": "0x6dada303ff381b8a2c898b573b6151d15c165923",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "133",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "WBTC/JOINT/stS-Weighted-0x7714",
-      "poolId": "0x77145426ec35409d49c2324cfba1a9140801aa44",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "64",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "INTERN/stS-Weighted-0xe440",
-      "poolId": "0xe440f53e077350b50976ac9bdbb0c54c9a3fa8610002000000000000000000fb",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "57",
-      "weeklyFragmentsRewards": "0"
-    },
-    {
-      "poolName": "JOINT/BRUSH/stS-Weighted-0x9d40",
-      "poolId": "0x9d400e457bbe5fd0594513bf1ef4a3a3d31f7c40",
-      "weeklyBeetsAmountFromGauge": "0",
-      "weeklyBeetsAmountFromMD": "0",
-      "weeklyStSRewards": "0",
-      "weeklyStSRewardsFromSeasons": "10",
-      "weeklyFragmentsRewards": "0"
-    }
-  ]
+    "beetsToDistribute": "420000",
+    "startTimestamp": 1747814400,
+    "endTimestamp": 1748289600,
+    "snapshotBlock": 28082317,
+    "gauges": [
+        {
+            "poolName": "wS/stS-Stable-0x3746",
+            "poolId": "0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/scUSD-Stable-0xcd4d",
+            "poolId": "0xcd4d2b142235d5650ffa6a38787ed0b7d7a51c0c000000000000000000000037",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scUSD/stS-Weighted-0x25ca",
+            "poolId": "0x25ca5451cd5a50ab1d324b5e64f32c0799661891000200000000000000000018",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/stS-Weighted-0x713f",
+            "poolId": "0x713fb5036dc70012588d77a5b066f1dd05c712d7000200000000000000000041",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/wETH-Stable-0xe54d",
+            "poolId": "0xe54dd58a6d4e04687f2034dd4ddab49da55f8aff00000000000000000000007c",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "DEUS/stS-Weighted-0x322d",
+            "poolId": "0x322dc65f89569ac510fa3949651790da5871195c000200000000000000000075",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "fSONIC/stS-Weighted-0xb26c",
+            "poolId": "0xb26ca1112424828f454b942638e2ba84774897e3000200000000000000000043",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "MOON/WETH/stS-Weighted-0x6d2b",
+            "poolId": "0x6d2bb32a231c2cb5ccb4f59b8e9957a794086aa8000100000000000000000074",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "SPOOH/SBEER/SPUB/SCARTEL/stS-Weighted-0x9a76",
+            "poolId": "0x9a76795584d6ab6b7444df4fc3bf69355f541d9800010000000000000000006b",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "fBUX/stS-Weighted-0x3ec8",
+            "poolId": "0x3ec8254006658e11f9ab5eaf92d64f8528d09057000200000000000000000056",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/scETH/LUDWIG-Weighted-0xce2f",
+            "poolId": "0xce2f25747f06a9673128bb8a84da3b6e45347d61000100000000000000000080",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "ECO/stS-Weighted-0x7121",
+            "poolId": "0x7121d4ce0825c1a5c530641d122fe560f3efb2f700020000000000000000005d",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/F/scUSD/stS-Weighted-0x32ba",
+            "poolId": "0x32bac522c4f97f4913d18d81cf3be119c8cce26a000100000000000000000050",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "CONK/stS-Weighted-0x9d63",
+            "poolId": "0x9d63f74df451bd64bb5a757c9fe52128448fcab2000200000000000000000053",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BEETS/stS/LUDWIG-Weighted-0x21fe",
+            "poolId": "0x21fed4063bf8ebf4f51f4adf4ecfc9717aa4ca9d000100000000000000000044",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scUSD/BRUSH-Weighted-0xc5ab",
+            "poolId": "0xc5ab8d98f959453e416b2f15848a02cc99bc695e000200000000000000000022",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/GOGLZ/scUSD/stS-Weighted-0x2fc1",
+            "poolId": "0x2fc17bdea0a3d2164a7ff63cbc32de2dbba88756000100000000000000000087",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/SILO-Weighted-0xc595",
+            "poolId": "0xc5954b1b9df8a0c0b7788d2cc2bc18d4bae9b0c2000200000000000000000099",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/scUSD-Boosted-0x4302",
+            "poolId": "0x43026d483f42fb35efe03c20b251142d022783f2",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "solvBTC.BBN/solvBTC-Boosted-0xd5ab",
+            "poolId": "0xd5ab187442998f1a62ea58133a03050691a0c280",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/SolvBTC-Weighted-0xf48c",
+            "poolId": "0xf48c8841d697587570b6b1f872ea82fceb1e6e66",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "fMULTI/MCLB/stS-Weighted-0x1576",
+            "poolId": "0x15761307e86baf700f29052e357a88f49b33b1b400010000000000000000009a",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wOS/stS-Stable-0xd2ef",
+            "poolId": "0xd2efc016650695c56b514d6a2133ad85afb86d8a00000000000000000000009e",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "Moist/SURV/stS-Weighted-0xd049",
+            "poolId": "0xd0490815a1715e0bb2a1d673bcda8ca567579dd7000100000000000000000066",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/anS-Boosted-0x944d",
+            "poolId": "0x944d4ae892de4bfd38742cc8295d6d5164c5593c",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/scBTC/scUSD/stS-Weighted-0xbd4a",
+            "poolId": "0xbd4a2ecdcd7acb0d2b20744ac4cc1368dd8fdc410001000000000000000000a8",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BeetsFragmentsS1/stS-Weighted-0xf115",
+            "poolId": "0xf115635b3322fb07d28941530d013992b3911d9b0002000000000000000000ce",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scBTC/LBTC-ECLP-0x8395",
+            "poolId": "0x83952912178aa33c3853ee5d942c96254b235dcc0002000000000000000000ab",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BeetsFragmentsS1/stS-Weighted-0xf633",
+            "poolId": "0xf633a43e5ccf858a27dd1d74a23be15ea5aa28f30002000000000000000000c2",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/frxUSD-Boosted-0x3b57",
+            "poolId": "0x3b57c58440ebb220d4d11db087d884a387259cf0",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "stS/LUDWIG-Weighted-0xd287",
+            "poolId": "0xd2879b07eca1ccb84040c83ba2d31496642d566b",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/stS/RELIC-Weighted-0xdc70",
+            "poolId": "0xdc7042df405e6fe00635eb0a5eac55a468b4fbd20001000000000000000000da",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "stS/fBOMB-Weighted-0x70c2",
+            "poolId": "0x70c27b84b54727af2a794e90a30acf682527a3b00002000000000000000000cc",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/wstkscUSD/scUSD-Boosted-0x54Ca",
+            "poolId": "0x54ca9aad90324c022bbed0a94b7380c03aa5884a",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "WETH/scETH/wstkscETH-Boosted-0x8620",
+            "poolId": "0x8620fcf1abdf72d35a0577e0bc9653e1f088fc34",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/wS-Boosted-0x7d83",
+            "poolId": "0x7d836813d1d0b710979f2747c071eac8e8693198",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "stS/wS-Boosted-0xf686",
+            "poolId": "0xf6862d5a5521c1ca2f41b8ce94f124b2df7090e2",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "SHADOW/stS-Weighted-0xeb8e",
+            "poolId": "0xeb8e5df1bf89572ec110ab1aa2f3e99a15842e4c",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scBTC/scETH/USDC/LUDWIG-Boosted-0xf76d",
+            "poolId": "0xf76d92673ddef0d7da60b14a317b7d25aabfa1b3",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BEETS/BeetsFragmentsS1-Weighted-0x39cd",
+            "poolId": "0x39cd1c424feac34081a4dbb9749c5954429540b8",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/USDC-ECLP-MD",
+            "poolId": "0xfc127dfc32b7739a7cfff7ed19e4c4ab3221953a0002000000000000000000a4",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/scUSD-ECLP-MD",
+            "poolId": "0xe7734b495a552ab6f4c78406e672cca7175181e10002000000000000000000c5",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/WETH-ECLP-MD",
+            "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scUSD/stS-ECLP-MD",
+            "poolId": "0xcf5d1864ab01b50c6e94adde80d5ec264c93f4910002000000000000000000bb",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/USDC-ECLP-MD2",
+            "poolId": "0x1dcc33704eb019ba2ace6705210195babf138a0e0002000000000000000000ef",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/scUSD-ECLP-MD2",
+            "poolId": "0xde3ce359bd99ddffd2b16d2ce56593f84f4fd2c80002000000000000000000eb",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/WETH-ECLP-MD2",
+            "poolId": "0x96471ade87a33a0cf5c16192acb1d069339637210002000000000000000000ec",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scUSD/stS-ECLP-MD2",
+            "poolId": "0xcca2a4d06dd8c9954478f1258981632094337f440002000000000000000000ed",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/scUSD-ECLP-MD3",
+            "poolId": "0xbcda4860646e315d48625446efae96cd00d569230002000000000000000000b8",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/WETH-ECLP-MD3",
+            "poolId": "0xeceabd67b0f236fe57f61e619d91e4b223eb75d20002000000000000000000bc",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "sGEM1/stS-Weighted-0x0f14",
+            "poolId": "0x0f1406e982470be0e44726c72577556591aff0af",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "sTequila/SHOB/Smoke/SGirls/SPUB/SCARTEL/stS-Weighted-0x9d4b",
+            "poolId": "0x9d4bbf5363c722c0c083da1d1cdd6b64f17bd236000100000000000000000068",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BOL/MCLB/stS-Weighted-0xb246",
+            "poolId": "0xb246d02278834c4c67b5b4db17288d9469e3c34700010000000000000000009b",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/WBTC/USDC/wOS/wstkscUSD/stS-Weighted-0xc9fc",
+            "poolId": "0xc9fc8ec06bdbf7d5430f4f7e7ab82c4cc91f1f22",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "SMILK/SPUB/SCARTEL/stS-Weighted-0x1114",
+            "poolId": "0x11149341f7e7fbc19cfdd08efadacd01375d85cd00010000000000000000006a",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "Blaze/stS-Weighted-0xf953",
+            "poolId": "0xf9539b51160d0153a7419cad1b08138b53681cff000200000000000000000051",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "GOGLZ/BRUSH/stS-Weighted-0x5f41",
+            "poolId": "0x5f41a9647c898f325a85b8007a71c109e5cfe07800010000000000000000008d",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "GOGLZ/stS-Weighted-0xd9af",
+            "poolId": "0xd9af65f7e05d26a50c2ccdd5d800309fd84b980e",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "Shilly/stS-Weighted-0xe835",
+            "poolId": "0xe835ad9c248539a69d5160b9b66a10d2edab05fd000200000000000000000046",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/USDC/BEETS/stS/RELIC-Weighted-0xdf49",
+            "poolId": "0xdf49944d79b4032e244063ebfe413a3179d6b2e7000100000000000000000084",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "ws/stS-Weighted-0x0a94",
+            "poolId": "0x0a94f879b8187264059b47992db64fcf341925d6000200000000000000000083",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "stS/fBOMB/RELIC-Weighted-0x11a9",
+            "poolId": "0x11a94af5ffefa1ff1b338cc6da9f03238e8989040001000000000000000000e1",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "USDC/scETH/Blaze/scBTC/stS-Weighted-0x03fa",
+            "poolId": "0x03fa5d39901be372628dceb8d97bf7713a32f1f3",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BRUSH/stS-Weighted-0x0569",
+            "poolId": "0x05692c8e1cca82ed91346f9e499bbb9e7a62b542",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/USDC/BRUSH/stS-Weighted-0x18e7",
+            "poolId": "0x18e744f95f1f39ca4e47414423f24611e13173be",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "BRUSH/stS-Weighted-0x264d",
+            "poolId": "0x264dd74acb854a4215963862c2ceb5379d37c56b",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "wS/WAGMI/USDC/Anon/stS-Weighted-0xa824",
+            "poolId": "0xa824d44f4cab40bcbe7d39f899b510cde58d69a9",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "scETH/WETH/stS-Weighted-0x642f",
+            "poolId": "0x642fa7f9c3479d85c9cc3516e564fa62739eae96",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "RUGGIE/stS-Weighted-0x0054",
+            "poolId": "0x0054b73c676222ff5285a2ef92e3aa2b846f143800020000000000000000006e",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "x33/stS-Weighted-0x0e91",
+            "poolId": "0x0e91b60c04a2313dad1a097c13c43088fc8ddf24",
+            "onSnapshot": true
+        },
+        {
+            "poolName": "Anon/stS-Weighted-0x992e",
+            "poolId": "0x992e0dbec5cf64c20b544f9a59f4af721ef78c28",
+            "onSnapshot": true
+        }
+    ]
 }
