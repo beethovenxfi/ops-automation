@@ -9,6 +9,7 @@ on:
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GRAPH_KEY: ${{ secrets.GRAPH_KEY }}
 
 jobs:
     generatePayload:
