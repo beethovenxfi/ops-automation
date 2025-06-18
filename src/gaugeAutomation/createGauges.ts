@@ -6,6 +6,7 @@ import { sonic } from 'viem/chains';
 import gaugeFactoryAbi from '../abi/GaugeFactoryAbi';
 import { GaugeData, getGaugesForPools } from '../helpers/utils';
 import { GAUGE_FACTORY } from '../helpers/constants';
+import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
@@ -15,11 +16,9 @@ async function run(): Promise<void> {
     }
 
     try {
-        const gaugeData: GaugeData = JSON.parse(
-            fs.readFileSync(`./src/gaugeAutomation/gauge-data/${endTime}.json`, 'utf-8'),
-        ) as GaugeData;
+        const rows = await readGaugeDataFromGoogleSheet();
 
-        const poolData = await getGaugesForPools(gaugeData.gauges.map((gauge) => gauge.poolId.toLowerCase()));
+        const poolData = await getGaugesForPools(rows.map((gauge) => gauge.poolId.toLowerCase()));
 
         const key = process.env.UPDATER_WALLET! as `0x${string}`;
         const account = privateKeyToAccount(key);
