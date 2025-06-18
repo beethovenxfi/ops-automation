@@ -1,11 +1,6 @@
 name: Voting - 2 - Create missing gauges for pools
 
-on:
-    workflow_dispatch:
-        inputs:
-            vote_end_timestamp:
-                description: 'The timestamp of the end of the vote'
-                require: true
+on: workflow_dispatch
 env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
 
