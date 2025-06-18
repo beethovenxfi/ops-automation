@@ -1,0 +1,188 @@
+{
+  "beetsToDistribute": "420000",
+  "startTimestamp": 1750320000,
+  "endTimestamp": 1750708800,
+  "snapshotBlock": 34582091,
+  "gauges": [
+    {
+      "poolName": "wS/stS-Stable-0x3746",
+      "poolId": "0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006"
+    },
+    {
+      "poolName": "USDC/scUSD-Stable-0xcd4d",
+      "poolId": "0xcd4d2b142235d5650ffa6a38787ed0b7d7a51c0c000000000000000000000037"
+    },
+    {
+      "poolName": "scUSD/stS-Weighted-0x25ca",
+      "poolId": "0x25ca5451cd5a50ab1d324b5e64f32c0799661891000200000000000000000018"
+    },
+    {
+      "poolName": "USDC/stS-Weighted-0x713f",
+      "poolId": "0x713fb5036dc70012588d77a5b066f1dd05c712d7000200000000000000000041"
+    },
+    {
+      "poolName": "scETH/wETH-Stable-0xe54d",
+      "poolId": "0xe54dd58a6d4e04687f2034dd4ddab49da55f8aff00000000000000000000007c"
+    },
+    {
+      "poolName": "DEUS/stS-Weighted-0x322d",
+      "poolId": "0x322dc65f89569ac510fa3949651790da5871195c000200000000000000000075"
+    },
+    {
+      "poolName": "fSONIC/stS-Weighted-0xb26c",
+      "poolId": "0xb26ca1112424828f454b942638e2ba84774897e3000200000000000000000043"
+    },
+    {
+      "poolName": "MOON/WETH/stS-Weighted-0x6d2b",
+      "poolId": "0x6d2bb32a231c2cb5ccb4f59b8e9957a794086aa8000100000000000000000074"
+    },
+    {
+      "poolName": "SPOOH/SBEER/SPUB/SCARTEL/stS-Weighted-0x9a76",
+      "poolId": "0x9a76795584d6ab6b7444df4fc3bf69355f541d9800010000000000000000006b"
+    },
+    {
+      "poolName": "fBUX/stS-Weighted-0x3ec8",
+      "poolId": "0x3ec8254006658e11f9ab5eaf92d64f8528d09057000200000000000000000056"
+    },
+    {
+      "poolName": "USDC/scETH/LUDWIG-Weighted-0xce2f",
+      "poolId": "0xce2f25747f06a9673128bb8a84da3b6e45347d61000100000000000000000080"
+    },
+    {
+      "poolName": "ECO/stS-Weighted-0x7121",
+      "poolId": "0x7121d4ce0825c1a5c530641d122fe560f3efb2f700020000000000000000005d"
+    },
+    {
+      "poolName": "scETH/F/scUSD/stS-Weighted-0x32ba",
+      "poolId": "0x32bac522c4f97f4913d18d81cf3be119c8cce26a000100000000000000000050"
+    },
+    {
+      "poolName": "CONK/stS-Weighted-0x9d63",
+      "poolId": "0x9d63f74df451bd64bb5a757c9fe52128448fcab2000200000000000000000053"
+    },
+    {
+      "poolName": "BEETS/stS/LUDWIG-Weighted-0x21fe",
+      "poolId": "0x21fed4063bf8ebf4f51f4adf4ecfc9717aa4ca9d000100000000000000000044"
+    },
+    {
+      "poolName": "scUSD/BRUSH-Weighted-0xc5ab",
+      "poolId": "0xc5ab8d98f959453e416b2f15848a02cc99bc695e000200000000000000000022"
+    },
+    {
+      "poolName": "scETH/GOGLZ/scUSD/stS-Weighted-0x2fc1",
+      "poolId": "0x2fc17bdea0a3d2164a7ff63cbc32de2dbba88756000100000000000000000087"
+    },
+    {
+      "poolName": "wS/SILO-Weighted-0xc595",
+      "poolId": "0xc5954b1b9df8a0c0b7788d2cc2bc18d4bae9b0c2000200000000000000000099"
+    },
+    {
+      "poolName": "USDC/scUSD-Boosted-0x4302",
+      "poolId": "0x43026d483f42fb35efe03c20b251142d022783f2"
+    },
+    {
+      "poolName": "solvBTC.BBN/solvBTC-Boosted-0xd5ab",
+      "poolId": "0xd5ab187442998f1a62ea58133a03050691a0c280"
+    },
+    {
+      "poolName": "USDC/SolvBTC-Weighted-0xf48c",
+      "poolId": "0xf48c8841d697587570b6b1f872ea82fceb1e6e66"
+    },
+    {
+      "poolName": "fMULTI/MCLB/stS-Weighted-0x1576",
+      "poolId": "0x15761307e86baf700f29052e357a88f49b33b1b400010000000000000000009a"
+    },
+    {
+      "poolName": "wOS/stS-Stable-0xd2ef",
+      "poolId": "0xd2efc016650695c56b514d6a2133ad85afb86d8a00000000000000000000009e"
+    },
+    {
+      "poolName": "Moist/SURV/stS-Weighted-0xd049",
+      "poolId": "0xd0490815a1715e0bb2a1d673bcda8ca567579dd7000100000000000000000066"
+    },
+    {
+      "poolName": "wS/anS-Boosted-0x944d",
+      "poolId": "0x944d4ae892de4bfd38742cc8295d6d5164c5593c"
+    },
+    {
+      "poolName": "scETH/scBTC/scUSD/stS-Weighted-0xbd4a",
+      "poolId": "0xbd4a2ecdcd7acb0d2b20744ac4cc1368dd8fdc410001000000000000000000a8"
+    },
+    {
+      "poolName": "scBTC/LBTC-ECLP-0x8395",
+      "poolId": "0x83952912178aa33c3853ee5d942c96254b235dcc0002000000000000000000ab"
+    },
+    {
+      "poolName": "USDC/frxUSD-Boosted-0x3b57",
+      "poolId": "0x3b57c58440ebb220d4d11db087d884a387259cf0"
+    },
+    {
+      "poolName": "stS/LUDWIG-Weighted-0xd287",
+      "poolId": "0xd2879b07eca1ccb84040c83ba2d31496642d566b"
+    },
+    {
+      "poolName": "USDC/stS/RELIC-Weighted-0xdc70",
+      "poolId": "0xdc7042df405e6fe00635eb0a5eac55a468b4fbd20001000000000000000000da"
+    },
+    {
+      "poolName": "stS/fBOMB-Weighted-0x70c2",
+      "poolId": "0x70c27b84b54727af2a794e90a30acf682527a3b00002000000000000000000cc"
+    },
+    {
+      "poolName": "USDC/wstkscUSD/scUSD-Boosted-0x54Ca",
+      "poolId": "0x54ca9aad90324c022bbed0a94b7380c03aa5884a"
+    },
+    {
+      "poolName": "WETH/scETH/wstkscETH-Boosted-0x8620",
+      "poolId": "0x8620fcf1abdf72d35a0577e0bc9653e1f088fc34"
+    },
+    {
+      "poolName": "USDC/wS-Boosted-0x7d83",
+      "poolId": "0x7d836813d1d0b710979f2747c071eac8e8693198"
+    },
+    {
+      "poolName": "stS/wS-Boosted-0xf686",
+      "poolId": "0xf6862d5a5521c1ca2f41b8ce94f124b2df7090e2"
+    },
+    {
+      "poolName": "SHADOW/stS-Weighted-0xeb8e",
+      "poolId": "0xeb8e5df1bf89572ec110ab1aa2f3e99a15842e4c"
+    },
+    {
+      "poolName": "scBTC/scETH/USDC/LUDWIG-Boosted-0xf76d",
+      "poolId": "0xf76d92673ddef0d7da60b14a317b7d25aabfa1b3"
+    },
+    {
+      "poolName": "RUGGIE/stS-Weighted-0x0054",
+      "poolId": "0x0054b73c676222ff5285a2ef92e3aa2b846f143800020000000000000000006e"
+    },
+    {
+      "poolName": "USDC/FLY/stS-Weighted-0xa476",
+      "poolId": "0xa476b33460e792bac5cc294ba19f0543ab00dc01"
+    },
+    {
+      "poolName": "RZR/stS-Weighted-0x36e6",
+      "poolId": "0x36e6765907dd61b50ad33f79574dd1b63339b59c"
+    },
+    {
+      "poolName": "WBTC/JOINT/stS-Weighted-0x7714",
+      "poolId": "0x77145426ec35409d49c2324cfba1a9140801aa44"
+    },
+    {
+      "poolName": "wS/USDC-ECLP-MD",
+      "poolId": "0xfc127dfc32b7739a7cfff7ed19e4c4ab3221953a0002000000000000000000a4"
+    },
+    {
+      "poolName": "scETH/scUSD-ECLP-MD",
+      "poolId": "0xe7734b495a552ab6f4c78406e672cca7175181e10002000000000000000000c5"
+    },
+    {
+      "poolName": "USDC/WETH-ECLP-MD",
+      "poolId": "0x5485c26921e28830fbd7469442c0edad0e27e01c0002000000000000000000c7"
+    },
+    {
+      "poolName": "scUSD/stS-ECLP-MD",
+      "poolId": "0xcf5d1864ab01b50c6e94adde80d5ec264c93f4910002000000000000000000bb"
+    }
+  ]
+}
