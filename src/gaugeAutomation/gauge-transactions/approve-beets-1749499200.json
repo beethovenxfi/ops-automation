@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1749635770,
+  "createdAt": 1750252106,
   "meta": {
     "name": "Transactions Batch",
     "description": "Approving BEETS for gauges",
@@ -832,33 +832,8 @@
         "payable": false
       },
       "contractInputsValues": {
-        "spender": "0x0c7f2b3503ff6703beaccbfa028c52ccdc10f61e",
-        "amount": "7790000000000000000000"
-      }
-    },
-    {
-      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "payable": false
-      },
-      "contractInputsValues": {
         "spender": "0xb0406a4e9ba2a7932ec537ae44128230be305768",
-        "amount": "9109000000000000000000"
+        "amount": "8909000000000000000000"
       }
     },
     {
@@ -883,57 +858,7 @@
       },
       "contractInputsValues": {
         "spender": "0x6b913c7915479ab4f409f209f73ce44e467366ac",
-        "amount": "5545000000000000000000"
-      }
-    },
-    {
-      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "spender": "0x5b815f2a03bb579858aacbe2325c25b2c1aac9bc",
-        "amount": "2332000000000000000000"
-      }
-    },
-    {
-      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
-      "value": "0",
-      "data": null,
-      "contractMethod": {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "spender",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "approve",
-        "payable": false
-      },
-      "contractInputsValues": {
-        "spender": "0xefaaa08d0b925258667d193bd87b2a092df74f38",
-        "amount": "31158000000000000000000"
+        "amount": "5812000000000000000000"
       }
     },
     {
@@ -958,7 +883,7 @@
       },
       "contractInputsValues": {
         "spender": "0xd9958fb67ec37fe8cb8141632b367d87da2c92e8",
-        "amount": "9326000000000000000000"
+        "amount": "4158000000000000000000"
       }
     },
     {
@@ -983,7 +908,7 @@
       },
       "contractInputsValues": {
         "spender": "0xe515c5415755c7a1d58680eef23203b708863a44",
-        "amount": "18218000000000000000000"
+        "amount": "17818000000000000000000"
       }
     },
     {
@@ -1008,7 +933,57 @@
       },
       "contractInputsValues": {
         "spender": "0x012f384caba4e0ec5c88093e4325bf7108d219fa",
-        "amount": "11091000000000000000000"
+        "amount": "11424000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x3a3e52c72907983e860d6aed5457b0fd69a958bc",
+        "amount": "43223000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xf9893157c394e5bcee260987b5f70c842f3fcf25",
+        "amount": "3225000000000000000000"
       }
     },
     {
