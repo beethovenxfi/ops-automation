@@ -9,12 +9,6 @@ import { GAUGE_FACTORY } from '../helpers/constants';
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 
 async function run(): Promise<void> {
-    const endTime = process.env.VOTE_END_TIMESTAMP;
-    if (!endTime) {
-        core.setFailed('Missing required environment variable VOTE_END_TIMESTAMP');
-        return;
-    }
-
     try {
         const rows = await readGaugeDataFromGoogleSheet();
 
