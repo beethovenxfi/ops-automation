@@ -3,6 +3,8 @@ name: Voting - 2 - Create missing gauges for pools
 on: workflow_dispatch
 env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
+    GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
 jobs:
     createGauges:
@@ -20,5 +22,6 @@ jobs:
 
             - name: Create missing gauges
               env:
-                  VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
               run: bun ts-node ./src/gaugeAutomation/createGauges.ts
