@@ -142,10 +142,8 @@ export async function createTxnBatchForHiddenHandBribes(voteId: number, depositB
     }
 }
 
-export async function createTxnBatchForBeetsRewards(
-    voteId: number,
-    addRewardInput: AddRewardTxnInput[],
-): Promise<void> {
+export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[]): void {
+    const batchId = moment().unix(); // Using current timestamp as voteId, can be replaced with a specific vote ID if needed
     let gaugeAddMissingRewardTokensTxns: Transaction[] = [];
     let gaugeBeetsApprovalTxns: Transaction[] = [];
     let gaugeBeetsDepositTxns: Transaction[] = [];
@@ -243,7 +241,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/add-reward-tokens-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/add-reward-tokens-${batchId}.json`,
             JSON.stringify(transactionBatch, null, 2),
             function (err) {
                 if (err) {
@@ -272,7 +270,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/approve-beets-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/approve-beets-${batchId}.json`,
             JSON.stringify(approvalTransactionBatch, null, 2),
             function (err) {
                 if (err) {
@@ -297,7 +295,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/deposit-beets-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/deposit-beets-${batchId}.json`,
             JSON.stringify(depositTransactionBatch, null, 2),
             function (err) {
                 if (err) {
@@ -326,7 +324,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/approve-sts-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/approve-sts-${batchId}.json`,
             JSON.stringify(approvalTransactionBatch, null, 2),
             function (err) {
                 if (err) {
@@ -351,7 +349,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/deposit-sts-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/deposit-sts-${batchId}.json`,
             JSON.stringify(depositTransactionBatch, null, 2),
             function (err) {
                 if (err) {
@@ -380,7 +378,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/approve-fragments-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/approve-fragments-${batchId}.json`,
             JSON.stringify(approvalTransactionBatch, null, 2),
             function (err) {
                 if (err) {
@@ -405,7 +403,7 @@ export async function createTxnBatchForBeetsRewards(
         };
 
         fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/deposit-fragments-${voteId}.json`,
+            `./src/gaugeAutomation/gauge-transactions/deposit-fragments-${batchId}.json`,
             JSON.stringify(depositTransactionBatch, null, 2),
             function (err) {
                 if (err) {

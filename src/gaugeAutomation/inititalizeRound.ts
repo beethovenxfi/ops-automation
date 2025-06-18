@@ -41,13 +41,14 @@ async function run(): Promise<void> {
             startTimestamp,
             endTimestamp,
             snapshotBlock,
-            gauges: rows.map((row) => {
-                return {
-                    poolName: row.poolTokenName,
-                    poolId: row.poolId.toLowerCase(),
-                    onSnapshot: row.snapshot,
-                };
-            }),
+            gauges: rows
+                .filter((row) => row.snapshot)
+                .map((row) => {
+                    return {
+                        poolName: row.poolTokenName,
+                        poolId: row.poolId.toLowerCase(),
+                    };
+                }),
         };
 
         fs.writeFileSync(
@@ -55,9 +56,7 @@ async function run(): Promise<void> {
             JSON.stringify(gaugeDataForRound, null, 2),
         );
 
-        const snapshotChoices = gaugeDataForRound.gauges
-            .filter((gauge) => gauge.onSnapshot)
-            .map((gauge) => gauge.poolName);
+        const snapshotChoices = gaugeDataForRound.gauges.map((gauge) => gauge.poolName);
 
         await createSnapshot(startTimestamp, endTimestamp, snapshotBlock, snapshotChoices);
     } catch (error) {

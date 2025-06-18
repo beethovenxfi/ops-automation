@@ -1,20 +1,13 @@
 import * as core from '@actions/core';
-import * as fs from 'fs';
 import { createPublicClient, formatEther, http, parseEther } from 'viem';
 import { sonic } from 'viem/chains';
 import GaugeAbi from '../abi/GaugeAbi';
 import { AddRewardTxnInput, createTxnBatchForBeetsRewards } from '../helpers/createSafeTransaction';
-import { GaugeData, getGaugesForPools } from '../helpers/utils';
+import { getGaugesForPools } from '../helpers/utils';
 import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, LM_GAUGE_MSIG, STS_ADDRESS } from '../helpers/constants';
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 
 async function run(): Promise<void> {
-    const endTime = process.env.VOTE_END_TIMESTAMP;
-    if (!endTime) {
-        core.setFailed('Missing required environment variable VOTE_END_TIMESTAMP');
-        return;
-    }
-
     try {
         const gaugeData = await readGaugeDataFromGoogleSheet();
 
@@ -131,7 +124,6 @@ async function run(): Promise<void> {
             return;
         }
 
-        console.log(`Creating payload for ${endTime}`);
         console.log(`Total Beets from gauges: ${formatEther(totalGaugeBeetsAmount)}`);
         console.log(`Total Beets from MD: ${formatEther(totalMDBeetsAmount)}`);
         console.log(`Total Beets: ${formatEther(totalGaugeBeetsAmount + totalMDBeetsAmount)}`);
@@ -140,7 +132,7 @@ async function run(): Promise<void> {
         console.log(`Total Fragments rewards: ${formatEther(totalFragmentsRewardsAmount)}`);
 
         // build list of txns
-        createTxnBatchForBeetsRewards(parseFloat(endTime), roundInputs);
+        createTxnBatchForBeetsRewards(roundInputs);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }

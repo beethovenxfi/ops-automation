@@ -1,11 +1,6 @@
 name: Voting - 3 - Generate payload for Hiddenhand Beets bribes
 
-on:
-    workflow_dispatch:
-        inputs:
-            vote_end_timestamp:
-                description: 'The timestamp of the end of the vote'
-                require: true
+on: workflow_dispatch
 
 env:
     GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
@@ -27,7 +22,6 @@ jobs:
 
             - name: Generate HH payload
               env:
-                  VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
                   GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
                   GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
               run: bun ts-node ./src/gaugeAutomation/generateBribePayload.ts

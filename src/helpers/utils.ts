@@ -24,7 +24,6 @@ export type GaugeData = {
     gauges: {
         poolName: string;
         poolId: string;
-        onSnapshot: boolean;
     }[];
 };
 
