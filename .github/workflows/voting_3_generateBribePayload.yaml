@@ -1,11 +1,11 @@
 name: Voting - 3 - Generate payload for Hiddenhand Beets bribes
 
 on:
-workflow_dispatch:
-    inputs:
-        vote_end_timestamp:
-            description: 'The timestamp of the end of the vote'
-            require: true
+    workflow_dispatch:
+        inputs:
+            vote_end_timestamp:
+                description: 'The timestamp of the end of the vote'
+                require: true
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
