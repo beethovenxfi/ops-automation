@@ -29,6 +29,8 @@ jobs:
             - name: Calculate BEETS distribution
               env:
                   VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
               run: bun ts-node ./src/gaugeAutomation/calculateRound.ts
 
             - name: Create PR
