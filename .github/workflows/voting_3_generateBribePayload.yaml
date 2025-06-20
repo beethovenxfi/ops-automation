@@ -32,3 +32,13 @@ jobs:
                   GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
                   VOTE_END_TIMESTAMP: ${{ github.event.inputs.vote_end_timestamp }}
               run: bun ts-node ./src/gaugeAutomation/generateBribePayload.ts
+
+            - name: Create PR
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  commit-message: 'Inititalize new gauge epoch'
+                  title: 'Hiddenhand payload for round ${{ github.event.inputs.vote_end_timestamp }}'
+                  assignees: Ardordocc
+                  branch: hh-payload
+                  delete-branch: true
+                  labels: 'Automated PR'
