@@ -1,0 +1,215 @@
+{
+  "version": "1.0",
+  "chainId": "146",
+  "createdAt": 1751355980,
+  "meta": {
+    "name": "Transactions Batch",
+    "description": "Withdrawing fees from the fee controller to sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c",
+    "txBuilderVersion": "1.18.0",
+    "createdFromSafeAddress": "0x26377CAB961c84F2d7b9d9e36D296a1C1c77C995",
+    "createdFromOwnerAddress": "",
+    "checksum": "0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3"
+  },
+  "transactions": [
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfc40e13b9981631bd8c9e59141f0028ef0e65490",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfc5c07589d35eda8bd90636ddcb0245640213c69",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfc8a4b4d755bad0a7a9c4bc9f49f14a702889f1d",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfd9d98528a6ba5bd7986ec8e3233406f2ef00547",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfeadc96d80582e8e4a98089f692e345e976b8f91",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfecb48befd582d1cc4e89839d398f282300cda96",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfeeeb04cb25ff068b257830d583c175b1753b178",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    },
+    {
+      "to": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pool",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "withdrawProtocolFees",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "pool": "0xfefbe7a981be55c431f0aca4593f631c26d30564",
+        "recipient": "sonic:0x693f30c37D5a0Db9258C636E93Ccf011ACd8c90c"
+      }
+    }
+  ]
+}
