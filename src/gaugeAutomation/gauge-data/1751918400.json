@@ -37,10 +37,6 @@
       "poolId": "0x6d2bb32a231c2cb5ccb4f59b8e9957a794086aa8000100000000000000000074"
     },
     {
-      "poolName": "SPOOH/SBEER/SPUB/SCARTEL/stS-Weighted-0x9a76",
-      "poolId": "0x9a76795584d6ab6b7444df4fc3bf69355f541d9800010000000000000000006b"
-    },
-    {
       "poolName": "fBUX/stS-Weighted-0x3ec8",
       "poolId": "0x3ec8254006658e11f9ab5eaf92d64f8528d09057000200000000000000000056"
     },
@@ -167,6 +163,14 @@
     {
       "poolName": "WBTC/JOINT/stS-Weighted-0x7714",
       "poolId": "0x77145426ec35409d49c2324cfba1a9140801aa44"
+    },
+    {
+      "poolName": "SBEER/stS-Weighted-0x31c3",
+      "poolId": "0x31c3e0dc54274cc36389420b1d7044064c76c773"
+    },
+    {
+      "poolName": "scUSD/USDC-Boosted-0x5103",
+      "poolId": "0x5103ea917605463fc497396ba89d6732ce4b2d70"
     },
     {
       "poolName": "wS/USDC-ECLP-MD",
