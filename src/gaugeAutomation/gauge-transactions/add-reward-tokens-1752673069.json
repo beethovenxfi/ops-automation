@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "chainId": "146",
+  "createdAt": 1752673069,
+  "meta": {
+    "name": "Transactions Batch",
+    "description": "Add reward tokens to gauges",
+    "txBuilderVersion": "1.18.0",
+    "createdFromSafeAddress": "0x97079F7E04B535FE7cD3f972Ce558412dFb33946",
+    "createdFromOwnerAddress": "",
+    "checksum": "0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3"
+  },
+  "transactions": [
+    {
+      "to": "0xbb80c5e4d6786c97a94843ef83d8bcffd952a839",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_distributor",
+            "type": "address"
+          }
+        ],
+        "name": "add_reward",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_distributor": "0x97079F7E04B535FE7cD3f972Ce558412dFb33946"
+      }
+    },
+    {
+      "to": "0x5fda48f5d8aa3b8a63c91b530f7c2a38ed2904a0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_distributor",
+            "type": "address"
+          }
+        ],
+        "name": "add_reward",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_distributor": "0x97079F7E04B535FE7cD3f972Ce558412dFb33946"
+      }
+    },
+    {
+      "to": "0xaac72afacbd15bc1f0fc5bc4d4433543cd139f26",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_distributor",
+            "type": "address"
+          }
+        ],
+        "name": "add_reward",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_distributor": "0x97079F7E04B535FE7cD3f972Ce558412dFb33946"
+      }
+    }
+  ]
+}
