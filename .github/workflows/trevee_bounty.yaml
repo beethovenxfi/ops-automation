@@ -1,0 +1,58 @@
+name: Add Trevee Bounty
+
+on:
+    workflow_dispatch:
+        inputs:
+            amount:
+                description: 'The amount for the bounty (excl. fees)'
+                require: true
+            market:
+                description: 'Market for the bounty'
+                require: true
+                default: 'veUSD'
+                type: choice
+                options:
+                    - veUSD
+                    - veETH
+            minRewardPerVote:
+                description: 'Minimum reward per vote'
+                require: true
+            maxRewardPerVote:
+                description: 'Maximum reward per vote'
+                require: true
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+    initEpoch:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Generate Payload For Trevee Bounty
+              env:
+                  AMOUNT: ${{ github.event.inputs.amount }}
+                  MARKET: ${{ github.event.inputs.market }}
+                  MIN_REWARD_PER_VOTE: ${{ github.event.inputs.minRewardPerVote }}
+                  MAX_REWARD_PER_VOTE: ${{ github.event.inputs.maxRewardPerVote }}
+
+              run: bun ts-node ./src/treveeBounty/generateBountyPayload.ts
+
+            - name: Create PR
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  commit-message: 'Bounty Payload for Trevee'
+                  title: 'Initialize new Trevee bounty for ${{ github.event.inputs.market }} with ${{ github.event.inputs.amount }}'
+                  assignees: Ardordocc
+                  branch: init-trevee-bounty-${{ github.event.inputs.market }}
+                  delete-branch: true
+                  labels: 'Automated PR'
