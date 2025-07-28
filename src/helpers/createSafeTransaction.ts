@@ -8,8 +8,12 @@ import {
     HIDDEN_HAND_VAULT,
     LM_GAUGE_MSIG,
     REVENUE_MSIG,
+    SCETH,
+    SCUSD,
     STS_ADDRESS,
 } from './constants';
+import { min } from 'lodash';
+import { parseUnits } from 'ethers';
 
 interface SafeTransactionBatch {
     version: string;
@@ -58,6 +62,17 @@ export interface ContractInputsValues {
     _token?: string;
     _maxTokensPerVote?: string;
     _periods?: string;
+    gauge?: string;
+    rewardToken?: string;
+    startNextPeriod?: string;
+    duration?: string;
+    minRewardPerVote?: string;
+    maxRewardPerVote?: string;
+    totalRewardAmount?: string;
+    feeAmount?: string;
+    voterList?: string;
+    voteType?: string;
+    closeType?: string;
 }
 
 export interface AddRewardTxnInput {
@@ -415,6 +430,143 @@ export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[
         console.log(`No gauge deposit beets transactions found`);
     }
 }
+
+export function createTxnForTreveeBounty(
+    marketAddress: string,
+    bountyTokenAddress: string,
+    amount: string,
+    minRewardPerVote: string,
+    maxRewardPerVote: string,
+) {
+    const decimals = bountyTokenAddress === SCETH ? 18 : 6;
+    const feeAmount = (parseFloat(amount) * 0.04).toFixed(decimals);
+    const feeAmountInWei = parseUnits(feeAmount, decimals).toString();
+    const bountyAmountInWei = parseUnits(amount, decimals).toString();
+    const amountInWei = parseUnits(amount, decimals).toString();
+    const totalAmountInWei = (BigInt(amountInWei) + BigInt(feeAmountInWei)).toString();
+    const minRewardPerVoteInWei = parseUnits(minRewardPerVote, decimals).toString();
+    const maxRewardPerVoteInWei = parseUnits(maxRewardPerVote, decimals).toString();
+
+    const bountyTxns: Transaction[] = [];
+
+    // add the approval
+    bountyTxns.push({
+        to: bountyTokenAddress,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                {
+                    internalType: 'address',
+                    name: 'spender',
+                    type: 'address',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'amount',
+                    type: 'uint256',
+                },
+            ],
+            name: 'approve',
+            payable: false,
+        },
+        contractInputsValues: {
+            spender: marketAddress,
+            amount: totalAmountInWei,
+        },
+    });
+
+    // add the deposit bounty transaction
+    bountyTxns.push({
+        to: marketAddress,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                { internalType: 'address', name: 'gauge', type: 'address' },
+                {
+                    internalType: 'address',
+                    name: 'rewardToken',
+                    type: 'address',
+                },
+                { internalType: 'bool', name: 'startNextPeriod', type: 'bool' },
+                { internalType: 'uint48', name: 'duration', type: 'uint48' },
+                {
+                    internalType: 'uint256',
+                    name: 'minRewardPerVote',
+                    type: 'uint256',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'maxRewardPerVote',
+                    type: 'uint256',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'totalRewardAmount',
+                    type: 'uint256',
+                },
+                { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
+                {
+                    internalType: 'enum QuestDataTypes.QuestVoteType',
+                    name: 'voteType',
+                    type: 'uint8',
+                },
+                {
+                    internalType: 'enum QuestDataTypes.QuestCloseType',
+                    name: 'closeType',
+                    type: 'uint8',
+                },
+                {
+                    internalType: 'uint256[]',
+                    name: 'voterList',
+                    type: 'uint256[]',
+                },
+            ],
+            name: 'createRangedQuest',
+            payable: false,
+        },
+        contractInputsValues: {
+            gauge: '0xc5E0250037195850E4D987CA25d6ABa68ef5fEe8',
+            rewardToken: bountyTokenAddress,
+            startNextPeriod: 'false',
+            duration: '1',
+            minRewardPerVote: minRewardPerVoteInWei,
+            maxRewardPerVote: maxRewardPerVoteInWei,
+            totalRewardAmount: bountyAmountInWei,
+            feeAmount: feeAmountInWei,
+            voteType: '0',
+            closeType: '0',
+            voterList: '[]',
+        },
+    });
+
+    const transactionBatch: SafeTransactionBatch = {
+        version: '1.0',
+        chainId: '146',
+        createdAt: moment().unix(),
+        meta: {
+            name: 'Transactions Batch',
+            description: 'Add bounty for Trevee',
+            txBuilderVersion: '1.18.0',
+            createdFromSafeAddress: LM_GAUGE_MSIG,
+            createdFromOwnerAddress: '',
+            checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+        },
+        transactions: bountyTxns,
+    };
+
+    fs.writeFile(
+        `./src/treveeBounty/bounty-transactions/add-bounty-${bountyTokenAddress}-${moment().unix()}.json`,
+        JSON.stringify(transactionBatch, null, 2),
+        function (err) {
+            if (err) {
+                throw err;
+            }
+        },
+    );
+}
+
 function generateRewardTokenDepositInput(
     gaugeAddress: string,
     rewardTokenAddress: string,
