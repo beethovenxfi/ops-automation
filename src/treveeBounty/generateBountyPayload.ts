@@ -1,25 +1,34 @@
 import * as core from '@actions/core';
-import { SCETH, SCUSD, VEETH_MARKET, VEUSD_MARKET } from '../helpers/constants';
 import { createTxnForTreveeBounty } from '../helpers/createSafeTransaction';
 
 async function run(): Promise<void> {
     try {
-        const amount = process.env.AMOUNT;
-        const market = process.env.MARKET;
-        const minRewardPerVote = process.env.MIN_REWARD_PER_VOTE;
-        const maxRewardPerVote = process.env.MAX_REWARD_PER_VOTE;
+        const amountUsd = process.env.AMOUNT_USD;
+        const minRewardPerVoteUsd = process.env.MIN_REWARD_PER_VOTE_USD;
+        const maxRewardPerVoteUsd = process.env.MAX_REWARD_PER_VOTE_USD;
+        const amountEth = process.env.AMOUNT_ETH;
+        const minRewardPerVoteEth = process.env.MIN_REWARD_PER_VOTE_ETH;
+        const maxRewardPerVoteEth = process.env.MAX_REWARD_PER_VOTE_ETH;
 
-        if (!amount || !market || !minRewardPerVote || !maxRewardPerVote) {
+        if (
+            !amountUsd ||
+            !minRewardPerVoteUsd ||
+            !maxRewardPerVoteUsd ||
+            !amountEth ||
+            !minRewardPerVoteEth ||
+            !maxRewardPerVoteEth
+        ) {
             core.setFailed('Missing required environment variables');
             return;
         }
 
         createTxnForTreveeBounty(
-            market === 'veUSD' ? VEUSD_MARKET : VEETH_MARKET,
-            market === 'veUSD' ? SCUSD : SCETH,
-            amount,
-            minRewardPerVote,
-            maxRewardPerVote,
+            amountUsd,
+            minRewardPerVoteUsd,
+            maxRewardPerVoteUsd,
+            amountEth,
+            minRewardPerVoteEth,
+            maxRewardPerVoteEth,
         );
     } catch (error) {
         console.log(`error creating trevee bounty: `, error);

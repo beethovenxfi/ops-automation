@@ -3,22 +3,23 @@ name: Trevee - Generate Bounty Payload
 on:
     workflow_dispatch:
         inputs:
-            amount:
-                description: 'The amount for the bounty (excl. fees)'
+            amountUsd:
+                description: 'The scUSD amount for the bounty (excl. fees)'
                 require: true
-            market:
-                description: 'Market for the bounty'
+            minRewardPerVoteUsd:
+                description: 'Minimum reward per vote for veUSD'
                 require: true
-                default: 'veUSD'
-                type: choice
-                options:
-                    - veUSD
-                    - veETH
-            minRewardPerVote:
-                description: 'Minimum reward per vote'
+            maxRewardPerVoteUsd:
+                description: 'Maximum reward per vote for veUSD'
                 require: true
-            maxRewardPerVote:
-                description: 'Maximum reward per vote'
+            amountEth:
+                description: 'The scETH amount for the bounty (excl. fees)'
+                require: true
+            minRewardPerVoteEth:
+                description: 'Minimum reward per vote for veETH'
+                require: true
+            maxRewardPerVoteEth:
+                description: 'Maximum reward per vote for veETH'
                 require: true
 
 env:
@@ -40,10 +41,12 @@ jobs:
 
             - name: Generate Payload For Trevee Bounty
               env:
-                  AMOUNT: ${{ github.event.inputs.amount }}
-                  MARKET: ${{ github.event.inputs.market }}
-                  MIN_REWARD_PER_VOTE: ${{ github.event.inputs.minRewardPerVote }}
-                  MAX_REWARD_PER_VOTE: ${{ github.event.inputs.maxRewardPerVote }}
+                  AMOUNT_USD: ${{ github.event.inputs.amountUsd }}
+                  MIN_REWARD_PER_VOTE_USD: ${{ github.event.inputs.minRewardPerVoteUsd }}
+                  MAX_REWARD_PER_VOTE_USD: ${{ github.event.inputs.maxRewardPerVoteUsd }}
+                  AMOUNT_ETH: ${{ github.event.inputs.amountEth }}
+                  MIN_REWARD_PER_VOTE_ETH: ${{ github.event.inputs.minRewardPerVoteEth }}
+                  MAX_REWARD_PER_VOTE_ETH: ${{ github.event.inputs.maxRewardPerVoteEth }}
 
               run: bun ts-node ./src/treveeBounty/generateBountyPayload.ts
 

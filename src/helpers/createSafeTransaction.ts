@@ -11,6 +11,8 @@ import {
     SCETH,
     SCUSD,
     STS_ADDRESS,
+    VEETH_MARKET,
+    VEUSD_MARKET,
 } from './constants';
 import { min } from 'lodash';
 import { parseUnits } from 'ethers';
@@ -432,26 +434,32 @@ export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[
 }
 
 export function createTxnForTreveeBounty(
-    marketAddress: string,
-    bountyTokenAddress: string,
-    amount: string,
-    minRewardPerVote: string,
-    maxRewardPerVote: string,
+    amountUsd: string,
+    minRewardPerVoteUsd: string,
+    maxRewardPerVoteUsd: string,
+    amountEth: string,
+    minRewardPerVoteEth: string,
+    maxRewardPerVoteEth: string,
 ) {
-    const decimals = bountyTokenAddress === SCETH ? 18 : 6;
-    const feeAmount = (parseFloat(amount) * 0.04).toFixed(decimals);
-    const feeAmountInWei = parseUnits(feeAmount, decimals).toString();
-    const bountyAmountInWei = parseUnits(amount, decimals).toString();
-    const amountInWei = parseUnits(amount, decimals).toString();
-    const totalAmountInWei = (BigInt(amountInWei) + BigInt(feeAmountInWei)).toString();
-    const minRewardPerVoteInWei = parseUnits(minRewardPerVote, decimals).toString();
-    const maxRewardPerVoteInWei = parseUnits(maxRewardPerVote, decimals).toString();
+    const amountUsdInWei = parseUnits(amountUsd, 6);
+    const minRewardPerVoteUsdInWei = parseUnits(minRewardPerVoteUsd, 6);
+    const maxRewardPerVoteUsdInWei = parseUnits(maxRewardPerVoteUsd, 6);
+    const feeAmountUsd = (parseFloat(amountUsd) * 0.04).toFixed(6);
+    const feeAmountUsdInWei = parseUnits(feeAmountUsd, 6).toString();
+    const totalAmountUsdInWei = amountUsdInWei + feeAmountUsdInWei;
+
+    const amountEthInWei = parseEther(amountEth);
+    const minRewardPerVoteEthInWei = parseEther(minRewardPerVoteEth);
+    const maxRewardPerVoteEthInWei = parseEther(maxRewardPerVoteEth);
+    const feeAmountEth = (parseFloat(amountEth) * 0.04).toFixed(18);
+    const feeAmountEthInWei = parseEther(feeAmountEth).toString();
+    const totalAmountEthInWei = amountEthInWei + feeAmountEthInWei;
 
     const bountyTxns: Transaction[] = [];
 
-    // add the approval
+    // add the approvals
     bountyTxns.push({
-        to: bountyTokenAddress,
+        to: SCUSD,
         value: '0',
         data: null,
         contractMethod: {
@@ -471,14 +479,39 @@ export function createTxnForTreveeBounty(
             payable: false,
         },
         contractInputsValues: {
-            spender: marketAddress,
-            amount: totalAmountInWei,
+            spender: VEUSD_MARKET,
+            amount: totalAmountUsdInWei,
+        },
+    });
+    bountyTxns.push({
+        to: SCETH,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                {
+                    internalType: 'address',
+                    name: 'spender',
+                    type: 'address',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'amount',
+                    type: 'uint256',
+                },
+            ],
+            name: 'approve',
+            payable: false,
+        },
+        contractInputsValues: {
+            spender: VEETH_MARKET,
+            amount: totalAmountEthInWei,
         },
     });
 
-    // add the deposit bounty transaction
+    // add the deposit bounty transactions
     bountyTxns.push({
-        to: marketAddress,
+        to: VEUSD_MARKET,
         value: '0',
         data: null,
         contractMethod: {
@@ -528,13 +561,77 @@ export function createTxnForTreveeBounty(
         },
         contractInputsValues: {
             gauge: '0xc5E0250037195850E4D987CA25d6ABa68ef5fEe8',
-            rewardToken: bountyTokenAddress,
+            rewardToken: SCUSD,
             startNextPeriod: 'false',
             duration: '1',
-            minRewardPerVote: minRewardPerVoteInWei,
-            maxRewardPerVote: maxRewardPerVoteInWei,
-            totalRewardAmount: bountyAmountInWei,
-            feeAmount: feeAmountInWei,
+            minRewardPerVote: minRewardPerVoteUsdInWei.toString(),
+            maxRewardPerVote: maxRewardPerVoteUsdInWei.toString(),
+            totalRewardAmount: totalAmountUsdInWei.toString(),
+            feeAmount: feeAmountUsdInWei.toString(),
+            voteType: '0',
+            closeType: '0',
+            voterList: '[]',
+        },
+    });
+
+    bountyTxns.push({
+        to: VEETH_MARKET,
+        value: '0',
+        data: null,
+        contractMethod: {
+            inputs: [
+                { internalType: 'address', name: 'gauge', type: 'address' },
+                {
+                    internalType: 'address',
+                    name: 'rewardToken',
+                    type: 'address',
+                },
+                { internalType: 'bool', name: 'startNextPeriod', type: 'bool' },
+                { internalType: 'uint48', name: 'duration', type: 'uint48' },
+                {
+                    internalType: 'uint256',
+                    name: 'minRewardPerVote',
+                    type: 'uint256',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'maxRewardPerVote',
+                    type: 'uint256',
+                },
+                {
+                    internalType: 'uint256',
+                    name: 'totalRewardAmount',
+                    type: 'uint256',
+                },
+                { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
+                {
+                    internalType: 'enum QuestDataTypes.QuestVoteType',
+                    name: 'voteType',
+                    type: 'uint8',
+                },
+                {
+                    internalType: 'enum QuestDataTypes.QuestCloseType',
+                    name: 'closeType',
+                    type: 'uint8',
+                },
+                {
+                    internalType: 'uint256[]',
+                    name: 'voterList',
+                    type: 'uint256[]',
+                },
+            ],
+            name: 'createRangedQuest',
+            payable: false,
+        },
+        contractInputsValues: {
+            gauge: '0xc5E0250037195850E4D987CA25d6ABa68ef5fEe8',
+            rewardToken: SCETH,
+            startNextPeriod: 'false',
+            duration: '1',
+            minRewardPerVote: minRewardPerVoteEthInWei.toString(),
+            maxRewardPerVote: maxRewardPerVoteEthInWei.toString(),
+            totalRewardAmount: totalAmountEthInWei.toString(),
+            feeAmount: feeAmountEthInWei.toString(),
             voteType: '0',
             closeType: '0',
             voterList: '[]',
@@ -557,7 +654,7 @@ export function createTxnForTreveeBounty(
     };
 
     fs.writeFile(
-        `./src/treveeBounty/bounty-transactions/add-bounty-${bountyTokenAddress}-${moment().unix()}.json`,
+        `./src/treveeBounty/bounty-transactions/add-bounty-${moment().unix()}.json`,
         JSON.stringify(transactionBatch, null, 2),
         function (err) {
             if (err) {
