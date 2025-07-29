@@ -54,8 +54,8 @@ jobs:
               uses: peter-evans/create-pull-request@v5
               with:
                   commit-message: 'Bounty Payload for Trevee'
-                  title: 'New Trevee bounty for ${{ github.event.inputs.market }} with ${{ github.event.inputs.amount }}'
+                  title: 'New Trevee bounty'
                   assignees: Ardordocc
-                  branch: init-trevee-bounty-${{ github.event.inputs.market }}
+                  branch: init-trevee-bounty
                   delete-branch: true
                   labels: 'Automated PR'
