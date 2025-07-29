@@ -445,14 +445,14 @@ export function createTxnForTreveeBounty(
     const minRewardPerVoteUsdInWei = parseUnits(minRewardPerVoteUsd, 6);
     const maxRewardPerVoteUsdInWei = parseUnits(maxRewardPerVoteUsd, 6);
     const feeAmountUsd = (parseFloat(amountUsd) * 0.04).toFixed(6);
-    const feeAmountUsdInWei = parseUnits(feeAmountUsd, 6).toString();
+    const feeAmountUsdInWei = parseUnits(feeAmountUsd, 6);
     const totalAmountUsdInWei = amountUsdInWei + feeAmountUsdInWei;
 
     const amountEthInWei = parseEther(amountEth);
     const minRewardPerVoteEthInWei = parseEther(minRewardPerVoteEth);
     const maxRewardPerVoteEthInWei = parseEther(maxRewardPerVoteEth);
     const feeAmountEth = (parseFloat(amountEth) * 0.04).toFixed(18);
-    const feeAmountEthInWei = parseEther(feeAmountEth).toString();
+    const feeAmountEthInWei = parseEther(feeAmountEth);
     const totalAmountEthInWei = amountEthInWei + feeAmountEthInWei;
 
     const bountyTxns: Transaction[] = [];
@@ -480,7 +480,7 @@ export function createTxnForTreveeBounty(
         },
         contractInputsValues: {
             spender: VEUSD_MARKET,
-            amount: totalAmountUsdInWei,
+            amount: totalAmountUsdInWei.toString(),
         },
     });
     bountyTxns.push({
@@ -505,7 +505,7 @@ export function createTxnForTreveeBounty(
         },
         contractInputsValues: {
             spender: VEETH_MARKET,
-            amount: totalAmountEthInWei,
+            amount: totalAmountEthInWei.toString(),
         },
     });
 
