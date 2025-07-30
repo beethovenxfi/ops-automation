@@ -441,19 +441,19 @@ export function createTxnForTreveeBounty(
     minRewardPerVoteEth: string,
     maxRewardPerVoteEth: string,
 ) {
-    const amountUsdInWei = parseUnits(amountUsd, 6);
+    const bountyAmountUsdInWei = parseUnits(amountUsd, 6);
     const minRewardPerVoteUsdInWei = parseUnits(minRewardPerVoteUsd, 6);
     const maxRewardPerVoteUsdInWei = parseUnits(maxRewardPerVoteUsd, 6);
     const feeAmountUsd = parseFloat(amountUsd) * 0.04;
     const feeAmountUsdInWei = parseUnits(feeAmountUsd.toString(), 6);
-    const totalAmountUsdInWei = amountUsdInWei + feeAmountUsdInWei;
+    const totalAmountUsdInWei = bountyAmountUsdInWei + feeAmountUsdInWei;
 
-    const amountEthInWei = parseEther(amountEth);
+    const bountyAmountEthInWei = parseEther(amountEth);
     const minRewardPerVoteEthInWei = parseEther(minRewardPerVoteEth);
     const maxRewardPerVoteEthInWei = parseEther(maxRewardPerVoteEth);
     const feeAmountEth = parseFloat(amountEth) * 0.04;
     const feeAmountEthInWei = parseEther(feeAmountEth.toString());
-    const totalAmountEthInWei = amountEthInWei + feeAmountEthInWei;
+    const totalAmountEthInWei = bountyAmountEthInWei + feeAmountEthInWei;
 
     const bountyTxns: Transaction[] = [];
 
@@ -566,7 +566,7 @@ export function createTxnForTreveeBounty(
             duration: '1',
             minRewardPerVote: minRewardPerVoteUsdInWei.toString(),
             maxRewardPerVote: maxRewardPerVoteUsdInWei.toString(),
-            totalRewardAmount: totalAmountUsdInWei.toString(),
+            totalRewardAmount: bountyAmountUsdInWei.toString(),
             feeAmount: feeAmountUsdInWei.toString(),
             voteType: '0',
             closeType: '0',
@@ -630,7 +630,7 @@ export function createTxnForTreveeBounty(
             duration: '1',
             minRewardPerVote: minRewardPerVoteEthInWei.toString(),
             maxRewardPerVote: maxRewardPerVoteEthInWei.toString(),
-            totalRewardAmount: totalAmountEthInWei.toString(),
+            totalRewardAmount: bountyAmountEthInWei.toString(),
             feeAmount: feeAmountEthInWei.toString(),
             voteType: '0',
             closeType: '0',
