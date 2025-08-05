@@ -10,6 +10,13 @@ async function run(): Promise<void> {
         const minRewardPerVoteEth = process.env.MIN_REWARD_PER_VOTE_ETH;
         const maxRewardPerVoteEth = process.env.MAX_REWARD_PER_VOTE_ETH;
 
+        // const amountUsd = '2459'; // Example value, replace with actual environment variable
+        // const minRewardPerVoteUsd = '0.0032'; // Example value, replace with actual environment variable
+        // const maxRewardPerVoteUsd = '0.0044'; // Example value, replace with actual environment variable
+        // const amountEth = '0.5893'; // Example value, replace with actual environment variable
+        // const minRewardPerVoteEth = '0.0046'; // Example value, replace with actual environment variable
+        // const maxRewardPerVoteEth = '0.0062'; // Example value, replace with actual environment variable
+
         if (
             !amountUsd ||
             !minRewardPerVoteUsd ||

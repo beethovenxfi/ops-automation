@@ -444,15 +444,13 @@ export function createTxnForTreveeBounty(
     const bountyAmountUsdInWei = parseUnits(amountUsd, 6);
     const minRewardPerVoteUsdInWei = parseUnits(minRewardPerVoteUsd, 6);
     const maxRewardPerVoteUsdInWei = parseUnits(maxRewardPerVoteUsd, 6);
-    const feeAmountUsd = parseFloat(amountUsd) * 0.04;
-    const feeAmountUsdInWei = parseUnits(feeAmountUsd.toString(), 6);
+    const feeAmountUsdInWei = (bountyAmountUsdInWei * 4n) / 100n; // 4% fee
     const totalAmountUsdInWei = bountyAmountUsdInWei + feeAmountUsdInWei;
 
     const bountyAmountEthInWei = parseEther(amountEth);
     const minRewardPerVoteEthInWei = parseEther(minRewardPerVoteEth);
     const maxRewardPerVoteEthInWei = parseEther(maxRewardPerVoteEth);
-    const feeAmountEth = parseFloat(amountEth) * 0.04;
-    const feeAmountEthInWei = parseEther(feeAmountEth.toString());
+    const feeAmountEthInWei = (bountyAmountEthInWei * 4n) / 100n; // 4% fee
     const totalAmountEthInWei = bountyAmountEthInWei + feeAmountEthInWei;
 
     const bountyTxns: Transaction[] = [];
