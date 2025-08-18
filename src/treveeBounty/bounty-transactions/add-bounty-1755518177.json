@@ -1,0 +1,223 @@
+{
+  "version": "1.0",
+  "chainId": "146",
+  "createdAt": 1755518177,
+  "meta": {
+    "name": "Transactions Batch",
+    "description": "Add bounty for Trevee",
+    "txBuilderVersion": "1.18.0",
+    "createdFromSafeAddress": "0x97079F7E04B535FE7cD3f972Ce558412dFb33946",
+    "createdFromOwnerAddress": "",
+    "checksum": "0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3"
+  },
+  "transactions": [
+    {
+      "to": "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xA04A36614e4C1Eb8cc0137d6d34eaAc963167828",
+        "amount": "2861040000"
+      }
+    },
+    {
+      "to": "0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xc20824bEd473525bA640f6c2Ae5D89469636DDCb",
+        "amount": "26312000000000000"
+      }
+    },
+    {
+      "to": "0xA04A36614e4C1Eb8cc0137d6d34eaAc963167828",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "gauge",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "rewardToken",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "startNextPeriod",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint48",
+            "name": "duration",
+            "type": "uint48"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minRewardPerVote",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "maxRewardPerVote",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalRewardAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "feeAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum QuestDataTypes.QuestVoteType",
+            "name": "voteType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum QuestDataTypes.QuestCloseType",
+            "name": "closeType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "voterList",
+            "type": "uint256[]"
+          }
+        ],
+        "name": "createRangedQuest",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "gauge": "0xc5E0250037195850E4D987CA25d6ABa68ef5fEe8",
+        "rewardToken": "0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE",
+        "startNextPeriod": "false",
+        "duration": "1",
+        "minRewardPerVote": "3730",
+        "maxRewardPerVote": "5090",
+        "totalRewardAmount": "2751000000",
+        "feeAmount": "110040000",
+        "voteType": "0",
+        "closeType": "0",
+        "voterList": "[]"
+      }
+    },
+    {
+      "to": "0xc20824bEd473525bA640f6c2Ae5D89469636DDCb",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "gauge",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "rewardToken",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "startNextPeriod",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint48",
+            "name": "duration",
+            "type": "uint48"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minRewardPerVote",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "maxRewardPerVote",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalRewardAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "feeAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum QuestDataTypes.QuestVoteType",
+            "name": "voteType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum QuestDataTypes.QuestCloseType",
+            "name": "closeType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "voterList",
+            "type": "uint256[]"
+          }
+        ],
+        "name": "createRangedQuest",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "gauge": "0xc5E0250037195850E4D987CA25d6ABa68ef5fEe8",
+        "rewardToken": "0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812",
+        "startNextPeriod": "false",
+        "duration": "1",
+        "minRewardPerVote": "200000000000000",
+        "maxRewardPerVote": "270000000000000",
+        "totalRewardAmount": "25300000000000000",
+        "feeAmount": "1012000000000000",
+        "voteType": "0",
+        "closeType": "0",
+        "voterList": "[]"
+      }
+    }
+  ]
+}
