@@ -1,8 +1,8 @@
 name: Fee - 1 - Collect Fees from pools to controller
 
 on:
-    schedule:
-        - cron: '0 0 * * *' # Runs at midnight every day
+    # schedule:
+    #     - cron: '0 0 * * *' # Runs at midnight every day
     workflow_dispatch:
 
 env:
