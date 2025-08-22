@@ -1,4 +1,4 @@
-name: Voting - 5 - Generate Reward Transaction Data
+name: NEW Voting - 5 - Generate Reward Transaction Data
 
 on: workflow_dispatch
 

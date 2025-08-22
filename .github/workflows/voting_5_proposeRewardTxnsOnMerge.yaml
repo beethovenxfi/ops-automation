@@ -1,4 +1,4 @@
-name: Voting - 5 - Generate payload for a week of rewards
+name: On Merge - Generate payload for a week of rewards
 
 on:
     pull_request:
@@ -13,7 +13,7 @@ env:
 
 jobs:
     propose_reward_txns:
-        if: github.event.pull_request.merged == true
+        # if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
