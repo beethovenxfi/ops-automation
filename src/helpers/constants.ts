@@ -1,3 +1,5 @@
+import path from 'path';
+
 export const FIRST_GAUGE_VOTE_DAY = '2025-01-16';
 
 export const TWO_WEEKS_IN_SECONDS = 60 * 60 * 24 * 14;
@@ -35,3 +37,5 @@ export const VEETH_MARKET = '0xc20824bEd473525bA640f6c2Ae5D89469636DDCb';
 
 export const SCUSD = '0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE';
 export const SCETH = '0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812';
+
+export const GAUGE_REWARD_CSV_PATH = path.join('src', 'gaugeAutomation', 'payload-data', `gauge-rewards.csv`);

@@ -5,6 +5,9 @@
     "license": "MIT",
     "dependencies": {
         "@actions/core": "^1.11.1",
+        "@safe-global/api-kit": "^4.0.0",
+        "@safe-global/protocol-kit": "^6.1.0",
+        "@safe-global/types-kit": "^3.0.0",
         "@snapshot-labs/snapshot.js": "^0.12.51",
         "@types/node": "^22.10.5",
         "dotenv": "^16.4.7",
@@ -18,5 +21,14 @@
     "devDependencies": {
         "ts-node": "^10.9.2",
         "@types/lodash": "^4.17.15"
+    },
+    "scripts": {
+        "generate-payload-data": "ts-node src/gaugeAutomation/generatePayloadData.ts",
+        "generate-bribe-data": "ts-node src/gaugeAutomation/generateBribeData.ts",
+        "propose-from-csv": "ts-node src/gaugeAutomation/proposeFromCsv.ts",
+        "propose-bribes-from-csv": "ts-node src/gaugeAutomation/proposeBribesFromCsv.ts",
+        "generate-payload-legacy": "ts-node src/gaugeAutomation/generatePayload.ts",
+        "generate-bribe-payload-legacy": "ts-node src/gaugeAutomation/generateBribePayload.ts",
+        "generate-bounty-payload": "ts-node src/treveeBounty/generateBountyPayload.ts"
     }
 }
