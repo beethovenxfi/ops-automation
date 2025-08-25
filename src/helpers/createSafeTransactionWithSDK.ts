@@ -50,7 +50,7 @@ class SafeTransactionProposer {
         this.config = config;
         this.apiKit = new SafeApiKit({
             chainId: config.chainId,
-            ...(config.apiKey && { apiKey: config.apiKey }),
+            txServiceUrl: 'https://safe-transaction-sonic.safe.global',
         });
     }
 

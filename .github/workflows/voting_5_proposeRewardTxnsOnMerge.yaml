@@ -1,6 +1,7 @@
 name: 999 - On Merge - Generate payload for a week of rewards
 
 on:
+    workflow_dispatch:
     pull_request:
         types:
             - closed
