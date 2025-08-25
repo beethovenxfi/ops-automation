@@ -698,7 +698,7 @@ export async function proposeTransaction(
 ): Promise<number> {
     const protocolKit = await Safe.init({
         provider: process.env.RPC_URL || 'https://rpc.soniclabs.com',
-        signer: process.env.PROPOSER_WALLET,
+        signer: process.env.SAFE_PROPOSER_WALLET,
         safeAddress,
     });
 

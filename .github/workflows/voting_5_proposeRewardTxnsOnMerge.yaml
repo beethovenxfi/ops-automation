@@ -8,7 +8,8 @@ on:
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
+    SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
+    SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
 
 jobs:
     proposeRewardTxns:
@@ -27,5 +28,6 @@ jobs:
 
             - name: Generate msig txns
               env:
-                  PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
+                  SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
+                  SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
               run: bun ts-node ./src/gaugeAutomation/proposeRewardTransactions.ts
