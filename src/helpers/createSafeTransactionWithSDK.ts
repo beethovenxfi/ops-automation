@@ -12,6 +12,7 @@ import {
     SCETH,
     SCUSD,
     STS_ADDRESS,
+    TEST_PROPOSE_MSIG,
     TREASURY_MSIG,
     VEETH_MARKET,
     VEUSD_MARKET,
@@ -411,7 +412,7 @@ export async function proposeHiddenHandBribesWithSDK(
 export async function proposeBeetsRewardsWithSDK(addRewardInput: AddRewardTxnInput[]): Promise<string[]> {
     const config: SafeSDKConfig = {
         chainId: 146n, // Sonic chain ID
-        safeAddress: LM_GAUGE_MSIG,
+        safeAddress: TEST_PROPOSE_MSIG,
         privateKey: process.env.PROPOSER_WALLET || '',
     };
 
