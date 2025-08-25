@@ -57,7 +57,7 @@ class SafeTransactionProposer {
     private async initializeProtocolKit(): Promise<void> {
         if (!this.protocolKit) {
             this.protocolKit = await Safe.init({
-                provider: process.env.RPC_URL || 'https://rpc.sonic.fantom.network',
+                provider: process.env.RPC_URL || 'https://rpc.soniclabs.com',
                 signer: this.config.privateKey,
                 safeAddress: this.config.safeAddress,
             });
