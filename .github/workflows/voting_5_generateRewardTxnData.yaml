@@ -1,4 +1,4 @@
-name: NEW Voting - 5 - Generate Reward Transaction Data
+name: Voting NEW - 5 - Generate Reward Transaction Data
 
 on: workflow_dispatch
 
@@ -32,4 +32,4 @@ jobs:
                   assignees: Ardordocc
                   branch: reward-payload/generate-payload
                   delete-branch: true
-                  labels: 'Automated PR'
+                  labels: 'weekly-rewards'

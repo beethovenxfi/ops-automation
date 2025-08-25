@@ -1,11 +1,9 @@
-name: On Merge - Generate payload for a week of rewards
+name: 999 - On Merge - Generate payload for a week of rewards
 
 on:
     pull_request:
         types:
             - closed
-        # branches:
-        #     - 'reward-payload/**'
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -13,7 +11,7 @@ env:
 
 jobs:
     propose_reward_txns:
-        # if: github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true && ${{ github.event.label.name == 'weekly-rewards' }}
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
