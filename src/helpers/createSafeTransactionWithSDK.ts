@@ -12,6 +12,7 @@ import {
     SCETH,
     SCUSD,
     STS_ADDRESS,
+    TREASURY_MSIG,
     VEETH_MARKET,
     VEUSD_MARKET,
 } from './constants';
@@ -400,8 +401,7 @@ export async function proposeHiddenHandBribesWithSDK(
     const config: SafeSDKConfig = {
         chainId: 146n, // Sonic chain ID
         safeAddress: REVENUE_MSIG,
-        privateKey: process.env.PRIVATE_KEY || '',
-        apiKey: process.env.SAFE_API_KEY,
+        privateKey: process.env.PROPOSER_WALLET || '',
     };
 
     const proposer = new SafeTransactionProposer(config);
@@ -412,8 +412,7 @@ export async function proposeBeetsRewardsWithSDK(addRewardInput: AddRewardTxnInp
     const config: SafeSDKConfig = {
         chainId: 146n, // Sonic chain ID
         safeAddress: LM_GAUGE_MSIG,
-        privateKey: process.env.PRIVATE_KEY || '',
-        apiKey: process.env.SAFE_API_KEY,
+        privateKey: process.env.PROPOSER_WALLET || '',
     };
 
     const proposer = new SafeTransactionProposer(config);
@@ -430,9 +429,8 @@ export async function proposeTreveeBountyWithSDK(
 ): Promise<string> {
     const config: SafeSDKConfig = {
         chainId: 146n, // Sonic chain ID
-        safeAddress: LM_GAUGE_MSIG,
-        privateKey: process.env.PRIVATE_KEY || '',
-        apiKey: process.env.SAFE_API_KEY,
+        safeAddress: TREASURY_MSIG,
+        privateKey: process.env.PROPOSER_WALLET || '',
     };
 
     const proposer = new SafeTransactionProposer(config);

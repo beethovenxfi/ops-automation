@@ -14,6 +14,7 @@ import {
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 import fs from 'fs';
 import path from 'path';
+import { createTxnBatchForBeetsRewards } from '../helpers/createSafeTransactionJson';
 
 interface PayloadDataRow {
     poolId: string;
@@ -202,6 +203,9 @@ async function run(): Promise<void> {
 
         fs.writeFileSync(csvPath, csvHeader + csvContent);
         console.log(`Generated payload data CSV: ${csvPath}`);
+
+        // create txn payload nevertheless
+        await createTxnBatchForBeetsRewards(roundInputs);
 
         if (hasWrongDistributor) {
             core.setFailed('Some gauges have wrong distributor.');

@@ -105,12 +105,12 @@ async function run(): Promise<void> {
         console.log(`Total Fragments: ${totalFragments.toString()}`);
 
         // Propose transactions using Safe SDK
-        // const txHashes = await proposeBeetsRewardsWithSDK(roundInputs);
+        const txHashes = await proposeBeetsRewardsWithSDK(roundInputs);
 
-        // console.log(`Successfully proposed ${txHashes.length} transaction batches:`);
-        // txHashes.forEach((hash, index) => {
-        //     console.log(`  ${index + 1}. ${hash}`);
-        // });
+        console.log(`Successfully proposed ${txHashes.length} transaction batches:`);
+        txHashes.forEach((hash, index) => {
+            console.log(`  ${index + 1}. ${hash}`);
+        });
     } catch (error) {
         console.error('Error proposing transactions from CSV:', error);
         if (error instanceof Error) core.setFailed(error.message);

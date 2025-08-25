@@ -14,7 +14,6 @@ import {
     VEETH_MARKET,
     VEUSD_MARKET,
 } from './constants';
-import { min } from 'lodash';
 import { parseUnits } from 'ethers';
 
 interface SafeTransactionBatch {
