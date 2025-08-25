@@ -1,4 +1,4 @@
-name: Voting NEW - 5 - Generate Reward Transaction Data
+name: Voting - 5 - Generate Weekly Reward Transaction Data
 
 on: workflow_dispatch
 
@@ -8,7 +8,7 @@ env:
     GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
 jobs:
-    generatePayload:
+    generateRewardPayload:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout

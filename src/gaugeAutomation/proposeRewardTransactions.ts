@@ -1,9 +1,12 @@
 import * as core from '@actions/core';
 import { parseEther } from 'viem';
-import { AddRewardTxnInput, proposeBeetsRewardsWithSDK } from '../helpers/createSafeTransactionWithSDK';
 import fs from 'fs';
-import path from 'path';
-import { GAUGE_REWARD_CSV_PATH } from '../helpers/constants';
+import { GAUGE_REWARD_CSV_PATH, LM_GAUGE_MSIG } from '../helpers/constants';
+import {
+    AddRewardTxnInput,
+    createTxnBatchForWeeklyRewards,
+    proposeTransaction,
+} from '../helpers/createSafeTransactionJson';
 
 interface PayloadDataRow {
     poolId: string;
@@ -91,26 +94,26 @@ async function run(): Promise<void> {
         // Calculate totals for logging
         let totalBeets = 0n;
         let totalStS = 0n;
-        let totalFragments = 0n;
 
         for (const input of roundInputs) {
             totalBeets += input.beetsAmountInWei;
             totalStS += input.stSAmountInWei;
-            totalFragments += input.fragmentsAmountInWei;
         }
 
         console.log(`Proposing transactions for ${roundInputs.length} gauges:`);
         console.log(`Total BEETS: ${totalBeets.toString()}`);
         console.log(`Total stS: ${totalStS.toString()}`);
-        console.log(`Total Fragments: ${totalFragments.toString()}`);
 
         // Propose transactions using Safe SDK
-        const txHashes = await proposeBeetsRewardsWithSDK(roundInputs);
+        const batches = await createTxnBatchForWeeklyRewards(roundInputs, false);
+        let useNonce = undefined;
+        for (const batch of batches) {
+            // Propose each batch using Safe SDK
+            const nonce = await proposeTransaction(LM_GAUGE_MSIG, batch, useNonce);
+            useNonce = nonce + 1;
+        }
 
-        console.log(`Successfully proposed ${txHashes.length} transaction batches:`);
-        txHashes.forEach((hash, index) => {
-            console.log(`  ${index + 1}. ${hash}`);
-        });
+        console.log(`Successfully proposed ${batches.length} transaction batches:`);
     } catch (error) {
         console.error('Error proposing transactions from CSV:', error);
         if (error instanceof Error) core.setFailed(error.message);

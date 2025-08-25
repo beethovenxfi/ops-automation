@@ -1,4 +1,4 @@
-name: 999 - On Merge - Generate payload for a week of rewards
+name: ZZZ - On Merge - Propose weekly Reward Transactions
 
 on:
     workflow_dispatch:
@@ -11,7 +11,7 @@ env:
     PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
 
 jobs:
-    propose_reward_txns:
+    proposeRewardTxns:
         if: github.event.pull_request.merged == true && ${{ github.event.label.name == 'weekly-rewards' }}
         runs-on: ubuntu-latest
         steps:
@@ -28,4 +28,4 @@ jobs:
             - name: Generate msig txns
               env:
                   PROPOSER_WALLET: ${{ secrets.PROPOSER_WALLET }}
-              run: bun ts-node ./src/gaugeAutomation/proposeRewardTransactionsFromCsv.ts
+              run: bun ts-node ./src/gaugeAutomation/proposeRewardTransactions.ts

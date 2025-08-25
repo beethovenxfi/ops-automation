@@ -15,6 +15,9 @@ import {
     VEUSD_MARKET,
 } from './constants';
 import { parseUnits } from 'ethers';
+import Safe from '@safe-global/protocol-kit';
+import SafeApiKit from '@safe-global/api-kit';
+import { OperationType, SafeTransaction } from '@safe-global/types-kit';
 
 interface SafeTransactionBatch {
     version: string;
@@ -158,15 +161,17 @@ export async function createTxnBatchForHiddenHandBribes(voteId: number, depositB
     }
 }
 
-export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[]): void {
+export function createTxnBatchForWeeklyRewards(
+    addRewardInput: AddRewardTxnInput[],
+    saveTransactionJson = true,
+): SafeTransactionBatch[] {
     const batchId = moment().unix(); // Using current timestamp as voteId, can be replaced with a specific vote ID if needed
+    const allTransactionBatches: SafeTransactionBatch[] = [];
     let gaugeAddMissingRewardTokensTxns: Transaction[] = [];
     let gaugeBeetsApprovalTxns: Transaction[] = [];
     let gaugeBeetsDepositTxns: Transaction[] = [];
     let gaugeStSApprovalTxns: Transaction[] = [];
     let gaugeStSDepositTxns: Transaction[] = [];
-    let gaugeFragmentsApprovalTxns: Transaction[] = [];
-    let gaugeFragmentsDepositTxns: Transaction[] = [];
 
     for (const gaugeInput of addRewardInput) {
         if (gaugeInput.addBeetsRewardToken) {
@@ -218,26 +223,6 @@ export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[
                 ),
             );
         }
-
-        if (gaugeInput.fragmentsAmountInWei > 0n) {
-            // add the approve transcation
-            gaugeFragmentsApprovalTxns.push(
-                generateTokenApprovalInput(
-                    gaugeInput.gaugeAddress,
-                    FRAGMENTS_ADDRESS,
-                    gaugeInput.fragmentsAmountInWei.toString(),
-                ),
-            );
-
-            // add deposit_reward_token transaction
-            gaugeFragmentsDepositTxns.push(
-                generateRewardTokenDepositInput(
-                    gaugeInput.gaugeAddress,
-                    FRAGMENTS_ADDRESS,
-                    gaugeInput.fragmentsAmountInWei.toString(),
-                ),
-            );
-        }
     }
 
     if (gaugeAddMissingRewardTokensTxns.length > 0) {
@@ -256,72 +241,80 @@ export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[
             transactions: gaugeAddMissingRewardTokensTxns,
         };
 
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/add-reward-tokens-${batchId}.json`,
-            JSON.stringify(transactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
+        if (saveTransactionJson) {
+            fs.writeFile(
+                `./src/gaugeAutomation/gauge-transactions/add-reward-tokens-${batchId}.json`,
+                JSON.stringify(transactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
+        }
+        allTransactionBatches.push(transactionBatch);
     } else {
         console.log(`No add rewards token transactions found`);
     }
 
-    if (gaugeBeetsApprovalTxns.length > 0) {
-        const approvalTransactionBatch: SafeTransactionBatch = {
-            version: '1.0',
-            chainId: '146',
-            createdAt: moment().unix(),
-            meta: {
-                name: 'Transactions Batch',
-                description: 'Approving BEETS for gauges',
-                txBuilderVersion: '1.18.0',
-                createdFromSafeAddress: LM_GAUGE_MSIG,
-                createdFromOwnerAddress: '',
-                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-            },
-            transactions: gaugeBeetsApprovalTxns,
-        };
+    // if (gaugeBeetsApprovalTxns.length > 0) {
+    //     const approvalTransactionBatch: SafeTransactionBatch = {
+    //         version: '1.0',
+    //         chainId: '146',
+    //         createdAt: moment().unix(),
+    //         meta: {
+    //             name: 'Transactions Batch',
+    //             description: 'Approving BEETS for gauges',
+    //             txBuilderVersion: '1.18.0',
+    //             createdFromSafeAddress: LM_GAUGE_MSIG,
+    //             createdFromOwnerAddress: '',
+    //             checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+    //         },
+    //         transactions: gaugeBeetsApprovalTxns,
+    //     };
 
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/approve-beets-${batchId}.json`,
-            JSON.stringify(approvalTransactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
+    //     const depositTransactionBatch: SafeTransactionBatch = {
+    //         version: '1.0',
+    //         chainId: '146',
+    //         createdAt: moment().unix(),
+    //         meta: {
+    //             name: 'Transactions Batch',
+    //             description: 'Deposit BEETS for gauges',
+    //             txBuilderVersion: '1.18.0',
+    //             createdFromSafeAddress: LM_GAUGE_MSIG,
+    //             createdFromOwnerAddress: '',
+    //             checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+    //         },
+    //         transactions: gaugeBeetsDepositTxns,
+    //     };
 
-        const depositTransactionBatch: SafeTransactionBatch = {
-            version: '1.0',
-            chainId: '146',
-            createdAt: moment().unix(),
-            meta: {
-                name: 'Transactions Batch',
-                description: 'Deposit BEETS for gauges',
-                txBuilderVersion: '1.18.0',
-                createdFromSafeAddress: LM_GAUGE_MSIG,
-                createdFromOwnerAddress: '',
-                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-            },
-            transactions: gaugeBeetsDepositTxns,
-        };
+    //     if (saveTransactionJson) {
+    //         fs.writeFile(
+    //             `./src/gaugeAutomation/gauge-transactions/approve-beets-${batchId}.json`,
+    //             JSON.stringify(approvalTransactionBatch, null, 2),
+    //             function (err) {
+    //                 if (err) {
+    //                     throw err;
+    //                 }
+    //             },
+    //         );
 
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/deposit-beets-${batchId}.json`,
-            JSON.stringify(depositTransactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
-    } else {
-        console.log(`No gauge deposit beets transactions found`);
-    }
+    //         fs.writeFile(
+    //             `./src/gaugeAutomation/gauge-transactions/deposit-beets-${batchId}.json`,
+    //             JSON.stringify(depositTransactionBatch, null, 2),
+    //             function (err) {
+    //                 if (err) {
+    //                     throw err;
+    //                 }
+    //             },
+    //         );
+    //     }
+
+    //     allTransactionBatches.push(approvalTransactionBatch);
+    //     allTransactionBatches.push(depositTransactionBatch);
+    // } else {
+    //     console.log(`No gauge deposit beets transactions found`);
+    // }
 
     if (gaugeStSApprovalTxns.length > 0) {
         const approvalTransactionBatch: SafeTransactionBatch = {
@@ -339,16 +332,6 @@ export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[
             transactions: gaugeStSApprovalTxns,
         };
 
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/approve-sts-${batchId}.json`,
-            JSON.stringify(approvalTransactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
-
         const depositTransactionBatch: SafeTransactionBatch = {
             version: '1.0',
             chainId: '146',
@@ -364,72 +347,35 @@ export function createTxnBatchForBeetsRewards(addRewardInput: AddRewardTxnInput[
             transactions: gaugeStSDepositTxns,
         };
 
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/deposit-sts-${batchId}.json`,
-            JSON.stringify(depositTransactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
+        if (saveTransactionJson) {
+            fs.writeFile(
+                `./src/gaugeAutomation/gauge-transactions/approve-sts-${batchId}.json`,
+                JSON.stringify(approvalTransactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
+
+            fs.writeFile(
+                `./src/gaugeAutomation/gauge-transactions/deposit-sts-${batchId}.json`,
+                JSON.stringify(depositTransactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
+        }
+
+        allTransactionBatches.push(approvalTransactionBatch);
+        allTransactionBatches.push(depositTransactionBatch);
     } else {
-        console.log(`No gauge deposit beets transactions found`);
+        console.log(`No gauge deposit sts transactions found`);
     }
 
-    if (gaugeFragmentsApprovalTxns.length > 0) {
-        const approvalTransactionBatch: SafeTransactionBatch = {
-            version: '1.0',
-            chainId: '146',
-            createdAt: moment().unix(),
-            meta: {
-                name: 'Transactions Batch',
-                description: 'Approving fragments for gauges',
-                txBuilderVersion: '1.18.0',
-                createdFromSafeAddress: LM_GAUGE_MSIG,
-                createdFromOwnerAddress: '',
-                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-            },
-            transactions: gaugeFragmentsApprovalTxns,
-        };
-
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/approve-fragments-${batchId}.json`,
-            JSON.stringify(approvalTransactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
-
-        const depositTransactionBatch: SafeTransactionBatch = {
-            version: '1.0',
-            chainId: '146',
-            createdAt: moment().unix(),
-            meta: {
-                name: 'Transactions Batch',
-                description: 'Deposit fragments for gauges',
-                txBuilderVersion: '1.18.0',
-                createdFromSafeAddress: LM_GAUGE_MSIG,
-                createdFromOwnerAddress: '',
-                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-            },
-            transactions: gaugeFragmentsDepositTxns,
-        };
-
-        fs.writeFile(
-            `./src/gaugeAutomation/gauge-transactions/deposit-fragments-${batchId}.json`,
-            JSON.stringify(depositTransactionBatch, null, 2),
-            function (err) {
-                if (err) {
-                    throw err;
-                }
-            },
-        );
-    } else {
-        console.log(`No gauge deposit beets transactions found`);
-    }
+    return allTransactionBatches;
 }
 
 export function createTxnForTreveeBounty(
@@ -743,4 +689,56 @@ function generateAddRewardTokenInput(gaugeAddress: string, rewardTokenAddress: s
             _distributor: LM_GAUGE_MSIG,
         },
     };
+}
+
+export async function proposeTransaction(
+    safeAddress: string,
+    transactionBatch: SafeTransactionBatch,
+    nonce?: number,
+): Promise<number> {
+    const protocolKit = await Safe.init({
+        provider: process.env.RPC_URL || 'https://rpc.soniclabs.com',
+        signer: process.env.PROPOSER_WALLET,
+        safeAddress,
+    });
+
+    const apiKit = new SafeApiKit({
+        chainId: 146n,
+        apiKey: process.env.SAFE_API_KEY,
+    });
+
+    const nextNonce = await apiKit.getNextNonce(safeAddress);
+
+    // we need to keep track of the nonce because the safe API is too slow for multiple transactions sent fast after each other
+    const options = nonce !== undefined ? { nonce: nonce } : { nonce: parseFloat(nextNonce) };
+
+    let safeTransaction: SafeTransaction = await protocolKit.createTransaction({
+        transactions: transactionBatch.transactions,
+        options,
+    });
+
+    // if there is only one transaction in the batch, we need to force it
+    if (transactionBatch.transactions.length === 1) {
+        const batch = await protocolKit.createTransactionBatch(transactionBatch.transactions, options);
+        safeTransaction = await protocolKit.createTransaction({
+            transactions: [batch],
+            options,
+        });
+    }
+
+    const latestNonce = safeTransaction.data.nonce;
+
+    const safeTxHash = await protocolKit.getTransactionHash(safeTransaction);
+    const signature = await protocolKit.signHash(safeTxHash);
+    const senderAddress = await protocolKit.getSafeProvider().getSignerAddress();
+
+    await apiKit.proposeTransaction({
+        safeAddress: safeAddress,
+        safeTransactionData: safeTransaction.data,
+        safeTxHash,
+        senderAddress: senderAddress || '',
+        senderSignature: signature.data,
+    });
+
+    return latestNonce;
 }
