@@ -22,7 +22,7 @@ jobs:
               run: bun install --frozen-lockfile
 
             - name: Generate msig txns
-              run: bun ts-node ./src/gaugeAutomation/generateRewardPayloadData.ts
+              run: bun ts-node ./src/gaugeAutomation/generateWeeklyRewardPayloadData.ts
 
             - name: Create PR
               uses: peter-evans/create-pull-request@v5
