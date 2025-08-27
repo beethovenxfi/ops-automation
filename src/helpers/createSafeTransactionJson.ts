@@ -257,64 +257,64 @@ export function createTxnBatchForWeeklyRewards(
         console.log(`No add rewards token transactions found`);
     }
 
-    // if (gaugeBeetsApprovalTxns.length > 0) {
-    //     const approvalTransactionBatch: SafeTransactionBatch = {
-    //         version: '1.0',
-    //         chainId: '146',
-    //         createdAt: moment().unix(),
-    //         meta: {
-    //             name: 'Transactions Batch',
-    //             description: 'Approving BEETS for gauges',
-    //             txBuilderVersion: '1.18.0',
-    //             createdFromSafeAddress: LM_GAUGE_MSIG,
-    //             createdFromOwnerAddress: '',
-    //             checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-    //         },
-    //         transactions: gaugeBeetsApprovalTxns,
-    //     };
+    if (gaugeBeetsApprovalTxns.length > 0) {
+        const approvalTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Approving BEETS for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeBeetsApprovalTxns,
+        };
 
-    //     const depositTransactionBatch: SafeTransactionBatch = {
-    //         version: '1.0',
-    //         chainId: '146',
-    //         createdAt: moment().unix(),
-    //         meta: {
-    //             name: 'Transactions Batch',
-    //             description: 'Deposit BEETS for gauges',
-    //             txBuilderVersion: '1.18.0',
-    //             createdFromSafeAddress: LM_GAUGE_MSIG,
-    //             createdFromOwnerAddress: '',
-    //             checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-    //         },
-    //         transactions: gaugeBeetsDepositTxns,
-    //     };
+        const depositTransactionBatch: SafeTransactionBatch = {
+            version: '1.0',
+            chainId: '146',
+            createdAt: moment().unix(),
+            meta: {
+                name: 'Transactions Batch',
+                description: 'Deposit BEETS for gauges',
+                txBuilderVersion: '1.18.0',
+                createdFromSafeAddress: LM_GAUGE_MSIG,
+                createdFromOwnerAddress: '',
+                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+            },
+            transactions: gaugeBeetsDepositTxns,
+        };
 
-    //     if (saveTransactionJson) {
-    //         fs.writeFile(
-    //             `./src/gaugeAutomation/gauge-transactions/approve-beets-${batchId}.json`,
-    //             JSON.stringify(approvalTransactionBatch, null, 2),
-    //             function (err) {
-    //                 if (err) {
-    //                     throw err;
-    //                 }
-    //             },
-    //         );
+        if (saveTransactionJson) {
+            fs.writeFile(
+                `./src/gaugeAutomation/gauge-transactions/approve-beets-${batchId}.json`,
+                JSON.stringify(approvalTransactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
 
-    //         fs.writeFile(
-    //             `./src/gaugeAutomation/gauge-transactions/deposit-beets-${batchId}.json`,
-    //             JSON.stringify(depositTransactionBatch, null, 2),
-    //             function (err) {
-    //                 if (err) {
-    //                     throw err;
-    //                 }
-    //             },
-    //         );
-    //     }
+            fs.writeFile(
+                `./src/gaugeAutomation/gauge-transactions/deposit-beets-${batchId}.json`,
+                JSON.stringify(depositTransactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
+        }
 
-    //     allTransactionBatches.push(approvalTransactionBatch);
-    //     allTransactionBatches.push(depositTransactionBatch);
-    // } else {
-    //     console.log(`No gauge deposit beets transactions found`);
-    // }
+        allTransactionBatches.push(approvalTransactionBatch);
+        allTransactionBatches.push(depositTransactionBatch);
+    } else {
+        console.log(`No gauge deposit beets transactions found`);
+    }
 
     if (gaugeStSApprovalTxns.length > 0) {
         const approvalTransactionBatch: SafeTransactionBatch = {
