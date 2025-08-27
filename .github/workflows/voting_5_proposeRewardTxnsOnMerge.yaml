@@ -13,7 +13,7 @@ env:
 
 jobs:
     proposeRewardTxns:
-        if: github.event.pull_request.merged == true && ${{ github.event.label.name == 'weekly-rewards' }}
+        if: github.event.pull_request.merged == true && github.event.label.name == 'weekly-rewards'
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
