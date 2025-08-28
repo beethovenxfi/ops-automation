@@ -15,69 +15,7 @@ import {
     VEUSD_MARKET,
 } from './constants';
 import { parseUnits } from 'ethers';
-import Safe from '@safe-global/protocol-kit';
-import SafeApiKit from '@safe-global/api-kit';
-import { OperationType, SafeTransaction } from '@safe-global/types-kit';
-
-interface SafeTransactionBatch {
-    version: string;
-    chainId: string;
-    createdAt: number;
-    meta: Meta;
-    transactions: Transaction[];
-}
-
-interface Meta {
-    name: string;
-    description: string;
-    txBuilderVersion: string;
-    createdFromSafeAddress: string;
-    createdFromOwnerAddress: string;
-    checksum: string;
-}
-
-interface Transaction {
-    to: string;
-    value: string;
-    data: any;
-    contractMethod: ContractMethod;
-    contractInputsValues: ContractInputsValues;
-}
-
-interface ContractMethod {
-    inputs: Input[];
-    name: string;
-    payable: boolean;
-}
-
-interface Input {
-    name: string;
-    type: string;
-    internalType?: string;
-}
-
-export interface ContractInputsValues {
-    spender?: string;
-    amount?: string;
-    _reward_token?: string;
-    _distributor?: string;
-    _amount?: string;
-    _proposal?: string;
-    _token?: string;
-    _maxTokensPerVote?: string;
-    _periods?: string;
-    gauge?: string;
-    rewardToken?: string;
-    startNextPeriod?: string;
-    duration?: string;
-    minRewardPerVote?: string;
-    maxRewardPerVote?: string;
-    totalRewardAmount?: string;
-    feeAmount?: string;
-    voterList?: string;
-    voteType?: string;
-    closeType?: string;
-}
+import { JsonTransaction, SafeTransactionBatch } from './safe-types';
 
 export interface AddRewardTxnInput {
     gaugeAddress: string;
@@ -94,8 +32,47 @@ export interface DepositBribeTxnInput {
     bribeAmountInWei: bigint;
 }
 
+export function createTxBatchForBeetsTransfer(from: string, to: string, amount: string): SafeTransactionBatch[] {
+    const tx: JsonTransaction = {
+        to,
+        value: amount,
+        data: null,
+        contractMethod: {
+            inputs: [
+                { name: '_from', type: 'address' },
+                { name: '_to', type: 'address' },
+                { name: '_amount', type: 'uint256' },
+            ],
+            name: 'transfer',
+            payable: false,
+        },
+        contractInputsValues: {
+            _from: from,
+            _to: to,
+            _amount: amount,
+        },
+    };
+
+    const transactionBatch: SafeTransactionBatch = {
+        version: '1.0',
+        chainId: '146',
+        createdAt: moment().unix(),
+        meta: {
+            name: 'Transactions Batch',
+            description: 'Deposit bribes for gauges on Hidden Hand',
+            txBuilderVersion: '1.18.0',
+            createdFromSafeAddress: from,
+            createdFromOwnerAddress: '',
+            checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+        },
+        transactions: [tx],
+    };
+
+    return [transactionBatch];
+}
+
 export async function createTxnBatchForHiddenHandBribes(voteId: number, depositBribeInput: DepositBribeTxnInput[]) {
-    const gaugeBribeDepositTxns: Transaction[] = [];
+    const gaugeBribeDepositTxns: JsonTransaction[] = [];
     let totalAmountOfBeetsBribes = 0n;
 
     for (const bribeInput of depositBribeInput) {
@@ -167,11 +144,11 @@ export function createTxnBatchForWeeklyRewards(
 ): SafeTransactionBatch[] {
     const batchId = moment().unix(); // Using current timestamp as voteId, can be replaced with a specific vote ID if needed
     const allTransactionBatches: SafeTransactionBatch[] = [];
-    let gaugeAddMissingRewardTokensTxns: Transaction[] = [];
-    let gaugeBeetsApprovalTxns: Transaction[] = [];
-    let gaugeBeetsDepositTxns: Transaction[] = [];
-    let gaugeStSApprovalTxns: Transaction[] = [];
-    let gaugeStSDepositTxns: Transaction[] = [];
+    let gaugeAddMissingRewardTokensTxns: JsonTransaction[] = [];
+    let gaugeBeetsApprovalTxns: JsonTransaction[] = [];
+    let gaugeBeetsDepositTxns: JsonTransaction[] = [];
+    let gaugeStSApprovalTxns: JsonTransaction[] = [];
+    let gaugeStSDepositTxns: JsonTransaction[] = [];
 
     for (const gaugeInput of addRewardInput) {
         if (gaugeInput.addBeetsRewardToken) {
@@ -386,7 +363,7 @@ export function createTxnForTreveeBounty(
     minRewardPerVoteEth: string,
     maxRewardPerVoteEth: string,
 ) {
-    const bountyTxns: Transaction[] = [];
+    const bountyTxns: JsonTransaction[] = [];
 
     if (parseFloat(amountUsd) > 0) {
         const bountyAmountUsdInWei = parseUnits(amountUsd, 6);
@@ -619,7 +596,7 @@ function generateRewardTokenDepositInput(
     gaugeAddress: string,
     rewardTokenAddress: string,
     rewardTokenAmountInWei: string,
-): Transaction {
+): JsonTransaction {
     return {
         to: gaugeAddress,
         value: '0',
@@ -645,7 +622,7 @@ function generateRewardTokenDepositInput(
     };
 }
 
-function generateTokenApprovalInput(spender: string, tokenAddress: string, tokenAmountInWei: string): Transaction {
+function generateTokenApprovalInput(spender: string, tokenAddress: string, tokenAmountInWei: string): JsonTransaction {
     return {
         to: tokenAddress,
         value: '0',
@@ -673,7 +650,7 @@ function generateTokenApprovalInput(spender: string, tokenAddress: string, token
     };
 }
 
-function generateAddRewardTokenInput(gaugeAddress: string, rewardTokenAddress: string): Transaction {
+function generateAddRewardTokenInput(gaugeAddress: string, rewardTokenAddress: string): JsonTransaction {
     return {
         to: gaugeAddress,
         value: '0',
@@ -697,56 +674,4 @@ function generateAddRewardTokenInput(gaugeAddress: string, rewardTokenAddress: s
             _distributor: LM_GAUGE_MSIG,
         },
     };
-}
-
-export async function proposeTransaction(
-    safeAddress: string,
-    transactionBatch: SafeTransactionBatch,
-    nonce?: number,
-): Promise<number> {
-    const protocolKit = await Safe.init({
-        provider: process.env.RPC_URL || 'https://rpc.soniclabs.com',
-        signer: process.env.SAFE_PROPOSER_WALLET,
-        safeAddress,
-    });
-
-    const apiKit = new SafeApiKit({
-        chainId: 146n,
-        apiKey: process.env.SAFE_API_KEY,
-    });
-
-    const nextNonce = await apiKit.getNextNonce(safeAddress);
-
-    // we need to keep track of the nonce because the safe API is too slow for multiple transactions sent fast after each other
-    const options = nonce !== undefined ? { nonce: nonce } : { nonce: parseFloat(nextNonce) };
-
-    let safeTransaction: SafeTransaction = await protocolKit.createTransaction({
-        transactions: transactionBatch.transactions,
-        options,
-    });
-
-    // if there is only one transaction in the batch, we need to force it
-    if (transactionBatch.transactions.length === 1) {
-        const batch = await protocolKit.createTransactionBatch(transactionBatch.transactions, options);
-        safeTransaction = await protocolKit.createTransaction({
-            transactions: [batch],
-            options,
-        });
-    }
-
-    const latestNonce = safeTransaction.data.nonce;
-
-    const safeTxHash = await protocolKit.getTransactionHash(safeTransaction);
-    const signature = await protocolKit.signHash(safeTxHash);
-    const senderAddress = await protocolKit.getSafeProvider().getSignerAddress();
-
-    await apiKit.proposeTransaction({
-        safeAddress: safeAddress,
-        safeTransactionData: safeTransaction.data,
-        safeTxHash,
-        senderAddress: senderAddress || '',
-        senderSignature: signature.data,
-    });
-
-    return latestNonce;
 }

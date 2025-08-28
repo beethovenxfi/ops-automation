@@ -13,7 +13,7 @@ import {
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 import fs from 'fs';
 import path from 'path';
-import { AddRewardTxnInput, createTxnBatchForWeeklyRewards } from '../helpers/createSafeTransactionJson';
+import { AddRewardTxnInput, createTxnBatchForWeeklyRewards } from '../helpers/safeCreateJsonBatch';
 
 interface PayloadDataRow {
     poolId: string;

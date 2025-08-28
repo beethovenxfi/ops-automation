@@ -1,12 +1,20 @@
 import * as core from '@actions/core';
-import { parseEther } from 'viem';
+import { formatEther, parseEther } from 'viem';
 import fs from 'fs';
-import { GAUGE_REWARD_CSV_PATH, LM_GAUGE_MSIG } from '../helpers/constants';
+import {
+    GAUGE_REWARD_CSV_PATH,
+    LM_GAUGE_MSIG,
+    MSIG_DISCORD_CHANNEL,
+    MUSIC_DIRECTOR_ID,
+    REVENUE_MSIG,
+} from '../helpers/constants';
 import {
     AddRewardTxnInput,
+    createTxBatchForBeetsTransfer,
     createTxnBatchForWeeklyRewards,
-    proposeTransaction,
-} from '../helpers/createSafeTransactionJson';
+} from '../helpers/safeCreateJsonBatch';
+import { sendMessage } from '../helpers/discord-bot';
+import { proposeBatch } from '../helpers/safeProposeJsonBatch';
 
 interface PayloadDataRow {
     poolId: string;
@@ -105,15 +113,32 @@ async function run(): Promise<void> {
         console.log(`Total stS: ${totalStS.toString()}`);
 
         // Propose transactions using Safe SDK
-        const batches = await createTxnBatchForWeeklyRewards(roundInputs, false);
+        const batches = createTxnBatchForWeeklyRewards(roundInputs, false);
         let useNonce = undefined;
         for (const batch of batches) {
             // Propose each batch using Safe SDK
-            const nonce = await proposeTransaction(LM_GAUGE_MSIG, batch, useNonce);
+            const nonce = await proposeBatch(batch, useNonce);
             useNonce = nonce + 1;
         }
 
-        console.log(`Successfully proposed ${batches.length} transaction batches:`);
+        // also propose the beets transfer from rev msig to lm msig
+        const beetsTransferBatch = createTxBatchForBeetsTransfer(REVENUE_MSIG, LM_GAUGE_MSIG, totalBeets.toString());
+        await proposeBatch(beetsTransferBatch[0]);
+
+        const message = `🎯 Gauge Rewards Proposed
+
+<@&${MUSIC_DIRECTOR_ID}>
+
+**Rewards:**
+• 🍯 ${formatEther(totalBeets)} BEETS
+• 🥩 ${formatEther(totalStS)} stS
+🔗 [Review & Sign Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${LM_GAUGE_MSIG}>)
+
+
+** Sending ${formatEther(totalBeets)} BEETS from Revenue Msig to Gauge Msig for distribution **
+🔗 [Review & Sign Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${REVENUE_MSIG}>)`;
+
+        sendMessage(message, MSIG_DISCORD_CHANNEL);
     } catch (error) {
         console.error('Error proposing transactions from CSV:', error);
         if (error instanceof Error) core.setFailed(error.message);
