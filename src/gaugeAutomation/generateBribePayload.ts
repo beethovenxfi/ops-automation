@@ -1,8 +1,8 @@
 import * as core from '@actions/core';
 import { formatEther, parseEther } from 'viem';
-import { createTxnBatchForHiddenHandBribes, DepositBribeTxnInput } from '../helpers/createSafeTransaction';
 import { getHiddenHandProposalHashes } from '../helpers/utils';
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
+import { createTxnBatchForHiddenHandBribes, DepositBribeTxnInput } from '../helpers/createSafeTransactionJson';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
