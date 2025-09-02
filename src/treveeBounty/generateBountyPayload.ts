@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import { createTxnForTreveeBounty } from '../helpers/createSafeTransactionJson';
+import { createTxnForTreveeBounty } from '../helpers/safeCreateJsonBatch';
 
 async function run(): Promise<void> {
     try {
