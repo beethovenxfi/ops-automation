@@ -129,14 +129,13 @@ async function run(): Promise<void> {
 
 <@&${MUSIC_DIRECTOR_ID}>
 
+** Sending ${formatEther(totalBeets)} BEETS from Revenue Msig to Gauge Msig for distribution **
+🔗 [Review, Sign and Exec Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${REVENUE_MSIG}>)
+
 **Rewards:**
 • 🍯 ${formatEther(totalBeets)} BEETS
 • 🥩 ${formatEther(totalStS)} stS
-🔗 [Review & Sign Transactions. Exec after 14:15 UTC](<https://app.safe.global/transactions/queue?safe=sonic:${LM_GAUGE_MSIG}>)
-
-
-** Sending ${formatEther(totalBeets)} BEETS from Revenue Msig to Gauge Msig for distribution **
-🔗 [Review, Sign and Exec Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${REVENUE_MSIG}>)`;
+🔗 [Review & Sign Transactions. Exec after 14:15 UTC](<https://app.safe.global/transactions/queue?safe=sonic:${LM_GAUGE_MSIG}>)`;
 
         sendMessage(message, MSIG_DISCORD_CHANNEL);
     } catch (error) {
