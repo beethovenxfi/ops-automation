@@ -113,13 +113,13 @@ async function run(): Promise<void> {
         console.log(`Total stS: ${totalStS.toString()}`);
 
         // Propose transactions using Safe SDK
-        const batches = createTxnBatchForWeeklyRewards(roundInputs, false);
-        let useNonce = undefined;
-        for (const batch of batches) {
-            // Propose each batch using Safe SDK
-            const nonce = await proposeBatch(batch, useNonce);
-            useNonce = nonce + 1;
-        }
+        // const batches = createTxnBatchForWeeklyRewards(roundInputs, false);
+        // let useNonce = undefined;
+        // for (const batch of batches) {
+        //     // Propose each batch using Safe SDK
+        //     const nonce = await proposeBatch(batch, useNonce);
+        //     useNonce = nonce + 1;
+        // }
 
         // also propose the beets transfer from rev msig to lm msig
         const beetsTransferBatch = createTxBatchForBeetsTransfer(REVENUE_MSIG, LM_GAUGE_MSIG, totalBeets.toString());
@@ -132,11 +132,11 @@ async function run(): Promise<void> {
 **Rewards:**
 • 🍯 ${formatEther(totalBeets)} BEETS
 • 🥩 ${formatEther(totalStS)} stS
-🔗 [Review & Sign Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${LM_GAUGE_MSIG}>)
+🔗 [Review & Sign Transactions. Exec after 14:15 UTC](<https://app.safe.global/transactions/queue?safe=sonic:${LM_GAUGE_MSIG}>)
 
 
 ** Sending ${formatEther(totalBeets)} BEETS from Revenue Msig to Gauge Msig for distribution **
-🔗 [Review & Sign Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${REVENUE_MSIG}>)`;
+🔗 [Review, Sign and Exec Transactions](<https://app.safe.global/transactions/queue?safe=sonic:${REVENUE_MSIG}>)`;
 
         sendMessage(message, MSIG_DISCORD_CHANNEL);
     } catch (error) {
