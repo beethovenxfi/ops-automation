@@ -10,6 +10,7 @@ env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
     SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
+    DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
 jobs:
     proposeRewardTxns:
@@ -30,4 +31,5 @@ jobs:
               env:
                   SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
                   SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
+                  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
               run: bun ts-node ./src/gaugeAutomation/proposeRewardTransactions.ts
