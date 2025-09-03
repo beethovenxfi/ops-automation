@@ -34,8 +34,8 @@ export interface DepositBribeTxnInput {
 
 export function createTxBatchForBeetsTransfer(from: string, to: string, amount: string): SafeTransactionBatch[] {
     const tx: JsonTransaction = {
-        to,
-        value: amount,
+        to: BEETS_ADDRESS,
+        value: '0',
         data: null,
         contractMethod: {
             inputs: [
@@ -59,7 +59,7 @@ export function createTxBatchForBeetsTransfer(from: string, to: string, amount: 
         createdAt: moment().unix(),
         meta: {
             name: 'Transactions Batch',
-            description: 'Deposit bribes for gauges on Hidden Hand',
+            description: 'Send Beets',
             txBuilderVersion: '1.18.0',
             createdFromSafeAddress: from,
             createdFromOwnerAddress: '',
