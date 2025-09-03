@@ -122,8 +122,8 @@ async function run(): Promise<void> {
         // }
 
         // also propose the beets transfer from rev msig to lm msig
-        const beetsTransferBatch = createTxBatchForBeetsTransfer(REVENUE_MSIG, LM_GAUGE_MSIG, totalBeets.toString());
-        await proposeBatch(beetsTransferBatch[0]);
+        // const beetsTransferBatch = createTxBatchForBeetsTransfer(REVENUE_MSIG, LM_GAUGE_MSIG, totalBeets.toString());
+        // await proposeBatch(beetsTransferBatch[0]);
 
         const message = `🎯 Gauge Rewards Proposed
 
