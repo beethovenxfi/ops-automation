@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import { formatEther, parseEther } from 'viem';
 import { getHiddenHandProposalHashes } from '../helpers/utils';
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
-import { createTxnBatchForHiddenHandBribes, DepositBribeTxnInput } from '../helpers/createSafeTransactionJson';
+import { createTxnBatchForHiddenHandBribes, DepositBribeTxnInput } from '../helpers/safeCreateJsonBatch';
 
 async function run(): Promise<void> {
     const endTime = process.env.VOTE_END_TIMESTAMP;
