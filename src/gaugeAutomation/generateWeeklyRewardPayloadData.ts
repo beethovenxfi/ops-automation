@@ -3,31 +3,10 @@ import { createPublicClient, formatEther, http, parseEther } from 'viem';
 import { sonic } from 'viem/chains';
 import GaugeAbi from '../abi/GaugeAbi';
 import { getGaugesForPools } from '../helpers/utils';
-import {
-    BEETS_ADDRESS,
-    FRAGMENTS_ADDRESS,
-    GAUGE_REWARD_CSV_PATH,
-    LM_GAUGE_MSIG,
-    STS_ADDRESS,
-} from '../helpers/constants';
+import { BEETS_ADDRESS, FRAGMENTS_ADDRESS, LM_GAUGE_MSIG, STS_ADDRESS } from '../helpers/constants';
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
-import fs from 'fs';
-import path from 'path';
 import { AddRewardTxnInput, createTxnBatchForWeeklyRewards } from '../helpers/safeCreateJsonBatch';
-
-interface PayloadDataRow {
-    poolId: string;
-    poolTokenName: string;
-    gaugeAddress: string;
-    beetsAmount: string;
-    stSAmount: string;
-    fragmentsAmount: string;
-    addBeetsRewardToken: boolean;
-    addStSRewardToken: boolean;
-    addFragmentsRewardToken: boolean;
-    hasWrongDistributor: boolean;
-    distributorIssue?: string;
-}
+import { generateWeeklyRewardCSV, PayloadDataRow } from '../helpers/csvHelper';
 
 async function run(): Promise<void> {
     try {
@@ -184,24 +163,7 @@ async function run(): Promise<void> {
         console.log(`Total StS rewards from seasons: ${formatEther(totalStSRewardsFromSeasonsAmount)}`);
         console.log(`Total Fragments rewards: ${formatEther(totalFragmentsRewardsAmount)}`);
 
-        // Create CSV content
-        const csvHeader =
-            'poolId,poolTokenName,gaugeAddress,beetsAmount,stSAmount,fragmentsAmount,addBeetsRewardToken,addStSRewardToken,addFragmentsRewardToken\n';
-        const csvContent = csvData
-            .map(
-                (row) =>
-                    `${row.poolId},${row.poolTokenName},${row.gaugeAddress},${row.beetsAmount},${row.stSAmount},${row.fragmentsAmount},${row.addBeetsRewardToken},${row.addStSRewardToken},${row.addFragmentsRewardToken}`,
-            )
-            .join('\n');
-
-        // Write CSV file
-        const csvPath = GAUGE_REWARD_CSV_PATH;
-
-        // Ensure directory exists
-        fs.mkdirSync(path.dirname(csvPath), { recursive: true });
-
-        fs.writeFileSync(csvPath, csvHeader + csvContent);
-        console.log(`Generated payload data CSV: ${csvPath}`);
+        await generateWeeklyRewardCSV(csvData);
 
         // create txn payload nevertheless
         await createTxnBatchForWeeklyRewards(roundInputs);
