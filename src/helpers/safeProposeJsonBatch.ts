@@ -81,15 +81,6 @@ export async function proposeBatch(batch: SafeTransactionBatch, nonce?: number):
         options,
     });
 
-    // if there is only one transaction in the batch, we need to force it
-    if (metaTransactions.length === 1) {
-        const batch = await protocolKit.createTransactionBatch(metaTransactions, options);
-        safeTransaction = await protocolKit.createTransaction({
-            transactions: [batch],
-            options,
-        });
-    }
-
     // Get transaction hash and sign
     const safeTxHash = await protocolKit.getTransactionHash(safeTransaction);
     const signature = await protocolKit.signHash(safeTxHash);
