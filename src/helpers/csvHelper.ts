@@ -60,8 +60,8 @@ function parseCsvRow(csvLine: string): PayloadDataRow {
 
     return {
         poolId: fields[0],
-        poolTokenName: fields[1],
-        gaugeAddress: fields[2],
+        gaugeAddress: fields[1],
+        poolTokenName: fields[2],
         beetsAmount: fields[3],
         stSAmount: fields[4],
         fragmentsAmount: fields[5],
