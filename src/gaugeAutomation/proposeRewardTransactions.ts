@@ -1,13 +1,7 @@
 import * as core from '@actions/core';
 import { formatEther, parseEther } from 'viem';
 import fs from 'fs';
-import {
-    GAUGE_REWARD_CSV_PATH,
-    LM_GAUGE_MSIG,
-    MSIG_DISCORD_CHANNEL,
-    MUSIC_DIRECTOR_ID,
-    REVENUE_MSIG,
-} from '../helpers/constants';
+import { LM_GAUGE_MSIG, MSIG_DISCORD_CHANNEL, MUSIC_DIRECTOR_ID, REVENUE_MSIG } from '../helpers/constants';
 import {
     AddRewardTxnInput,
     createTxBatchForBeetsTransfer,
@@ -50,14 +44,13 @@ async function run(): Promise<void> {
         const batches = createTxnBatchForWeeklyRewards(roundInputs, false);
         let useNonce = undefined;
         for (const batch of batches) {
-            // Propose each batch using Safe SDK
-            const nonce = await proposeBatch(batch, true, useNonce);
+            const nonce = await proposeBatch(batch, false, useNonce);
             useNonce = nonce + 1;
         }
 
         // also propose the beets transfer from rev msig to lm msig
         const beetsTransferBatch = createTxBatchForBeetsTransfer(REVENUE_MSIG, LM_GAUGE_MSIG, totalBeets.toString());
-        await proposeBatch(beetsTransferBatch[0]);
+        await proposeBatch(beetsTransferBatch[0], true);
 
         const message = `🎯 Gauge Rewards Proposed
 

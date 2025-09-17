@@ -47,7 +47,11 @@ function convertToMetaTransactions(transactions: JsonTransaction[]): MetaTransac
     }));
 }
 
-export async function proposeBatch(batch: SafeTransactionBatch, forceBatch = false, nonce?: number): Promise<number> {
+export async function proposeBatch(
+    batch: SafeTransactionBatch,
+    isSingleTransfer: boolean,
+    nonce?: number,
+): Promise<number> {
     const protocolKit = await Safe.init({
         provider: process.env.RPC_URL || 'https://rpc.soniclabs.com',
         signer: process.env.SAFE_PROPOSER_WALLET,
@@ -81,8 +85,8 @@ export async function proposeBatch(batch: SafeTransactionBatch, forceBatch = fal
         options,
     });
 
-    // if there is only one transaction in the batch, we need to force it
-    if (forceBatch) {
+    // if there is only one transfer transaction in the batch, we need to force it
+    if (isSingleTransfer) {
         const batch = await protocolKit.createTransactionBatch(metaTransactions, options);
         safeTransaction = await protocolKit.createTransaction({
             transactions: [batch],
