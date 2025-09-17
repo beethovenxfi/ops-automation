@@ -147,8 +147,7 @@ export function createTxnBatchForWeeklyRewards(
     let gaugeAddMissingRewardTokensTxns: JsonTransaction[] = [];
     let gaugeBeetsApprovalTxns: JsonTransaction[] = [];
     let gaugeBeetsDepositTxns: JsonTransaction[] = [];
-    let gaugeStSApprovalTxns: JsonTransaction[] = [];
-    let gaugeStSDepositTxns: JsonTransaction[] = [];
+    let gaugeStSTxns: JsonTransaction[] = [];
 
     for (const gaugeInput of addRewardInput) {
         if (gaugeInput.addBeetsRewardToken) {
@@ -187,12 +186,12 @@ export function createTxnBatchForWeeklyRewards(
 
         if (gaugeInput.stSAmountInWei > 0n) {
             // add the approve transcation
-            gaugeStSApprovalTxns.push(
+            gaugeStSTxns.push(
                 generateTokenApprovalInput(gaugeInput.gaugeAddress, STS_ADDRESS, gaugeInput.stSAmountInWei.toString()),
             );
 
             // add deposit_reward_token transaction
-            gaugeStSDepositTxns.push(
+            gaugeStSTxns.push(
                 generateRewardTokenDepositInput(
                     gaugeInput.gaugeAddress,
                     STS_ADDRESS,
@@ -293,51 +292,26 @@ export function createTxnBatchForWeeklyRewards(
         console.log(`No gauge deposit beets transactions found`);
     }
 
-    if (gaugeStSApprovalTxns.length > 0) {
+    if (gaugeStSTxns.length > 0) {
         const approvalTransactionBatch: SafeTransactionBatch = {
             version: '1.0',
             chainId: '146',
             createdAt: moment().unix(),
             meta: {
                 name: 'Transactions Batch',
-                description: 'Approving stS for gauges',
+                description: 'Approving and Deposit stS for gauges',
                 txBuilderVersion: '1.18.0',
                 createdFromSafeAddress: LM_GAUGE_MSIG,
                 createdFromOwnerAddress: '',
                 checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
             },
-            transactions: gaugeStSApprovalTxns,
-        };
-
-        const depositTransactionBatch: SafeTransactionBatch = {
-            version: '1.0',
-            chainId: '146',
-            createdAt: moment().unix(),
-            meta: {
-                name: 'Transactions Batch',
-                description: 'Deposit stS for gauges',
-                txBuilderVersion: '1.18.0',
-                createdFromSafeAddress: LM_GAUGE_MSIG,
-                createdFromOwnerAddress: '',
-                checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
-            },
-            transactions: gaugeStSDepositTxns,
+            transactions: gaugeStSTxns,
         };
 
         if (saveTransactionJson) {
             fs.writeFile(
-                `./src/gaugeAutomation/gauge-transactions/approve-sts-${batchId}.json`,
+                `./src/gaugeAutomation/gauge-transactions/gauge-sts-${batchId}.json`,
                 JSON.stringify(approvalTransactionBatch, null, 2),
-                function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                },
-            );
-
-            fs.writeFile(
-                `./src/gaugeAutomation/gauge-transactions/deposit-sts-${batchId}.json`,
-                JSON.stringify(depositTransactionBatch, null, 2),
                 function (err) {
                     if (err) {
                         throw err;
@@ -347,7 +321,6 @@ export function createTxnBatchForWeeklyRewards(
         }
 
         allTransactionBatches.push(approvalTransactionBatch);
-        allTransactionBatches.push(depositTransactionBatch);
     } else {
         console.log(`No gauge deposit sts transactions found`);
     }

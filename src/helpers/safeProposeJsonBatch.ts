@@ -47,7 +47,7 @@ function convertToMetaTransactions(transactions: JsonTransaction[]): MetaTransac
     }));
 }
 
-export async function proposeBatch(batch: SafeTransactionBatch, forceBatch = true, nonce?: number): Promise<number> {
+export async function proposeBatch(batch: SafeTransactionBatch, forceBatch = false, nonce?: number): Promise<number> {
     const protocolKit = await Safe.init({
         provider: process.env.RPC_URL || 'https://rpc.soniclabs.com',
         signer: process.env.SAFE_PROPOSER_WALLET,
