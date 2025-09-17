@@ -51,7 +51,7 @@ async function run(): Promise<void> {
         let useNonce = undefined;
         for (const batch of batches) {
             // Propose each batch using Safe SDK
-            const nonce = await proposeBatch(batch, useNonce);
+            const nonce = await proposeBatch(batch, true, useNonce);
             useNonce = nonce + 1;
         }
 
