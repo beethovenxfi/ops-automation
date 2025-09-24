@@ -37,8 +37,8 @@ export function getVoteEndTimestamp(day: string): number {
 export async function getSnapshotBlockFromStartTimestamp(timestamp: number): Promise<number> {
     const snapshotTimestamp = moment.unix(timestamp).startOf('day').subtract(1, 'day').unix();
 
-    const response = await fetch(`https://api.etherscan.io/v2/api?chainid=146&module=block&action=getblocknobytime&timestamp=${snapshotTimestamp}&closest=before&apikey=${process.env.SONICSCAN_APIKEY}`;
-
+    const response = await fetch(
+        `https://api.etherscan.io/v2/api?chainid=146&module=block&action=getblocknobytime&timestamp=${snapshotTimestamp}&closest=before&apikey=${process.env.SONICSCAN_APIKEY}`,
     );
 
     const data = (await response.json()) as { status: string; message: string; result: string };
