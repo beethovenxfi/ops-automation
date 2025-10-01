@@ -89,7 +89,14 @@ export async function proposeBatch(
     if (isSingleTransfer) {
         const batch = await protocolKit.createTransactionBatch(metaTransactions, options);
         safeTransaction = await protocolKit.createTransaction({
-            transactions: [batch],
+            transactions: [
+                {
+                    to: batch.to,
+                    value: batch.value,
+                    data: batch.data,
+                    operation: OperationType.DelegateCall,
+                },
+            ],
             options,
         });
     }

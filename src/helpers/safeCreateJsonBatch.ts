@@ -40,17 +40,15 @@ export function createTxBatchForBeetsTransfer(from: string, to: string, amount: 
         data: null,
         contractMethod: {
             inputs: [
-                { name: '_from', type: 'address' },
-                { name: '_to', type: 'address' },
-                { name: '_amount', type: 'uint256' },
+                { name: 'to', type: 'address' },
+                { name: 'value', type: 'uint256' },
             ],
             name: 'transfer',
             payable: false,
         },
         contractInputsValues: {
-            _from: from,
-            _to: to,
-            _amount: amount,
+            to: to,
+            value: amount,
         },
     };
 
