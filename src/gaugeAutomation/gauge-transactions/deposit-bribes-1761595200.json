@@ -1,0 +1,1066 @@
+{
+  "version": "1.0",
+  "chainId": "146",
+  "createdAt": 1761225928,
+  "meta": {
+    "name": "Transactions Batch",
+    "description": "Deposit bribes for gauges on Hidden Hand",
+    "txBuilderVersion": "1.18.0",
+    "createdFromSafeAddress": "0x26377CAB961c84F2d7b9d9e36D296a1C1c77C995",
+    "createdFromOwnerAddress": "",
+    "checksum": "0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3"
+  },
+  "transactions": [
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x1Fbb3041B086d5AEb4905a6cf087f57e6fA87CBf",
+        "amount": "944314000000000000000000"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x60333bf95b47d80745b603e6dd63b6949e5b3f9f90eabbcd28de92f99f48a8f0",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "121207000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x49dc5d92c108208ff0566983dcb2ac8f81a591111207de7fce812907f9ae8c77",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "90415000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x756d22735a107555f4b060831069801ee5300a98cfa186d1c981660048f3897e",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "14100000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x770b346955f73458e635eb54be9cd8484c58aec4e910da668c884b70f6d5add9",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "5029000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x796abbe00ffe4c283ac484ea7f617630154d14376638fc7f9fa320e27c9b0d2e",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "2559000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x8531476d83a189700bbedb794aa62eb8287ec233636d0cb88dceeac495020368",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "6781000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x0488a5361dd56c1e5dbce1274dde8058656cb74f87a9b8b038091eae7e5e6b53",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "66882000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x8b3835380b3150689a080cc0c35e1ce1d94f66ce46fb729e6e2e8c73f197620d",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "16710000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xda1e1b62cce522c546b5973f5fc276d612c78d524d7752729e94573b9eaf9ee0",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "16464000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x49b332fb61f063496b4c6aff1473b0ccdd252da8e999cebc6794a6d82f9d7d70",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "6243000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x9d7b21344e198b81ebb97bc117fd19cf4c08d82f9c8e963ec41f93b5b128569c",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "9235000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x05f199517d7b9546cca1e56108cfdcecd9c485ea889bb10fb9a41d5cab31d28e",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "15435000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x95bf1c41d17fea0e644749d7016a18769bff95281aa984aa9f95d61784961623",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "11313000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xfea6d98b995965ea6f09be2a9547aff4516542f57e6a3c17cf4be258bbcde794",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "15225000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x3e8d94589807b8f5988ec1defe1df23b703592c792c15d2d9fa1001298a86a7b",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "21367000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xef11532f86b76922a96c26ac0d06e17078e0d9deb26afe525418ef2b852d9ac3",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "63898000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xb15dd0d556e4f49313367c51cee23c23a24e6cef3ddd049e554fc18006d90a80",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "29071000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xf3a64afa8f6bc7e9f48cb02f0ca7a96e061341b8f830b05f8cb991dc4cce6dcb",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "21634000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x116f22114515e4dcb87305ed3492ce371b56b6727393bae5ab49c60500cdf3f9",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "116750000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x36dc7f1ca4bbb465429d01bfd0f726b006056b24e2b4f9dc5723d5a22f1b96e9",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "28740000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xdb4a34cd13f0744a570b8504e2a7bd7c0bf8f8c69eb5744146d5055b6f2b02ef",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "53912000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x51839ff30df60558cd97d63993187212b6db0c4fe5280a2a62c03facea60d2de",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "5137000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xc468e680f7f5cf0e0ebd89e52c132d54c6384833a8a2171a18fb87a4d95bcd80",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "12305000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x19f5a4b5b1b80d6de0407c04411c994a95d4d3dbacbd4a62cb8074ea4bbd35ab",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "19771000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x702df5762cb6fd2ba17189fb66e10fa1e70d4217402cb2ac92243912bccc5b41",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "2444000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0x17406f75b5f0a2f5a67dce7304bea68e808efbc19d0358681c4cf1eb0e619114",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "122516000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    },
+    {
+      "to": "0x2A537a574a329E0f00E36F876fda03E66F4dB355",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_proposal",
+            "type": "bytes32"
+          },
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTokensPerVote",
+            "type": "uint256"
+          },
+          {
+            "name": "_periods",
+            "type": "uint256"
+          }
+        ],
+        "name": "depositBribe",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_proposal": "0xa81add9769d8043f1ab8bed3bc9ca2dabe4ff884536f4aaf3c05227e255d7ce7",
+        "_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "49171000000000000000000",
+        "_maxTokensPerVote": "0",
+        "_periods": "1"
+      }
+    }
+  ]
+}
