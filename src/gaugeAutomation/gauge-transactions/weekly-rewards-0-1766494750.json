@@ -1,0 +1,1023 @@
+{
+  "version": "1.0",
+  "chainId": "146",
+  "createdAt": 1766494750,
+  "meta": {
+    "name": "Transactions Batch",
+    "description": "Weekly gauge rewards",
+    "txBuilderVersion": "1.18.0",
+    "createdFromSafeAddress": "0x97079F7E04B535FE7cD3f972Ce558412dFb33946",
+    "createdFromOwnerAddress": "",
+    "checksum": "0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3"
+  },
+  "transactions": [
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xa472438718fe7785107fcbe584d39183a6420d36",
+        "amount": "4536000000000000000000"
+      }
+    },
+    {
+      "to": "0xa472438718fe7785107fcbe584d39183a6420d36",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "4536000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xb3bf2c247a599dfcef06791b1668fe9456677923",
+        "amount": "2310000000000000000000"
+      }
+    },
+    {
+      "to": "0xb3bf2c247a599dfcef06791b1668fe9456677923",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "2310000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xfca28e262590d001552b0af20dba1380148c9332",
+        "amount": "651000000000000000000"
+      }
+    },
+    {
+      "to": "0xfca28e262590d001552b0af20dba1380148c9332",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "651000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xf6a0071f5607f589df253e0991ba6abdde7a6d32",
+        "amount": "39522000000000000000000"
+      }
+    },
+    {
+      "to": "0xf6a0071f5607f589df253e0991ba6abdde7a6d32",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "39522000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x5d9e8b588f1d9e28ea1963681180d8b5938d26ba",
+        "amount": "672000000000000000000"
+      }
+    },
+    {
+      "to": "0x5d9e8b588f1d9e28ea1963681180d8b5938d26ba",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "672000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xb6f5702b0da321a38a2a43a31ebe4b05183a85d5",
+        "amount": "22785000000000000000000"
+      }
+    },
+    {
+      "to": "0xb6f5702b0da321a38a2a43a31ebe4b05183a85d5",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "22785000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x27aaf70334cc564bcedfe0cca43cf3dadc850bea",
+        "amount": "21210000000000000000000"
+      }
+    },
+    {
+      "to": "0x27aaf70334cc564bcedfe0cca43cf3dadc850bea",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "21210000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x52c518a5a8644bd5225ffaea38f9512af5b8dcae",
+        "amount": "4641000000000000000000"
+      }
+    },
+    {
+      "to": "0x52c518a5a8644bd5225ffaea38f9512af5b8dcae",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "4641000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x6cf8f39fd4fbd3fdb6eafc9492dcdfed5c095bf2",
+        "amount": "357000000000000000000"
+      }
+    },
+    {
+      "to": "0x6cf8f39fd4fbd3fdb6eafc9492dcdfed5c095bf2",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "357000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xaac72afacbd15bc1f0fc5bc4d4433543cd139f26",
+        "amount": "2226000000000000000000"
+      }
+    },
+    {
+      "to": "0xaac72afacbd15bc1f0fc5bc4d4433543cd139f26",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "2226000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x3b8fe7695780c54ed57811297bc027b10c0d4e7b",
+        "amount": "26040000000000000000000"
+      }
+    },
+    {
+      "to": "0x3b8fe7695780c54ed57811297bc027b10c0d4e7b",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "26040000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x42832ce0cacd02671288a56be5cbb9fe85b94843",
+        "amount": "17559000000000000000000"
+      }
+    },
+    {
+      "to": "0x42832ce0cacd02671288a56be5cbb9fe85b94843",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "17559000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x38ca6b537de2f0cea887ebacce28c5e9d429a358",
+        "amount": "40566000000000000000000"
+      }
+    },
+    {
+      "to": "0x38ca6b537de2f0cea887ebacce28c5e9d429a358",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "40566000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xca5f92861649559fd87b936f5cd0d124c4b306dd",
+        "amount": "441000000000000000000"
+      }
+    },
+    {
+      "to": "0xca5f92861649559fd87b936f5cd0d124c4b306dd",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "441000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x62e1a415e620f68aaffcbc3acb18ba90d5f6e83b",
+        "amount": "21000000000000000000"
+      }
+    },
+    {
+      "to": "0x62e1a415e620f68aaffcbc3acb18ba90d5f6e83b",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "21000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x1d991a6ba9d493b30d91db985bf3c33c94a57561",
+        "amount": "525000000000000000000"
+      }
+    },
+    {
+      "to": "0x1d991a6ba9d493b30d91db985bf3c33c94a57561",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "525000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x72afdf4e51b780fd46936856e4c81ff3e12d0adf",
+        "amount": "34329000000000000000000"
+      }
+    },
+    {
+      "to": "0x72afdf4e51b780fd46936856e4c81ff3e12d0adf",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "34329000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x769b28b8f40f96be4842d41fba6e4f56098dc62c",
+        "amount": "16005000000000000000000"
+      }
+    },
+    {
+      "to": "0x769b28b8f40f96be4842d41fba6e4f56098dc62c",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "16005000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0xae647ea922d392cc825c51967382940a30893f6d",
+        "amount": "106473000000000000000000"
+      }
+    },
+    {
+      "to": "0xae647ea922d392cc825c51967382940a30893f6d",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "106473000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x837c9ee0fb04897522ee48ae6c4d8040455defa8",
+        "amount": "25560000000000000000000"
+      }
+    },
+    {
+      "to": "0x837c9ee0fb04897522ee48ae6c4d8040455defa8",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "25560000000000000000000"
+      }
+    },
+    {
+      "to": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "spender": "0x8cdc5eb34a3ac43e5f88bdae34b3c12b829d2b7e",
+        "amount": "1071000000000000000000"
+      }
+    },
+    {
+      "to": "0x8cdc5eb34a3ac43e5f88bdae34b3c12b829d2b7e",
+      "value": "0",
+      "data": null,
+      "contractMethod": {
+        "inputs": [
+          {
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "name": "_amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "deposit_reward_token",
+        "payable": false
+      },
+      "contractInputsValues": {
+        "_reward_token": "0x2d0e0814e62d80056181f5cd932274405966e4f0",
+        "_amount": "1071000000000000000000"
+      }
+    }
+  ]
+}
