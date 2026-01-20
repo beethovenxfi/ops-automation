@@ -8,6 +8,7 @@ import {
     HIDDEN_HAND_VAULT,
     LM_GAUGE_MSIG,
     REVENUE_MSIG,
+    SCATTER_CONTRACT_ADDRESS,
     SCETH,
     SCUSD,
     STS_ADDRESS,
@@ -17,6 +18,7 @@ import {
 import { parseUnits } from 'ethers';
 import { JsonTransaction, SafeTransactionBatch } from './safe-types';
 import _ from 'lodash';
+import Safe from '@safe-global/protocol-kit';
 
 export interface AddRewardTxnInput {
     gaugeAddress: string;
@@ -32,6 +34,14 @@ export interface DepositBribeTxnInput {
     proposalHash: string;
     bribeAmountInWei: bigint;
 }
+
+export type DisperseBountiesTxnInput = {
+    tokenAddress: string;
+    recipients: {
+        address: string;
+        amountInWei: bigint;
+    }[];
+};
 
 export function createTxBatchForBeetsTransfer(from: string, to: string, amount: string): SafeTransactionBatch[] {
     const tx: JsonTransaction = {
@@ -68,6 +78,112 @@ export function createTxBatchForBeetsTransfer(from: string, to: string, amount: 
     };
 
     return [transactionBatch];
+}
+
+export function createTxnBatchForBountyDisperse(disperseData: DisperseBountiesTxnInput): SafeTransactionBatch[] {
+    // const totalAmountInWei = disperseData.recipients.reduce((acc, curr) => acc + curr.amountInWei, 0n);
+
+    const allTransactions: SafeTransactionBatch[] = [];
+
+    // const approveTxn = generateTokenApprovalInput(
+    //     SCATTER_CONTRACT_ADDRESS,
+    //     disperseData.tokenAddress,
+    //     totalAmountInWei.toString(),
+    // );
+
+    // const approvalTxBatch: SafeTransactionBatch = {
+    //     version: '1.0',
+    //     chainId: '146',
+    //     createdAt: moment().unix(),
+    //     meta: {
+    //         name: 'Transactions Batch',
+    //         description: 'Approve disperse bounties to recipients',
+    //         txBuilderVersion: '1.18.0',
+    //         createdFromSafeAddress: LM_GAUGE_MSIG,
+    //         createdFromOwnerAddress: '',
+    //         checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+    //     },
+    //     transactions: [approveTxn],
+    // };
+
+    // fs.writeFile(
+    //     `./src/gaugeAutomation/bounty-transactions/disperse-bounties-chunk-${disperseData.tokenAddress}-approval.json`,
+    //     JSON.stringify(approvalTxBatch, null, 2),
+    //     function (err) {
+    //         if (err) {
+    //             throw err;
+    //         }
+    //     },
+    // );
+    // allTransactions.push(approvalTxBatch);
+
+    // create multiple transactions for disperse if recipients exceed 375
+    let chunkNumber = 0;
+    _.chunk(disperseData.recipients, 350).forEach((recipientChunk) => {
+        console.log(`Creating disperse transaction chunk ${chunkNumber} for ${recipientChunk.length} recipients`);
+        const allTransactionBatches: JsonTransaction[] = [];
+        const totalAmountInChunk = recipientChunk.reduce((acc, curr) => acc + curr.amountInWei, 0n);
+        allTransactionBatches.push(
+            generateTokenApprovalInput(
+                SCATTER_CONTRACT_ADDRESS,
+                disperseData.tokenAddress,
+                totalAmountInChunk.toString(),
+            ),
+        );
+
+        allTransactionBatches.push({
+            to: SCATTER_CONTRACT_ADDRESS,
+            value: '0',
+            data: null,
+            contractMethod: {
+                inputs: [
+                    { name: 'token', type: 'address' },
+                    { name: 'recipients', type: 'address[]' },
+                    { name: 'amounts', type: 'uint256[]' },
+                ],
+                name: 'scatterERC20Token',
+                payable: false,
+            },
+            contractInputsValues: {
+                token: disperseData.tokenAddress,
+                recipients: recipientChunk.map((recipient) => recipient.address),
+                amounts: recipientChunk.map((recipient) => recipient.amountInWei.toString()),
+            },
+        });
+
+        if (allTransactionBatches.length > 0) {
+            const transactionBatch: SafeTransactionBatch = {
+                version: '1.0',
+                chainId: '146',
+                createdAt: moment().unix(),
+                meta: {
+                    name: 'Transactions Batch',
+                    description: 'Disperse bounties to recipients',
+                    txBuilderVersion: '1.18.0',
+                    createdFromSafeAddress: LM_GAUGE_MSIG,
+                    createdFromOwnerAddress: '',
+                    checksum: '0xfea43c482aab4a5993323fc70e869023974239c62641724d46c28ab9c98202c3',
+                },
+                transactions: allTransactionBatches,
+            };
+
+            fs.writeFile(
+                `./src/gaugeAutomation/bounty-transactions/disperse-bounties-${disperseData.tokenAddress}-chunk-${chunkNumber}.json`,
+                JSON.stringify(transactionBatch, null, 2),
+                function (err) {
+                    if (err) {
+                        throw err;
+                    }
+                },
+            );
+            allTransactions.push(transactionBatch);
+        } else {
+            console.log(`No gauge deposit bribes transactions found`);
+        }
+        chunkNumber++;
+    });
+
+    return allTransactions;
 }
 
 export async function createTxnBatchForHiddenHandBribes(voteId: number, depositBribeInput: DepositBribeTxnInput[]) {

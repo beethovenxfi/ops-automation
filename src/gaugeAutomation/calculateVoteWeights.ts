@@ -203,8 +203,6 @@ async function run(): Promise<void> {
         const fullFileStream = fs.createWriteStream(filenameFull, { flags: 'w' });
         fullFileStream.write(headers);
 
-        // fs.writeFileSync(filenameFull, headers);
-
         for (const pool in resultList) {
             if (Object.prototype.hasOwnProperty.call(resultList, pool)) {
                 const results = resultList[pool];

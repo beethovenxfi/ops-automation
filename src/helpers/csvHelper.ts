@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { GAUGE_REWARD_CSV_PATH } from '../helpers/constants';
+import { GAUGE_REWARD_CSV_PATH, VOTE_WEIGHTS_CSV_PATH } from '../helpers/constants';
 
 export interface PayloadDataRow {
     poolId: string;
@@ -13,6 +13,31 @@ export interface PayloadDataRow {
     addStSRewardToken: boolean;
     addFragmentsRewardToken: boolean;
     hasWrongDistributor: boolean;
+}
+
+export interface VoteWeightsDataRow {
+    poolName: string;
+    voterAddress: string;
+    absoluteVotes: string;
+    shareVote: string;
+}
+
+export async function readVoteWeightsFromCSV(): Promise<VoteWeightsDataRow[]> {
+    if (!fs.existsSync(VOTE_WEIGHTS_CSV_PATH)) {
+        throw new Error(`CSV file not found: ${VOTE_WEIGHTS_CSV_PATH}`);
+    }
+
+    console.log(`Reading vote weights data from: ${VOTE_WEIGHTS_CSV_PATH}`);
+    const csvContent = fs.readFileSync(VOTE_WEIGHTS_CSV_PATH, 'utf-8');
+    const lines = csvContent.trim().split('\n');
+
+    if (lines.length < 2) {
+        throw new Error('CSV file is empty or only contains header');
+    }
+
+    // Skip header and parse data rows
+    const dataRows: VoteWeightsDataRow[] = lines.slice(1).map((line) => parseVoteWeightsCsvRow(line));
+    return dataRows;
 }
 
 export async function generateWeeklyRewardCSV(csvData: PayloadDataRow[]): Promise<void> {
@@ -51,11 +76,11 @@ export async function readWeeklyRewardsFromCSV(): Promise<PayloadDataRow[]> {
     }
 
     // Skip header and parse data rows
-    const dataRows: PayloadDataRow[] = lines.slice(1).map((line) => parseCsvRow(line));
+    const dataRows: PayloadDataRow[] = lines.slice(1).map((line) => parseGaugeRewardCsvRow(line));
     return dataRows;
 }
 
-function parseCsvRow(csvLine: string): PayloadDataRow {
+function parseGaugeRewardCsvRow(csvLine: string): PayloadDataRow {
     const fields = parseCsvLine(csvLine);
 
     return {
@@ -69,6 +94,17 @@ function parseCsvRow(csvLine: string): PayloadDataRow {
         addStSRewardToken: fields[7].toLowerCase() === 'true',
         addFragmentsRewardToken: fields[8].toLowerCase() === 'true',
         hasWrongDistributor: fields[9].toLowerCase() === 'true',
+    };
+}
+
+function parseVoteWeightsCsvRow(csvLine: string): VoteWeightsDataRow {
+    const fields = parseCsvLine(csvLine);
+
+    return {
+        poolName: fields[0],
+        voterAddress: fields[1],
+        absoluteVotes: fields[2],
+        shareVote: fields[3],
     };
 }
 

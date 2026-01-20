@@ -1,0 +1,35 @@
+name: ZZZ - On Merge - Propose bounty dispersement transactions
+
+on:
+    workflow_dispatch:
+    pull_request:
+        types:
+            - closed
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
+    SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
+    DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+
+jobs:
+    proposeBountyDisperseTxns:
+        if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'vote-weights')
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Generate msig txns
+              env:
+                  SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
+                  SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
+                  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+              run: bun ts-node ./src/gaugeAutomation/proposeBountyDisperseTransactions.ts
