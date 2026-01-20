@@ -1,0 +1,40 @@
+name: Voting - 6 - Calculate weights
+
+on:
+    workflow_dispatch:
+        inputs:
+            snapshot_id:
+                description: 'The ID of the snapshot'
+                require: true
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+    calculateResults:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Calculate vote weights
+              env:
+                  SNAPSHOT_ID: ${{ github.event.inputs.snapshot_id }}
+              run: bun ts-node ./src/gaugeAutomation/calculateVoteWeights.ts
+
+            - name: Create PR
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  commit-message: 'Calculate vote weights'
+                  title: 'Vote weights for snapshot ${{ github.event.inputs.snapshot_id }}'
+                  assignees: franzns
+                  branch: snapshot-vote-weights
+                  delete-branch: true
+                  labels: 'Automated PR'

@@ -41,6 +41,7 @@ export const SCUSD = '0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE';
 export const SCETH = '0x3bcE5CB273F0F148010BbEa2470e7b5df84C7812';
 
 export const GAUGE_REWARD_CSV_PATH = path.join('src', 'gaugeAutomation', 'review-data', `gauge-rewards.csv`);
+export const VOTE_WEIGHTS_CSV_PATH = path.join('src', 'gaugeAutomation', 'review-data', `vote-weights.csv`);
 
 export const MSIG_DISCORD_CHANNEL = '930828865390149673';
 export const MUSIC_DIRECTOR_ID = '1027113137121525800';
