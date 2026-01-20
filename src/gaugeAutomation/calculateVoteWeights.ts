@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import * as fs from 'fs';
 import snapshot from '@snapshot-labs/snapshot.js';
 import { VOTE_WEIGHTS_CSV_PATH } from '../helpers/constants';
+import path from 'path/win32';
 
 interface Choice {
     [id: string]: number;
@@ -58,7 +59,8 @@ type VoteShare = {
 
 async function run(): Promise<void> {
     try {
-        const snapshotId = process.env.SNAPSHOT_ID;
+        // const snapshotId = process.env.SNAPSHOT_ID;
+        const snapshotId = '0x6cce317201455d4429d5d756f32f4f092690a2d9bf03879f23480b7b3f328c86';
         if (!snapshotId) {
             core.setFailed('Missing required environment variable SNAPSHOT_ID');
             return;
@@ -196,18 +198,18 @@ async function run(): Promise<void> {
         let date: Date = new Date();
         const headers = 'poolName,wallet,absoluteVotes,shareVote\n';
         const filenameFull = VOTE_WEIGHTS_CSV_PATH;
-        fs.mkdirSync(filenameFull);
+        fs.mkdirSync(path.dirname(filenameFull), { recursive: true });
 
-        const fullFileStream = fs.createWriteStream(filenameFull, { flags: 'a' });
+        const fullFileStream = fs.createWriteStream(filenameFull, { flags: 'w' });
         fullFileStream.write(headers);
 
         // fs.writeFileSync(filenameFull, headers);
 
         for (const pool in resultList) {
-            const poolNoSpecialChars = pool.replace(/[^A-Za-z0-9]/g, '');
             if (Object.prototype.hasOwnProperty.call(resultList, pool)) {
                 const results = resultList[pool];
                 for (const voter of results) {
+                    if (voter.absoluteVotes === 0) continue;
                     const poolNoCommas = pool.replace(/,/g, '');
                     const out =
                         poolNoCommas + ',' + voter.address + ',' + voter.absoluteVotes + ',' + voter.voteShare + '\n';
