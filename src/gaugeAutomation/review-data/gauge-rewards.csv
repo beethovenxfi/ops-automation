@@ -19,6 +19,6 @@ poolId,gaugeAddress,poolTokenName,beetsAmount,stSAmount,fragmentsAmount,addBeets
 0xaef211ff62d7f7e6f00e9f8c5188ba2cfd33d40900020000000000000000011c,0x72afdf4e51b780fd46936856e4c81ff3e12d0adf,wS/USDC-ECLP-0xaef2,45963,0,0,false,false,false,false
 0xff4af8b7046d17d7bc16e125fc736b85605b1afb00020000000000000000011d,0x769b28b8f40f96be4842d41fba6e4f56098dc62c,USDC/WETH-ECLP-0xff4a,12288,0,0,false,false,false,false
 0x75b000584a7d86fb3ef5e15ba26f4c52b41be0e9,0xae647ea922d392cc825c51967382940a30893f6d,wS/stS-Stable-0x75b0,97464,0,0,false,false,false,false
-0x8d2a7e007053772340e1a8cd827512a71de94038,0x837c9ee0fb04897522ee48ae6c4d8040455defa8,USDC/scUSD-Boosted-0x8D2a,30075,0,0,false,false,false,false
+0x8d2a7e007053772340e1a8cd827512a71de94038,0x837c9ee0fb04897522ee48ae6c4d8040455defa8,USDC/scUSD-Boosted-0x8D2a,16575,583.3,0,false,false,false,false
 0xb7d83410b123b8f3b792fc37098ed3dda24779fb,0x8cdc5eb34a3ac43e5f88bdae34b3c12b829d2b7e,USDC/stS-Weighted-0xB7D8,1071,0,0,false,false,false,false
 0x802e7175e8f2168f15b0cc57540169c61d63c9d4,0xc4c97ec58e3024fddddd6173b663234eea6f27ae,scUSD/TREVEE-Weighted-0x802e,0,0,0,false,false,false,false
