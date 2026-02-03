@@ -11,6 +11,8 @@ env:
     SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
     SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
     DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+    GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
 jobs:
     proposeBountyDisperseTxns:
@@ -32,4 +34,6 @@ jobs:
                   SAFE_PROPOSER_WALLET: ${{ secrets.SAFE_PROPOSER_WALLET }}
                   SAFE_API_KEY: ${{ secrets.SAFE_API_KEY }}
                   DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
               run: bun ts-node ./src/gaugeAutomation/proposeBountyDisperseTransactions.ts
