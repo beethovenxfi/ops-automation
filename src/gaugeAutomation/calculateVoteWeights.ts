@@ -59,8 +59,7 @@ type VoteShare = {
 
 async function run(): Promise<void> {
     try {
-        // const snapshotId = process.env.SNAPSHOT_ID;
-        const snapshotId = '0x6cce317201455d4429d5d756f32f4f092690a2d9bf03879f23480b7b3f328c86';
+        const snapshotId = process.env.SNAPSHOT_ID;
         if (!snapshotId) {
             core.setFailed('Missing required environment variable SNAPSHOT_ID');
             return;
