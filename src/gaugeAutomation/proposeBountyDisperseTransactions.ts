@@ -30,7 +30,9 @@ async function run(): Promise<void> {
             for (const bounty of bounties) {
                 const voterAddress = voteWeightRow.voterAddress.toLowerCase();
                 const bountyToken = bounty.bountyTokenAddress;
-                const voterBountyAmount = parseFloat(bounty.bountyAmount) * parseFloat(voteWeightRow.shareVote);
+                const voterBountyAmount = (
+                    parseFloat(bounty.bountyAmount) * parseFloat(voteWeightRow.shareVote)
+                ).toFixed(18);
                 const voterBountyAmountWei = parseUnits(
                     voterBountyAmount.toString(),
                     parseFloat(bounty.bountyTokenDecimals),
