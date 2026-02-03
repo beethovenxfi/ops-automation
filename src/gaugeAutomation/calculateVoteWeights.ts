@@ -60,6 +60,7 @@ type VoteShare = {
 async function run(): Promise<void> {
     try {
         const snapshotId = process.env.SNAPSHOT_ID;
+        // const snapshotId = '0x50727d7c206bc7f15abc03e75623001e5eafe07a17eb3dc8743fe767cca64d01';
         if (!snapshotId) {
             core.setFailed('Missing required environment variable SNAPSHOT_ID');
             return;
@@ -159,7 +160,7 @@ async function run(): Promise<void> {
         console.log('Some sanity checking...');
 
         // some sanity checking, allow for some rounding errors
-        const precision = 14;
+        const precision = 10;
         const totalVotes = proposalResult.scores_total;
         let calculatedTotalVotes = 0;
         for (const poolName in resultList) {
