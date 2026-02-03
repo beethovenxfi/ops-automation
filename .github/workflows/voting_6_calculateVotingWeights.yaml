@@ -37,4 +37,4 @@ jobs:
                   assignees: franzns
                   branch: snapshot-vote-weights
                   delete-branch: true
-                  labels: 'Automated PR'
+                  labels: 'vote-weights'
