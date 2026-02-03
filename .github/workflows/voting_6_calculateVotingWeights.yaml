@@ -9,6 +9,8 @@ on:
 
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
 jobs:
     calculateResults:
@@ -27,6 +29,8 @@ jobs:
             - name: Calculate vote weights
               env:
                   SNAPSHOT_ID: ${{ github.event.inputs.snapshot_id }}
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
               run: bun ts-node ./src/gaugeAutomation/calculateVoteWeights.ts
 
             - name: Create PR
