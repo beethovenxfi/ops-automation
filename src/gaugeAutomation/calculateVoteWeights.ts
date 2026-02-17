@@ -208,6 +208,8 @@ async function run(): Promise<void> {
         fullFileStream.write(headers);
 
         let rowsCount = 0;
+
+        const voteWeightDataRows: VoteWeightsDataRow[] = [];
         for (const pool in resultList) {
             if (Object.prototype.hasOwnProperty.call(resultList, pool)) {
                 const results = resultList[pool];
@@ -218,15 +220,18 @@ async function run(): Promise<void> {
                         poolNoCommas + ',' + voter.address + ',' + voter.absoluteVotes + ',' + voter.voteShare + '\n';
                     fullFileStream.write(out);
                     rowsCount++;
+                    voteWeightDataRows.push({
+                        poolName: pool,
+                        voterAddress: voter.address,
+                        absoluteVotes: voter.absoluteVotes.toString(),
+                        shareVote: voter.voteShare.toString(),
+                    });
                 }
             }
         }
         fullFileStream.end();
         console.log(`Done. Exported ${rowsCount} rows to ${filenameFull}`);
         console.log(`Calculating bounties for disperse now...`);
-
-        // Read vote weights data from CSV
-        const voteWeightDataRows: VoteWeightsDataRow[] = await readVoteWeightsFromCSV();
 
         // Read bounties from google sheet
         const bountyDataRows: BountyData[] = await readBountiesFromGoogleSheet();
