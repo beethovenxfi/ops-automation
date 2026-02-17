@@ -37,6 +37,7 @@ export async function readVoteWeightsFromCSV(): Promise<VoteWeightsDataRow[]> {
 
     // Skip header and parse data rows
     const dataRows: VoteWeightsDataRow[] = lines.slice(1).map((line) => parseVoteWeightsCsvRow(line));
+    console.log(`Parsed ${dataRows.length} vote weights entries from CSV`);
     return dataRows;
 }
 
