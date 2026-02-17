@@ -38,7 +38,7 @@ jobs:
               with:
                   commit-message: 'Calculate vote weights'
                   title: 'Vote weights for snapshot ${{ github.event.inputs.snapshot_id }}'
-                  assignees: franzns
+                  assignees: Ardordocc
                   branch: snapshot-vote-weights
                   delete-branch: true
                   labels: 'vote-weights'
