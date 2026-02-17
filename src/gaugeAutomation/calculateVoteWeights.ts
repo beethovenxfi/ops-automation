@@ -207,6 +207,7 @@ async function run(): Promise<void> {
         const fullFileStream = fs.createWriteStream(filenameFull, { flags: 'w' });
         fullFileStream.write(headers);
 
+        let rowsCount = 0;
         for (const pool in resultList) {
             if (Object.prototype.hasOwnProperty.call(resultList, pool)) {
                 const results = resultList[pool];
@@ -216,11 +217,12 @@ async function run(): Promise<void> {
                     const out =
                         poolNoCommas + ',' + voter.address + ',' + voter.absoluteVotes + ',' + voter.voteShare + '\n';
                     fullFileStream.write(out);
+                    rowsCount++;
                 }
             }
         }
         fullFileStream.end();
-        console.log(`Done. Exported results to ${filenameFull}`);
+        console.log(`Done. Exported ${rowsCount} rows to ${filenameFull}`);
         console.log(`Calculating bounties for disperse now...`);
 
         // Read vote weights data from CSV
