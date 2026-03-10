@@ -24,6 +24,10 @@ export type GaugeData = {
     gauges: {
         poolName: string;
         poolId: string;
+        protocolBounties: {
+            tokenAddress: string;
+            amount: number;
+        }[];
     }[];
 };
 

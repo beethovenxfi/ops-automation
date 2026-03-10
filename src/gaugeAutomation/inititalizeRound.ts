@@ -17,6 +17,7 @@ import {
     SNAPSHOT_HUB_URL,
     SNAPSHOT_SPACE,
     DAYS_FOR_EMISSIONS,
+    BEETS_ADDRESS,
 } from '../helpers/constants';
 import { readGaugeDataFromGoogleSheet } from '../helpers/googleSheetHelper';
 
@@ -47,6 +48,12 @@ async function run(): Promise<void> {
                     return {
                         poolName: row.poolTokenName,
                         poolId: row.poolId.toLowerCase(),
+                        protocolBounties: [
+                            {
+                                tokenAddress: BEETS_ADDRESS,
+                                amount: Number(row.protocolBounties),
+                            },
+                        ],
                     };
                 }),
         };
