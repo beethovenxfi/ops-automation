@@ -1,0 +1,49 @@
+name: Fee - 3 - Calculate protocol fees per pool
+
+on:
+    workflow_dispatch:
+        inputs:
+            start_date:
+                description: 'Start date, inclusive (YYYY-MM-DD, UTC)'
+                require: true
+            end_date:
+                description: 'End date, exclusive (YYYY-MM-DD, UTC)'
+                require: true
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+
+jobs:
+    calculateProtocolFees:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: 1.1.38
+            - name: Install deps
+              run: bun install --frozen-lockfile
+
+            - name: Calculate protocol fees per pool
+              env:
+                  START_DATE: ${{ github.event.inputs.start_date }}
+                  END_DATE: ${{ github.event.inputs.end_date }}
+                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+                  SONIC_RPC_URL: ${{ secrets.SONIC_RPC_URL }}
+              run: bun ts-node ./src/protocolFees/calculateProtocolFees.ts
+
+            - name: Create PR
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  commit-message: 'Calculate protocol fees per pool ${{ github.event.inputs.start_date }} to ${{ github.event.inputs.end_date }}'
+                  title: 'Protocol fees per pool ${{ github.event.inputs.start_date }} to ${{ github.event.inputs.end_date }}'
+                  assignees: franzns
+                  branch: protocol-fees-per-pool
+                  delete-branch: true
+                  labels: 'Automated PR'

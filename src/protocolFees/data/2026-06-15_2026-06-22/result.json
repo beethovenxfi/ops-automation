@@ -1,0 +1,102 @@
+{
+  "start": 1781481600,
+  "end": 1782086400,
+  "fromBlock": "73871832",
+  "toBlock": "74431863",
+  "pools": [
+    {
+      "poolId": "0x713fb5036dc70012588d77a5b066f1dd05c712d7000200000000000000000041",
+      "address": "0x713fb5036dc70012588d77a5b066f1dd05c712d7",
+      "version": 2,
+      "symbol": "BPT-USDCe-stS",
+      "name": "Staked Sonic & Circle Concerto",
+      "type": "WEIGHTED",
+      "usd": 0,
+      "sharePct": 0,
+      "tokens": [],
+      "eventCount": 0,
+      "unpricedEvents": 0
+    },
+    {
+      "poolId": "0xff4af8b7046d17d7bc16e125fc736b85605b1afb00020000000000000000011d",
+      "address": "0xff4af8b7046d17d7bc16e125fc736b85605b1afb",
+      "version": 2,
+      "symbol": "ECLP-wETH-USDC.e",
+      "name": "Set It and Forget ETH",
+      "type": "GYROE",
+      "usd": 115.77571878282659,
+      "sharePct": 40.75993706009484,
+      "tokens": [
+        {
+          "feeType": "v2_bpt",
+          "token": "0xff4af8b7046d17d7bc16e125fc736b85605b1afb",
+          "amount": 208.21993502579744,
+          "usd": 115.77571878282659,
+          "events": 3,
+          "unpricedAmount": 0
+        }
+      ],
+      "eventCount": 3,
+      "unpricedEvents": 0
+    },
+    {
+      "poolId": "0x75b000584a7d86fb3ef5e15ba26f4c52b41be0e9",
+      "address": "0x75b000584a7d86fb3ef5e15ba26f4c52b41be0e9",
+      "version": 3,
+      "symbol": "stS-wS",
+      "name": "Liquid Alignment",
+      "type": "STABLE",
+      "usd": 0,
+      "sharePct": 0,
+      "tokens": [],
+      "eventCount": 0,
+      "unpricedEvents": 0
+    },
+    {
+      "poolId": "0x3849ad7f879f8b8f5f41807dc2a6940765d8f14e000200000000000000000120",
+      "address": "0x3849ad7f879f8b8f5f41807dc2a6940765d8f14e",
+      "version": 2,
+      "symbol": "eclp-d-wS-USDC-wide",
+      "name": "Sonic Cruise Control",
+      "type": "GYROE",
+      "usd": 102.67881498188362,
+      "sharePct": 36.149048177513905,
+      "tokens": [
+        {
+          "feeType": "v2_bpt",
+          "token": "0x3849ad7f879f8b8f5f41807dc2a6940765d8f14e",
+          "amount": 128.9604981876495,
+          "usd": 102.67881498188362,
+          "events": 3,
+          "unpricedAmount": 0
+        }
+      ],
+      "eventCount": 3,
+      "unpricedEvents": 0
+    },
+    {
+      "poolId": "0x7a2284a1f44fe05db25cbe382475d02ee8f339a700020000000000000000011e",
+      "address": "0x7a2284a1f44fe05db25cbe382475d02ee8f339a7",
+      "version": 2,
+      "symbol": "ECLP-wETH-WBTC",
+      "name": "The Old Guard",
+      "type": "GYROE",
+      "usd": 65.58839449627172,
+      "sharePct": 23.091014762391247,
+      "tokens": [
+        {
+          "feeType": "v2_bpt",
+          "token": "0x7a2284a1f44fe05db25cbe382475d02ee8f339a7",
+          "amount": 0.03272680874792075,
+          "usd": 65.58839449627172,
+          "events": 1,
+          "unpricedAmount": 0
+        }
+      ],
+      "eventCount": 1,
+      "unpricedEvents": 0
+    }
+  ],
+  "totalUsd": 284.04292826098197,
+  "warnings": []
+}

@@ -4,8 +4,10 @@ import {
     SHEET_ID,
     SHEET_RANGE_BOUNTIES,
     SHEET_RANGE_EMISSION,
+    SHEET_RANGE_POOL_FEES,
     SHEET_TAB_NAME_BOUNTIES,
     SHEET_TAB_NAME_EMISSION,
+    SHEET_TAB_NAME_POOL_FEES,
 } from './constants';
 
 export type GaugeData = {
@@ -147,6 +149,96 @@ export async function writeGaugeDataToGoogleSheet(data: GaugeData[]): Promise<vo
                 majorDimension: 'ROWS',
                 range: `${SHEET_TAB_NAME_EMISSION}${SHEET_RANGE_EMISSION}`,
                 values: data.map((row) => mapGaugeDataToGoogleSheetRow(row)),
+            },
+        });
+    } catch (e) {
+        throw Error('Could not write sheet.');
+    }
+}
+
+export type PoolFeesRow = {
+    poolId: string;
+    feeUsd: number;
+    sharePct: number;
+};
+
+async function getSheetsService() {
+    if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY) {
+        throw new Error('Missing required environment variables to access sheets');
+    }
+    const googleJwtClient = new GoogleJwtClient();
+    const jwtClient = await googleJwtClient.getAuthorizedSheetsClient(
+        process.env.GOOGLE_CLIENT_EMAIL,
+        process.env.GOOGLE_PRIVATE_KEY,
+    );
+    return google.sheets({ version: 'v4', auth: jwtClient });
+}
+
+/** Finds the "Pool Fees" tab (case-insensitive) and returns its exact title for use in ranges. */
+async function findPoolFeesTabTitle(service: ReturnType<typeof google.sheets>): Promise<string> {
+    const meta = await service.spreadsheets.get({ spreadsheetId: SHEET_ID, fields: 'sheets.properties.title' });
+    const titles = (meta.data.sheets || []).map((s) => s.properties?.title || '');
+    const match = titles.find((t) => t.trim().toLowerCase() === SHEET_TAB_NAME_POOL_FEES.toLowerCase());
+    if (!match) {
+        throw new Error(`Tab "${SHEET_TAB_NAME_POOL_FEES}" not found in sheet. Tabs: ${titles.join(', ')}`);
+    }
+    return match;
+}
+
+/** Pool ids from column A of the "Pool Fees" tab, in sheet order (empty rows skipped). */
+export async function readPoolFeesPoolIdsFromGoogleSheet(): Promise<string[]> {
+    const service = await getSheetsService();
+    const tab = await findPoolFeesTabTitle(service);
+    const result = await service.spreadsheets.values.get({
+        spreadsheetId: SHEET_ID,
+        range: `'${tab}'${SHEET_RANGE_POOL_FEES}`,
+        valueRenderOption: 'UNFORMATTED_VALUE',
+    });
+    const rows = (result.data.values || []) as (string | number)[][];
+    return rows
+        .map((row) => String(row[0] ?? '').trim())
+        .filter((id) => /^0x[0-9a-fA-F]{40}([0-9a-fA-F]{24})?$/.test(id))
+        .map((id) => id.toLowerCase());
+}
+
+/**
+ * Writes "Fee in USD" (column B) and "Percentage of contribution" (column C, 0-100) next to each pool id in the
+ * "Pool Fees" tab. Rows are matched by pool id; column A is left untouched.
+ */
+export async function writePoolFeesToGoogleSheet(data: PoolFeesRow[]): Promise<void> {
+    const service = await getSheetsService();
+    const tab = await findPoolFeesTabTitle(service);
+    const existing = await service.spreadsheets.values.get({
+        spreadsheetId: SHEET_ID,
+        range: `'${tab}'${SHEET_RANGE_POOL_FEES}`,
+        valueRenderOption: 'UNFORMATTED_VALUE',
+    });
+    const sheetRows = (existing.data.values || []) as (string | number)[][];
+    const byPoolId = new Map(data.map((d) => [d.poolId.toLowerCase(), d]));
+
+    const values: (string | number)[][] = sheetRows.map((row) => {
+        const id = String(row[0] ?? '')
+            .trim()
+            .toLowerCase();
+        const d = byPoolId.get(id);
+        if (!d) return [row[1] ?? '', row[2] ?? ''];
+        byPoolId.delete(id);
+        return [Number(d.feeUsd.toFixed(6)), Number(d.sharePct.toFixed(4))];
+    });
+    if (byPoolId.size > 0) {
+        throw new Error(`Pools not found in sheet: ${Array.from(byPoolId.keys()).join(', ')}`);
+    }
+    if (values.length === 0) return;
+
+    try {
+        await service.spreadsheets.values.update({
+            spreadsheetId: SHEET_ID,
+            range: `'${tab}'!B2:C${values.length + 1}`,
+            valueInputOption: 'USER_ENTERED',
+            requestBody: {
+                majorDimension: 'ROWS',
+                range: `'${tab}'!B2:C${values.length + 1}`,
+                values,
             },
         });
     } catch (e) {
