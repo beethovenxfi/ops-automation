@@ -43,7 +43,6 @@ jobs:
               with:
                   commit-message: 'Calculate protocol fees per pool ${{ github.event.inputs.start_date }} to ${{ github.event.inputs.end_date }}'
                   title: 'Protocol fees per pool ${{ github.event.inputs.start_date }} to ${{ github.event.inputs.end_date }}'
-                  assignees: franzns
                   branch: protocol-fees-per-pool
                   delete-branch: true
                   labels: 'Automated PR'

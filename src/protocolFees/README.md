@@ -11,7 +11,7 @@ Calculates the protocol fees Beets captured from a set of Balancer v2 / v3 pools
 3. The action will:
     1. Read the pool ids from the sheet
     2. Calculate the fees withdrawn per pool in the period (see below)
-    3. Write `Fee in USD` (column D) and `Percentage of contribution` (column E, 0-100) next to each pool id in the sheet. `Pool Name` (B) and `Token Name` (C) are filled from the Beets API only where empty, existing values are kept.
+    3. Write `Fee in USD` (column E) and `Percentage of contribution` (column F, 0-100) next to each pool id in the sheet. `Pool Address` (B), `Pool Name` (C) and `Token Name` (D) are filled only where empty, existing values are kept.
     4. Open a PR with the full data under [data/](./data/) in a `<start>_<end>` folder: `report.md`, `summary.csv`, `events.csv` (every withdrawal with block, tx, token, amount, price) and `result.json`
 
 The report is also shown in the job summary of the action run.

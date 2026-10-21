@@ -38,7 +38,6 @@ jobs:
               with:
                   commit-message: 'Calculate distribution'
                   title: 'BEETS distribution for round ${{ github.event.inputs.vote_end_timestamp }}'
-                  assignees: franzns
                   branch: beets-distribution
                   delete-branch: true
                   labels: 'Automated PR'

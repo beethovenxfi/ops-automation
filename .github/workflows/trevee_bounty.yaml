@@ -55,7 +55,6 @@ jobs:
               with:
                   commit-message: 'Bounty Payload for Trevee'
                   title: 'New Trevee bounty'
-                  assignees: Ardordocc
                   branch: init-trevee-bounty
                   delete-branch: true
                   labels: 'Automated PR'

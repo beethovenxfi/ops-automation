@@ -158,6 +158,7 @@ export async function writeGaugeDataToGoogleSheet(data: GaugeData[]): Promise<vo
 
 export type PoolFeesRow = {
     poolId: string;
+    poolAddress: string;
     poolName: string | null;
     poolTokenName: string | null;
     feeUsd: number;
@@ -205,8 +206,8 @@ export async function readPoolFeesPoolIdsFromGoogleSheet(): Promise<string[]> {
 
 /**
  * Writes into the "Pool Fees" tab, matched by pool id (column A, left untouched):
- *   B "Pool Name" and C "Token Name" are only filled when empty in the sheet,
- *   D "Fee in USD" and E "Percentage of contribution" (0-100) are always written.
+ *   B "Pool Address", C "Pool Name" and D "Token Name" are only filled when empty in the sheet,
+ *   E "Fee in USD" and F "Percentage of contribution" (0-100) are always written.
  */
 export async function writePoolFeesToGoogleSheet(data: PoolFeesRow[]): Promise<void> {
     const service = await getSheetsService();
@@ -224,18 +225,19 @@ export async function writePoolFeesToGoogleSheet(data: PoolFeesRow[]): Promise<v
             .trim()
             .toLowerCase();
         const d = byPoolId.get(id);
-        if (!d) return [row[1] ?? '', row[2] ?? '', row[3] ?? '', row[4] ?? ''];
+        if (!d) return [row[1] ?? '', row[2] ?? '', row[3] ?? '', row[4] ?? '', row[5] ?? ''];
         byPoolId.delete(id);
-        const poolName = String(row[1] ?? '').trim() || d.poolName || '';
-        const tokenName = String(row[2] ?? '').trim() || d.poolTokenName || '';
-        return [poolName, tokenName, Number(d.feeUsd.toFixed(6)), Number(d.sharePct.toFixed(4))];
+        const poolAddress = String(row[1] ?? '').trim() || d.poolAddress;
+        const poolName = String(row[2] ?? '').trim() || d.poolName || '';
+        const tokenName = String(row[3] ?? '').trim() || d.poolTokenName || '';
+        return [poolAddress, poolName, tokenName, Number(d.feeUsd.toFixed(6)), Number(d.sharePct.toFixed(4))];
     });
     if (byPoolId.size > 0) {
         throw new Error(`Pools not found in sheet: ${Array.from(byPoolId.keys()).join(', ')}`);
     }
     if (values.length === 0) return;
 
-    const range = `'${tab}'!B2:E${values.length + 1}`;
+    const range = `'${tab}'!B2:F${values.length + 1}`;
     try {
         await service.spreadsheets.values.update({
             spreadsheetId: SHEET_ID,

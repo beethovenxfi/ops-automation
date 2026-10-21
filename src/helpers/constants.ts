@@ -51,6 +51,6 @@ export const MUSIC_DIRECTOR_ID = '1027113137121525800';
 export const SCATTER_CONTRACT_ADDRESS = '0xe907b1F554214129935820FDB8d7e771e1951d67';
 
 export const SHEET_TAB_NAME_POOL_FEES = 'Pool Fees';
-export const SHEET_RANGE_POOL_FEES = '!A2:E';
+export const SHEET_RANGE_POOL_FEES = '!A2:F';
 
 export const PROTOCOL_FEES_DATA_PATH = path.join('src', 'protocolFees', 'data');

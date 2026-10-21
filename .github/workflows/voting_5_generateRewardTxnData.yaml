@@ -29,7 +29,6 @@ jobs:
               with:
                   commit-message: 'Generated payload for a week'
                   title: 'Weekly payload for vote'
-                  assignees: Ardordocc
                   branch: reward-payload/generate-payload
                   delete-branch: true
                   labels: 'weekly-rewards'

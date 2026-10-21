@@ -48,6 +48,7 @@ async function run(): Promise<void> {
 
         const rows: PoolFeesRow[] = result.pools.map((p) => ({
             poolId: p.poolId,
+            poolAddress: p.address,
             poolName: p.name,
             poolTokenName: p.symbol,
             feeUsd: p.usd,
