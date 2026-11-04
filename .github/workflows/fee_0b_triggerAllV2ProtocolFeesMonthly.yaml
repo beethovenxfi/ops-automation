@@ -1,15 +1,15 @@
-name: Fee - 0 - Trigger protocol fees on v2 pools
+name: Fee - 0b - Trigger protocol fees on all v2 pools (monthly)
 
 on:
     schedule:
-        - cron: '0 16 * * 0' # Sundays 16:00 UTC
+        - cron: '0 16 26 * *' # 26th of every month 16:00 UTC
     workflow_dispatch:
 
 env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
 
 jobs:
-    triggerV2ProtocolFees:
+    triggerAllV2ProtocolFees:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -22,9 +22,8 @@ jobs:
             - name: Install deps
               run: bun install --frozen-lockfile
 
-            - name: Trigger protocol fees on v2 pools
+            - name: Trigger protocol fees on all active v2 pools
               env:
-                  GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
-                  GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+                  POOL_SOURCE: api
                   SONIC_RPC_URL: ${{ secrets.SONIC_RPC_URL }}
               run: bun ts-node ./src/feeAutomation/triggerV2ProtocolFees.ts

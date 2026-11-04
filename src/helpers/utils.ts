@@ -109,6 +109,41 @@ export async function getGaugesForPools(poolIds: string[]) {
     return gaugesData.data.poolGetPools;
 }
 
+// Active v2 pools from the beets api: at least minTvl USD, not paused and not in recovery mode (no protocol fees there)
+export async function getActiveV2PoolIds(minTvl: number) {
+    const backendUrl = 'https://backend-v3.beets-ftm-node.com/';
+    const backendQuery = `{
+            poolGetPools(where:{ chainIn:[SONIC], protocolVersionIn:[2], minTvl:${minTvl} }, first:1000){
+            id
+            dynamicData{
+                isPaused
+                isInRecoveryMode
+            }
+            }}
+        `;
+
+    const backendResponse = await fetch(backendUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: backendQuery }),
+    });
+
+    const poolsData = (await backendResponse.json()) as {
+        data: {
+            poolGetPools: {
+                id: string;
+                dynamicData: { isPaused: boolean; isInRecoveryMode: boolean };
+            }[];
+        };
+    };
+
+    return poolsData.data.poolGetPools
+        .filter((pool) => !pool.dynamicData.isPaused && !pool.dynamicData.isInRecoveryMode)
+        .map((pool) => pool.id.toLowerCase());
+}
+
 export async function getV3PoolIds() {
     if (!process.env.GRAPH_KEY) {
         throw new Error('Missing required environment variables GRAPH_KEY');

@@ -4,6 +4,7 @@ import { sonic } from 'viem/chains';
 import * as core from '@actions/core';
 import { PROTOCOL_FEES_COLLECTOR_V2, VAULT_V2 } from '../protocolFees/lib/config';
 import { readPoolFeesPoolIdsFromGoogleSheet } from '../helpers/googleSheetHelper';
+import { getActiveV2PoolIds } from '../helpers/utils';
 
 // v2 pools only mint their protocol fees (as BPT, to the ProtocolFeesCollector) on a join or exit.
 // A proportional exit of 0 BPT (EXACT_BPT_IN_FOR_TOKENS_OUT = 1) triggers that mint without moving any funds,
@@ -16,11 +17,19 @@ const vaultAbi = parseAbi([
 ]);
 const transferAbi = parseAbi(['event Transfer(address indexed from, address indexed to, uint256 value)']);
 
+const MIN_TVL_USD = 100;
+
 async function getV2PoolIds(): Promise<`0x${string}`[]> {
-    // POOL_IDS env is a local-testing override, otherwise use the pools from the "Pool Fees" tab of the google sheet
-    const ids = process.env.POOL_IDS
-        ? process.env.POOL_IDS.split(/[\s,]+/).map((s) => s.trim().toLowerCase())
-        : await readPoolFeesPoolIdsFromGoogleSheet();
+    // POOL_IDS env is a local-testing override. POOL_SOURCE=api uses all active v2 pools from the beets api,
+    // otherwise the pools from the "Pool Fees" tab of the google sheet are used.
+    let ids: string[];
+    if (process.env.POOL_IDS) {
+        ids = process.env.POOL_IDS.split(/[\s,]+/).map((s) => s.trim().toLowerCase());
+    } else if (process.env.POOL_SOURCE === 'api') {
+        ids = await getActiveV2PoolIds(MIN_TVL_USD);
+    } else {
+        ids = await readPoolFeesPoolIdsFromGoogleSheet();
+    }
     // v2 pool ids are 32 bytes, v3 pools are addresses
     return ids.filter((id) => /^0x[0-9a-f]{64}$/.test(id)) as `0x${string}`[];
 }

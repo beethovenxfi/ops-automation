@@ -10,6 +10,9 @@ This action will create transactions to withdraw fees from all v3 pools to the [
 
 ## Trigger protocol fees on v2 pools
 
-Scheduled every Sunday 16:00 UTC, can also be run manually. Balancer v2 pools only mint their protocol fees (as BPT to the [ProtocolFeesCollector](https://sonicscan.org/address/0xce88686553686DA562CE7Cea497CE749DA109f9F)) on a join or exit, so pools without liquidity changes show 0 fees in the per-pool fee calculation. This action does a proportional exit of **0 BPT** from every v2 pool in the `Pool Fees` tab of the google sheet, which mints the pending fees without moving any funds. The only cost is gas paid by `UPDATER_WALLET` (~190k gas per pool).
+Balancer v2 pools only mint their protocol fees (as BPT to the [ProtocolFeesCollector](https://sonicscan.org/address/0xce88686553686DA562CE7Cea497CE749DA109f9F)) on a join or exit, so pools without liquidity changes show 0 fees in the per-pool fee calculation. These actions do a proportional exit of **0 BPT** from each v2 pool, which mints the pending fees without moving any funds. The only cost is gas paid by `UPDATER_WALLET` (~190k gas per pool).
+
+- `Fee - 0a` (weekly, Fridays 16:00 UTC): pools in the `Pool Fees` tab of the google sheet
+- `Fee - 0b` (monthly, 26th 16:00 UTC): all v2 pools from the beets api with TVL >= $100 that are not paused or in recovery mode (`POOL_SOURCE=api`)
 
 Local dry run (simulates only, sends nothing): `DRY_RUN=true UPDATER_WALLET=<key> POOL_IDS=<id>,<id> bun ts-node ./src/feeAutomation/triggerV2ProtocolFees.ts`
