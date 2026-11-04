@@ -2,28 +2,14 @@ name: Fee - 0 - Trigger protocol fees on v2 pools
 
 on:
     schedule:
-        - cron: '0 14 * * 0' # Sundays 14:00 UTC, only every second one runs (see checkSchedule)
+        - cron: '0 16 * * 0' # Sundays 16:00 UTC
     workflow_dispatch:
 
 env:
     UPDATER_WALLET: ${{ secrets.UPDATER_WALLET }}
 
 jobs:
-    checkSchedule:
-        runs-on: ubuntu-latest
-        outputs:
-            run: ${{ steps.check.outputs.run }}
-        steps:
-            - name: Run every two weeks starting 2026-11-15
-              id: check
-              run: |
-                  if [ "${{ github.event_name }}" != "schedule" ]; then echo "run=true" >> $GITHUB_OUTPUT; exit 0; fi
-                  days=$(( ( $(date -u +%s) - $(date -u -d 2026-11-15 +%s) ) / 86400 ))
-                  if [ $days -ge 0 ] && [ $(( days % 14 )) -eq 0 ]; then echo "run=true" >> $GITHUB_OUTPUT; else echo "run=false" >> $GITHUB_OUTPUT; fi
-
     triggerV2ProtocolFees:
-        needs: checkSchedule
-        if: needs.checkSchedule.outputs.run == 'true'
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
