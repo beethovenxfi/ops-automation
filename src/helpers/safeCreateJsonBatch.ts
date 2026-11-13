@@ -117,9 +117,20 @@ export function createTxnBatchForBountyDisperse(disperseData: DisperseBountiesTx
     // );
     // allTransactions.push(approvalTxBatch);
 
+    // scatter reverts on zero amounts, so drop recipients with nothing to receive
+    const recipients = disperseData.recipients.filter((recipient) => recipient.amountInWei > 0n);
+    const removedCount = disperseData.recipients.length - recipients.length;
+    if (removedCount > 0) {
+        console.log(`Removed ${removedCount} recipients with 0 amount for token ${disperseData.tokenAddress}`);
+    }
+    if (recipients.length === 0) {
+        console.log(`No recipients with non-zero amount for token ${disperseData.tokenAddress}, skipping`);
+        return allTransactions;
+    }
+
     // create multiple transactions for disperse if recipients exceed 375
     let chunkNumber = 0;
-    _.chunk(disperseData.recipients, 350).forEach((recipientChunk) => {
+    _.chunk(recipients, 350).forEach((recipientChunk) => {
         console.log(`Creating disperse transaction chunk ${chunkNumber} for ${recipientChunk.length} recipients`);
         const allTransactionBatches: JsonTransaction[] = [];
         const totalAmountInChunk = recipientChunk.reduce((acc, curr) => acc + curr.amountInWei, 0n);
