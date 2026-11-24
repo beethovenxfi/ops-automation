@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "chainId": "146",
-  "createdAt": 1794339719,
+  "createdAt": 1795547123,
   "meta": {
     "name": "Transactions Batch",
     "description": "Disperse bounties to recipients",
@@ -33,7 +33,7 @@
       },
       "contractInputsValues": {
         "spender": "0xe907b1F554214129935820FDB8d7e771e1951d67",
-        "amount": "15072854839553474486757"
+        "amount": "3743582187140846599504"
       }
     },
     {
@@ -61,36 +61,14 @@
       "contractInputsValues": {
         "token": "0x2D0E0814E62D80056181F5cd932274405966e4f0",
         "recipients": [
-          "0xead5bb6e6654e684d44c4dec01f3c8e36bceb85f",
-          "0x0140ac53e142cd3f3415d0bb0eab4ae143bd9fbe",
           "0xc6cbfb7e769a6fa932eee71504022c00f7abe343",
-          "0xba3ee5e1ef6ff94e408d218e04be1b739b46d178",
-          "0xac207c599e4a07f9a8cc5e9cf49b02e20ab7ba69",
-          "0x3214e141bdae08be1f382a885cf3d2a448a5e780",
-          "0xbe026ae67432efa9ad85b897a70e0bab0dcb1cea",
-          "0x5a7eb79bc9dbb7c1f8ada3d73302187957a1940a",
-          "0x04a4847ab1b32ded05c2056b1cddab9a84f851d7",
-          "0x44c92b2e0c44a58d194c05e3bf9bf6b6602b5e82",
-          "0x4f976ee680f228bbbef921bff944f38ec28b93ad",
-          "0x708ad8be675b930abfcea373e0e1aef7fae0f251",
-          "0xb628bc2556d782875ba27587da7103afab2a97a4",
-          "0xbb63205349e05c27607734ee67b29ebd37b727de"
+          "0xc7b77336ebf08a7938b1eb2ede0f392a2568e45a",
+          "0xe65c2be6254731e93368cc071a2420b0c961451b"
         ],
         "amounts": [
-          "351634903175882696",
-          "56652130714388576393",
-          "0",
-          "0",
-          "3109652041106487558864",
-          "286563445431217871828",
-          "180377576007432708138",
-          "2931503055105030509",
-          "876960471645082634495",
-          "2370578212809627530078",
-          "848143359627417225965",
-          "4768150771722552235588",
-          "847464516047104666541",
-          "1725029176483882565662"
+          "677196510704827232985",
+          "755406258513630746165",
+          "2310979417922388620354"
         ]
       }
     }
